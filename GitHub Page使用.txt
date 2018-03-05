@@ -1,0 +1,27 @@
+user page
+	1.新建仓库：htlovo.github.io，上传文件
+	2.进入仓库设置 -> GitHub Pages -> 修改Source
+	3.访问https://htlovo.github.io/，即会访问仓库目录下index.html文件
+
+project page
+	1.新建仓库：repo，上传文件
+	2.进入仓库设置 -> GitHub Pages -> 修改Source
+	3.访问https://htlovo.github.io/repo，即会访问仓库根目录下index.html文件
+
+使用GitHub Page模板
+	在以上的第2步设置 GitHub Pages -> Theme chooser ->Choose a theme，选择一个主题，点击Select theme
+
+使用自己的域名，DNSPod
+	1.购买域名bwcx.com，并激活
+	2.注册DNSPod帐号（不使用DNSPod省略此步）
+	3.添加域名记录：www，cname，htlovo.github.io
+	4.设置域名的DNS服务器为f1g1ns1.dnspod.net和f1g1ns2.dnspod.net（不使用DNSPod省略此步）
+	5.进入仓库设置 -> GitHub Pages -> 修改Custom domain 为 www.bwcx.com
+
+
+
+
+htlovo		改为自己注册的GitHub帐号
+repo		改为自己想起的仓库名
+bwcx.com	改为自己购买的域名
+www			改为自己想用的二级域名

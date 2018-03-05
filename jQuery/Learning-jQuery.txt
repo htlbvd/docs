@@ -1,0 +1,17 @@
+$(document).ready()
+	尽可能使用浏览器原生的DOM就绪实现，并以window.onload事件处理程序作为后备；
+	可以多次调用$(document).ready()并按照调用它们的顺序执行；
+	即便是在浏览器事件发生之后把函数传给$(document).ready(),这些函数也会执行；
+	异步处理事件的预定，必要时脚本可以延迟执行；
+	通过重复检查一个几乎与DOM同时可用的方法，在较早版本的浏览器中模拟DOM就绪事件。
+选择符
+	基本的选择符：
+		$('p')		取得文档中所有的段落
+		$('#some-id')	取得文档中ID为some-id的一个元素
+		$('.some-class')	取得文档中类为some-class的所有元素
+	子元素组合符（>）
+		$('#selected-plays > li').addClass('horiontal');
+	否定式伪类选择符（:not(.some-class)）
+		$('#selected-plays li:not(.horizontal)').addClass('sub-level');
+	属性选择符
+		

@@ -1,0 +1,5 @@
+不区分大小写
+git默认对于文件名大小写是不敏感的.
+1,配置git 使其对文件名大小写敏感
+git config core.ignorecase false
+2,然后你修改名字,add,commit提交就可以了.

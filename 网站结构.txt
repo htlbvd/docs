@@ -1,0 +1,34 @@
+文件结构：
+
+index.html
+favicon.ico
+/pages
+	homepage.html
+	programming.html
+	health.html
+	plan.html
+	signup.html
+	login.html
+	ceui.html
+	/programming
+		编程文章
+	/health
+		健康文章
+	/plan
+		计划文章
+/css
+	index.css
+	home.css
+	article.css
+/js
+	index.js
+	picture-text.js
+	...
+/images
+	pages图片
+	/programming
+		编程文章图片
+	/health
+		健康文章图片
+/documents
+	...

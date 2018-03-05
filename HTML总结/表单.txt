@@ -1,0 +1,188 @@
+	
+表单			<form>...</form>
+标签			<label>...</label>					为表单控件元素提供说明
+表单控件元素组	<fieldset>...</fieldset>			对表单控件元素编组
+分组标签		<legend>...</legend>				对编组提供说明，必须是fieldset元素的第一个子元素
+
+表单控件元素
+	控  件			HTML元素							说  明 
+	单行文本框										显示文本框，用户可以在其中填写内容。
+				<input type="text" /> 				未设置type属性的默认形式
+				<input type="password" />			密码类型的文本框，不会显示用户输入的文本，用星号（*）或点号（·）来代替显示每个字符，提交时服务器收到的是明文
+	复选框		<input type="checkbox" />			显示复选框，每一组都有相同的name 属性，只有勾选的复选框的数据会被提交
+	单选按钮	<input type="radio" />				显示单选按钮，每一组都有相同的name 属性，只能有一个按钮被选中，只有被选的元素的数据会被提交
+	按钮											显示可以单击的按钮
+				<input type="submit" />				提交按钮用于收集表单数据，并将它们发送给指定目标；
+				<input type="image" />				图像按钮可以显示成一幅可以单击的图像而非按钮，点击浏览器会提交表单，发送的数据中包括来自这个image型input元素的两个数据项，分别代表用户点击位置相对于图像左上角的x坐标和y坐标。
+				<input type="reset" />				重置按钮，用于清除用户的选择和已经输入的文本信息；
+				<input type="button" />				按钮本身没有任何功能，但可以通过JavaScript给它赋予功能 
+	文件		<input type="file" />
+	隐藏的		<input type="hidden" />				用户看不见，不能编辑的数据项
+	搜索框		<input type="search" />
+	HTML5用于输入受限数据的input元素
+				<input type="number" />				只能输入整数或浮点数
+				<input type="range" />				只能输入范围内的数值
+
+				<input type="email" />				只能输入规范的电子邮箱地址
+				<input type="url" />				只能输入完全限定的URL	
+				<input type="tel" />				只能输入规范的电话号码
+
+				<input type="color" />				只能输入颜色信息
+
+				<input type="date" />				只能输入日期
+				<input type="datetime" />			只能输入带时区信息的世界时（包括日期和时间）
+				<input type="datetime-local" />		只能输入不带时区信息的世界时（包括日期和时间）
+				<input type="month" />				只能输入年和月
+				<input type="week" />				只能输入年及星期信息
+				<input type="time" />				只能输入时间信息
+	按钮			
+				<button type="submit">...</button>	提交表单按钮，未设置type属性的默认形式
+				<button type="reset">...</button>	重置表单按钮
+				<button type="button">...</button>	没有具体语义
+	多行文本框	<textarea>...</textarea>			显示大文本框，可以输入多行文本 
+	列表		<select>...</select>				显示一个选择列表，用户可以从中选择一或多个列表项。每个列表项用<option>元素添加
+	输入建议	<datalist>...</datalist>			为使用它的文本框提供数据。
+	选项		<option />							在select或datalist元素中定义提供给用户的选项
+	选项组		<optgroup>...</optgroup>			对option元素进行分组
+	
+	进度条和计量条									并非必须出现在表单中。开始与结束标记间的内容是后备内容，只之会在不支持该元素的浏览器中显示。
+				<progress>...</progress>			任务的进度，背景为灰色，完成的部分填充为脉动式绿色条。
+				<mater>...</mater>					表示的是位于已知范围内的一个值。并非必须出现在表单中。
+	计算的结果	<output>...</output>
+	密钥		<keygen />
+
+form元素的局部属性
+	action,method,enctype,name,addept-charset,novalidate,target,autocomplete
+	action			说明提交表单时浏览器应该把数据发送到什么地方，如果不设置此属性浏览器会将表单数据发送到用以加载该HTML文档的URL
+	method			值为get或post，默认为get。指定了用来将表单数据发送到服务器的HTTP方法。
+	enctype			指定浏览器对发送给服务器的数据采用的编码方式
+		application/x-www-form-rulencoded	未设置enctype属性时的默认编码方式。不能用来将文件上传到服务器
+		multipart/form-data					该编码方式用于将文件上传到服务器
+		text/plain							该编码方式因浏览器而异
+	autocomplete	设置是否允许浏览器自动完成表单，on为允许，off为禁止，不设此值默认为允许
+	target			值为_blank,_parent,_self,_top,<frame>,将浏览器反馈信息显示在新窗口（或新标签），父窗框组，当前窗口，顶层窗口，指定窗口中。默认为_self
+
+
+
+表单控件元素属性
+	表单控件元素在表单外时							设置form属性值为表单的id，即可与此表单关联起来
+	为label元素										设置for属性值为form元素的id，即可与此form元素关联起来；或将input元素放入label元素内也可将他们关联起来
+	为input、button、textarea、select元素			设置auotfocus属性，可以在表单显示出来的时候即聚焦在这个元素上，多个元素有此属性时会聚焦在第一个设置此属性的元素上
+	为input、button、textarea、select、filedset元素	设置disabled属性，会被禁用，字显示为灰色，有此属性的元素的数据不会被提交
+	为input（）、textarea元素						设置readonly属性，会成为只读，无法被用户编辑，此元素的数据会被提交
+	input(file,email),select元素等					设置multiple属性，可以选择多个
+					autocomplete				覆盖form的autocomplete属性
+					spellcheck					设置是否检查拼写，true为检查，默认检查
+
+	输入验证
+		验证属性				支持的表单控件元素及input元素的各种类型
+			required		textarea,select,input(text,password,checkbox,radio,file,number,email,url,tel,search,date,datetime,datetime-local,month,week,time)
+			min,max			input(number,range,datetime,datetime-local,date,month,time,week)
+			pattern			input(text,password,search,email,url,tel)
+		可以使用提供验证功能type属性的input元素，但浏览器支持性不好
+		为form元素设置novalidate属性或为提交按钮设置formnovalidate属性会禁用上面的输入验证
+
+	input,button元素属性
+		
+		input元素局部属性
+			name,disabled,form,type,等
+
+		botton元素局部属性
+			name，disabled，form,type,value,autofocus等
+
+		submit型button元素 和 submit型、image型input元素 的额外属性
+			formaction		覆盖form元素的action属性，另行指定表单将要提交到的URL
+			formenctype		覆盖form元素的enctype属性，另行指定表单的编码方式
+			formmethod		覆盖form元素的method属性，
+			formtarget		覆盖form元素的target属性，
+			formnovalidate	覆盖form元素的novalidate属性，表明不会执行客户端数据有效性检查
+		image型input元素的额外属性，
+			alt				提供元素的说明文字，图形不显示时会显示该文字
+			height			以像素为单位设置图形的高度（不设置的话以本身高度显示）
+			width			以像素为单位设置图形的宽度（不设置的话以本身高度显示）
+			src				指定要显示的图像的URL
+
+		text型input元素的额外属性
+			属性			说明
+			dirname			指定元素内容文字方向的名称
+			list			指定为文本框提供建议值的datalist元素，值为datalist元素的id值
+			maxlength		设定用户可在框中输入的字符的最大数目，值为正整数
+			placeholder		占位符，指定关于所需数据类型的提示
+			readonly		将文本框设为只读以阻止用户编辑其内容
+			size			通过指定框中可见的字符数目设定其宽度，值为正整数
+			value			设置初始值
+		password型input元素的额外属性
+			text型去掉dirname、list
+		email、tel、url型input元素的额外属性
+			text型去掉dirname
+
+		number，range型和六个时间日期型input元素的额外属性；number、range型input元素min,max,step,value属性值可以是整数，小数
+			list
+			min				设定可接受的最小值
+			max				设定可接受的最大值
+			readonly		
+			step			指定上下调节数值的步长
+			value			指定元素初始值
+			
+		checkbox，radio型input元素可用的额外属性
+			checked			默认勾选
+			required		必须勾选，否则无法通过验证
+			value			设定勾选时提交的数据
+
+		file型input元素的额外属性
+			accept			指定接受的MIME类型
+			multiple		设置这个属性的input元素可一次上传多个文件
+
+	select元素局部属性
+		name,disabled,form,size,multiple,autofocus,required
+	optgroup元素局部属性
+		label,disabled
+	option元素局部属性
+		disabled,selected,label,value
+
+	textarea元素局部属性
+		name,disabled,form,readonly,maxlength,autofocus,required,placeholder,dirname
+		rows			高度行数
+		cols			宽度列数
+		wrap			值为hard或soft，用来控制永福输入的文字中插入换行符的方式。值为hard时将会插入换行符，所提交的文字中每一行的字符数都不超过cols属性的规定
+
+	progress元素属性
+		value			设置表示进度的百分比，值是0-1之间的小数，不设置value值即可创建不确定进度条
+		max				设置最大值，改变进度条的比例。
+	meter元素属性
+		value,min,max
+		high			value超过此值，表示过高
+		low				value低于此值，表示过低
+		optimum			将此值标记为理想的值,但这个属性不会影响计量器在当前浏览器中的显示结果。
+
+	output元素局部属性
+		name,form,for
+
+	keygen元素局部属性
+		autofocus,name,disabled,form
+		challenge		指定一条与公钥一起发送给服务器的密钥管理口令
+		keytype			指定用来生成密钥对的算法
+
+
+表单css相关
+	习惯样式
+		form	{	display:block;			margin-top:0em;}
+		label	{	cursor:default;}
+		fieldset{	display:block;			margin-start:2px;
+					margin-end:2px;			padding-before:0.35em;
+					padding-start:0.75em;	padding-end:0.75em;
+					padding-after:0.625em;	border:2px groove;}
+		legent	{	display:block;			padding-start:2px;
+					padding-end:2px;		border:none;}
+		output	{	display:inline;}
+
+	相关伪类 
+		required（必填）和optional（选填）：根据字段中是否使用了required 属性来应用不同的样式。 
+		valid （有效）和invalid （无效）：根据控件中是否包含错误来应用不同的样式。注意，除非访客提交表单，否则大多数浏览器并不会发现哪些值有效，哪些值无效；换句话说，访客不会实时看到表示输入无效的样式变化。 
+		in-range（在范围内）和out-of-range（超出范围）：根据控件的min和max属性判断输入值是否超出范围，从而为控件应用样式。 
+
+
+参考：
+	HTML 5 权威指南
+	HTML 5 秘籍
+	HTML与CSS基础教程

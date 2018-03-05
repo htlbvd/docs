@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>form</title>
+</head>
+<body>
+
+<main role="main">
+	<h1>Create a New Account</h1>
+	
+	<form method="get" enctype="multipart/form-data" action="http://localhost/show-data.php">
+		<fieldset>
+		 	<legend>input</legend>
+			<h2>input</h2>
+			<div>
+				<p>
+					<label for="animal-name">text type input:</label>
+					<input type="text" id="animal-name" name="animal_name" list="animalChoices" placeholder="abc"  required />
+					<datalist id="animalChoices"> 
+					  <option label="Alpaca" value="alpaca"> 
+					  <option label="Zebra" value="zebra"> 
+					  <option label="Cat" value="cat"> 
+					  <option label="Caribou" value="caribou"> 
+					  <option label="Caterpillar" value="caterpillar"> 
+					  <option label="Anaconda" value="anaconda"> 
+					  <option label="Human" value="human"> 
+					  <option label="Elephant" value="elephant"> 
+					  <option label="Wildebeest" value="wildebeest"> 
+					  <option label="Pigeon" value="pigeon"> 
+					  <option label="Crab" value="crab"> 
+					</datalist>			
+				</p>
+				<p>
+					<label for="password">password type input:</label>
+					<input type="password" id="password" name="password"  list="animalChoices"/>
+				</p>
+				<p>
+					<label for="search">search type input:</label>
+					<input type="search" id="search" name="search" list="animalChoices"/>
+				</p>
+				<p>
+					<label for="tel">tel type input:</label>
+					<input type="tel" id="tel" name="tel" />
+				</p>
+				<p>
+					<label for="email">email type input:</label>
+					<input type="email" id="email" name="email" />
+				</p>
+				<p>
+					<label for="url">url type input:</label>
+					<input type="url" id="url" name="url" />
+				</p>
+				<p>
+					<label for="color">color type input:</label>
+					<input type="color" id="color" name="color" />
+				</p>
+				<p>
+					<label for="number">number type input:</label>
+					<input type="number" id="number" name="number" />
+				</p>
+				<p>
+					<label for="range">range type input:</label>
+					<input type="range" id="range" name="range" />
+				</p>
+				<p>
+					<label for="date">date type input:</label>
+					<input type="date" id="date" name="date" />
+				</p>
+				<p>
+					<label for="datetime">datetime type input:</label>
+					<input type="datetime" id="datetime" name="datetime" />
+				</p>
+				<p>
+					<label for="datetime-local">datetime-local type input:</label>
+					<input type="datetime-local" id="datetime-local" name="datetime-local" />
+				</p>
+				<p>
+					<label for="time">time type input:</label>
+					<input type="time" id="time" name="time" />
+				</p>
+				<p>
+					<label for="week">week type input:</label>
+					<input type="week" id="week" name="week" />
+				</p>
+				<p>
+					<label for="month">month type input:</label>
+					<input type="month" id="month" name="month" />
+				</p>
+			</div>
+		</fieldset>
+		<!-- end account -->
+		
+		<fieldset>
+			<legend>radio</legend>
+			<h2>radio</h2>
+			<p>
+				<input type="radio" name="radio" id="radio1" value="value1" checked>
+				<label for="radio1">radio type input1</label>	
+			</p>
+			<p>
+				<input type="radio" name="radio" id="radio2" value="value2">
+				<label for="radio2">radio type input2</label>	
+			</p>
+			<p>
+				<input type="radio" name="radio" id="radio3" value="value3">
+				<label for="radio3">radio type input3</label>	
+			</p>
+			<p>
+				<input type="radio" name="radio" id="radio4" value="value4">
+				<label for="radio4">radio type input4</label>	
+			</p>
+		</fieldset>
+		<fieldset>
+			<legend>checkbox</legend>
+			<h2>checkbox</h2>
+			<p>
+				<input readonly type="checkbox" name="checkbox" id="checkbox1" value="value1" checked >
+				<label for="checkbox1">checkbox type input1</label>	
+			</p>
+			<p>
+				<input type="checkbox" name="checkbox" id="checkbox2" value="value2">
+				<label for="checkbox2">checkbox type input2</label>	
+			</p>
+			<p>
+				<input type="checkbox" name="checkbox" id="checkbox3" value="value3">
+				<label for="checkbox3">checkbox type input3</label>	
+			</p>
+			<p>
+				<input type="checkbox" name="checkbox" id="checkbox4" value="value4">
+				<label for="checkbox4">checkbox type input4</label>	
+			</p>
+		</fieldset>
+		<fieldset>
+			<legend>textarea</legend>
+			<h2>textarea</h2>
+			<p>
+				<label for="textarea">textarea</label>
+				<textarea id="textarea" name="textarea" >默认值</textarea>
+			</p>
+		</fieldset>
+		<fieldset>
+			<h2>select</h2>
+			<legend>select</legend>
+			<p>
+				<label for="select">select</label>
+				<select id="select" name="select">
+					<optgroup label="online">
+						<option value="value1">select1</option>
+						<option value="value2">select2</option>
+						<option value="value3">select3</option>
+					</optgroup>
+					<optgroup label="offline">
+						<option value="value1">select1</option>
+						<option value="value2">select2</option>
+						<option value="value3">select3</option>
+					</optgroup>
+				</select>
+			</p>
+		</fieldset>
+		<fieldset>
+			<legend>file type input</legend>
+			<h2>file type input</h2>
+			<p>
+				<label for="file">file type input</label>
+				<input type="file" name="file" id="file" multiple />
+			</p>
+		</fieldset>
+		<fieldset>
+			<legend>hidden type input</legend>
+			<h2>hidden type input</h2>
+			<p>
+				<input type="hidden" name="hidden" value="value">
+			</p>
+		</fieldset>
+		<p>
+			<input type="submit" value="submit type input" />
+			<input type="reset" value="reset type input" />
+			<input type="image" src="url" alt="image type input" />
+			<input type="button" value="button type input" />			
+		</p>
+		<p>
+			<button type="submit">submit type button</button>
+			<button type="reset">reset type button</button>
+			<button type="button">button type button</button>
+		</p>
+	</form>
+	<form onsubmit="return false" oninput="res.value = quant.valueAsNumber * price.valueAsNu">
+		<fieldset>
+			<legend>Price Calculator</legend>
+			<input type="number" name="quant" id="quant" placeholder="Quantity"> x
+			<input type="number" name="price" id="price" placeholder="Price"> =
+			<output for="quant name" name="res">lskjdlfh</output>
+		</fieldset>
+		<fieldset>
+			<legend>其他</legend>
+				<p>
+					<label for="progress">progress</label>
+					<progress value="34" max="100"></progress>
+					<progress>Task in progress ...</progress>
+				</p>
+				<p>
+					<label for="meter">meter</label>
+					<meter value="20" max="100" heigh="70" low="30" optimum="50" min="0"></meter>
+				</p>
+				<p>
+					<keygen>
+				</p>
+		</fieldset>
+		<p>
+			<button type="submit">submit type button</button>
+			<button type="reset">reset type button</button>
+			<button type="button">button type button</button>
+		</p>
+	</form>
+</main>
+</body>
+</html>

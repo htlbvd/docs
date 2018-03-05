@@ -1,0 +1,30 @@
+语句	statement	
+
+	声明语句
+
+	语句
+
+	强制跳转语句
+
+	语句块
+
+	if语句
+
+	switch 语句
+		case 从句
+
+	while 语句
+
+	for 语句
+
+	do-while 语句
+
+	try 语句
+
+	throw 语句
+
+	return 语句
+
+	expression 语句
+
+表达式

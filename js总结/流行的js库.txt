@@ -1,0 +1,51 @@
+前端必备，十大热门的 JavaScript 框架和库
+1、ReactJS (Star: 59989 Network Graph · facebook/react · GitHub,Fork: 10992)
+    React.js（React）是一个用来构建用户界面的 JavaScript 库，主要用于构建UI，很多人认为 React 是 MVC 中的 V（视图）。React 起源于 Facebook 的内部项目，用来架设 Instagram 的网站，并于 2013 年 5 月开源。React 拥有较高的性能，代码逻辑非常简单，越来越多的人已开始关注和使用它。
+        React 特点：
+        1.声明式设计 −React采用声明范式，可以轻松描述应用。
+        2.高效 −React通过对DOM的模拟，最大限度地减少与DOM的交互。
+        3.灵活 −React可以与已知的库或框架很好地配合。
+        4.JSX − JSX 是 JavaScript 语法的扩展。React 开发不一定使用 JSX ，但我们建议使用它。
+        5.组件 − 通过 React 构建组件，使得代码更加容易得到复用，能够很好的应用在大项目的开发中。
+        6.单向响应的数据流 − React 实现了单向响应的数据流，从而减少了重复代码，这也是它为什么比传统数据绑定更简单。
+        主页：https://facebook.github.io/react
+2、AngularJS (Star: 54769 ,Fork: 27292)
+    Angular JS (Angular.JS) 是一组用来开发 Web 页面的框架、模板以及数据绑定和丰富 UI 组件。它支持整个开发进程，提供 Web 应用的架构，无需进行手工 DOM 操作。 AngularJS 很小，只有 60K，兼容主流浏览器，与 jQuery 配合良好。
+    主页：Superheroic JavaScript MVW Framework
+3、Vue.js（Star: 43608, Fork: 5493）
+    Vue.js 是构建 Web 界面的 JavaScript 库，提供数据驱动的组件，还有简单灵活的 API，使得 MVVM 更简单。
+    主要特性：
+        可扩展的数据绑定
+        将普通的 JS 对象作为 model
+        简洁明了的 API
+        组件化 UI 构建
+        配合别的库使用
+        主页：Vue.js
+4、jQuery（Star: 43432, Fork: 12117）
+    Jquery 是轻量级的js库(压缩后只有21k) ，它兼容CSS3，还兼容各种浏览器 （IE 6.0+, FF 1.5+, Safari 2.0+, Opera 9.0+）。jQuery使用户能更方便地处理HTML documents、events、实现动画效果，并且方便地为网站提供AJAX交互。jQuery还有一个比较大的优势是，它的文档说明很全，而且各种 应用也说得很详细，同时还有许多成熟的插件可供选择。jQuery能够使用户的html页保持代码和html内容分离，也就是说，不用再在html里面插入一堆js来调用命令了，只需定义id即可。
+    主页：jQuery
+5、Meteor(Star: 36691,Fork: 4617)
+    Meteor 是一组新的技术用于构建高质量的 Web 应用，提供很多现成的包，可直接在浏览器或者云平台中运行。
+    主页：Meteor
+6、Angular2（Star: 20803，Fork: 5367）
+    Angular 是一款十分流行且好用的 Web 前端框架，目前由 Google 维护。这个条目收录的是 Angular 2 及其后面的版本。由于官方已将 Angular 2 和之前的版本 Angular.js 分开维护（两者的 GitHub 地址和项目主页皆不相同），所以就有了这个页面。传送门：Angular.js
+    主页：Angular
+7、Ember.js (Star: 17540,Fork: 3646)
+    Ember是一个雄心勃勃的Web应用程序，消除了样板，并提供了一个标准的应用程序架构的JavaScript框架。
+    主页：Ember.js: A framework for creating ambitious web applications.
+8、Polymer(Star: 16979, Fork: 1699)
+    在2013年的Google I/O大会上，Google发布了Polymer，它是一个使用Web组件构建Web应用的类库，同时也使用了为Web构建可重用组件的新的HTML 5标准。Polymer为大部分Web组件技术提供了polyfills功能，它能让开发者在所有的浏览器支持新特性前创建自己的可重用组件。此外，Polymer提供了一系列的部件的例子，其中包括天气、时钟、股票行情和线型图。
+    Polymer中的polyfills为需要使用Web组件成功构建应用提供了多种Web技术，包括：
+        HTML imports：种在其他HTML document中引入和重用HTML document的方法。
+        自定义元素：让开发者定义和使用自定义DOM元素。
+        Shadow DOM：在DOM中提供的封装。
+        模型驱动视图（Model Driven Views）：提供象AngularJS的数据绑定。
+        Web动画：实现复杂动画的API。
+        Pointer事件：对鼠标触摸和手写笔事件的封装
+        主页：Welcome - Polymer Project
+9、Zepto.js（Star: 12074，Fork: 3260）
+    Zepto.js 是支持移动WebKit浏览器的JavaScript框架，具有与jQuery兼容的语法。2-5k的库，通过不错的API处理绝大多数的基本工作。
+    主页：the aerogel-weight jQuery-compatible JavaScript library
+10、Riot.js（Star: 11491，Fork: 902）
+    Riot.js是一个客户端模型-视图-呈现(MVP)框架并且它非常轻量级甚至小于1kb.尽管他的大小令人难以置信，所有它能构建的有如下：一个模板引擎，路由，甚至是库和一个严格的并具有组织的MVP模式。当模型数据变化时视图也会自动更新。
+    主页：Simple and elegant component-based UI library

@@ -1,0 +1,18 @@
+RGBA 颜色值：rgba(red, green, blue, alpha)
+	alpha 参数是介于0.0（完全透明）与 1.0（完全不透明）的数字。
+HSLA 颜色值：hsla(hue, saturation, lightness, alpha)
+	hue（色调）、saturation（饱和度）、lightness（亮度）表示颜色柱面坐标表示法。其中的 alpha 参数定义不透明度。alpha 参数是介于0.0（完全透明）与1.0（完全不透明）的数字。
+box-shadow绘制在outline之下
+box-shadow和渐变 内部都是从上往下绘制
+background-origin背景绘制基准默认值padding-box
+background-clip背景绘制区域默认值border-box
+	简写时基准origin在前，只有一个值时，两属性值相等
+border-image,background-image属性可以使用渐变函数
+
+	body{
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none; 文本无法选中
+    cursor: default;指针为箭头
+	}

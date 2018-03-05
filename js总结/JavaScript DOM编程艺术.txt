@@ -1,0 +1,44 @@
+getElementById
+	一个参数，返回一个对象，引号，document.getElementById(id)
+	document.getElementById("purchases")
+getElementsByTagName
+	一个参数，返回一个对象数组，引号，element.getElementsByTagName(tag)
+	document.getElementsByTagName("li");document.getElementsByTagName("*")
+getElementsByClassName
+	HTML新增，一个参数，返回一个对象数组，引号，
+	document.getElementsBuClassName("important sale")
+getAttribute,只能通过元素节点调用
+	一个参数，返回某元素的某属性值字符串或null,object.getAttribute(attribute),
+setAttribute,只能用于元素节点
+	两个参数，修改某个元素的某个属性值（并不会修改源代码），object.setAttribute(attribute,value),
+
+childNodes属性
+	element.childNodes，某个元素的全部子元素组成的数组，[0]是文本节点
+nodeType属性
+	node.nodeType,节点的nodeType属性值，1是元素节点，2是属性节点，3是文本节点
+nodeValue属性
+	node.nodeValue,节点的值，
+firstChild属性
+	node.firstChild，等价于node.childNodes[0],
+lastChild属性
+	node.lastChild,childNodes数组的最后一个元素，
+
+write方法,HTML专有
+	document.write("hello"),传统方法，建议避免使用
+innerHTML属性,HTML专有
+	不建议使用
+createElement方法
+	document.createElement(nodeName)，创建一个新的元素，最好要赋给一个变量
+appendChild方法
+	parent.appendChild(child)，将child插入到parent最后一个子元素后
+createTextNode方法
+	document.createTextNode(text)，创建一个文本节点
+insertBefore方法
+	父元素.insertBefore(新元素,目标元素),将新元素插入到父元素下目标元素的前面
+parentNode属性
+	元素的父元素
+nextSibling属性
+	元素的下一个兄弟元素
+
+style属性
+	某个元素的属性，是一个对象

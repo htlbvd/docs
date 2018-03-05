@@ -1,0 +1,4 @@
+border: ;border-radius:r r r r;	为元素创建圆角 不继承
+text-shadow:水平偏移量x-offset 垂直偏移量y-offset 模糊半径blur-radius color;	为文本添加阴影,不需要厂商前缀 继承
+box-shadow:inset x-offset y-offset blur-radius spread color
+opacity:o;	不透明度
