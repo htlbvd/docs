@@ -5,26 +5,26 @@ displayX
 
 
 
-°²×°win7
-ÆÁÄ»·Ö±æÂÊ
-²¿·Ö¹¦ÄÜ¹Ø±Õ
-×î¼ÑÐÔÄÜ
-°²×°Çý¶¯
+å®‰è£…win7
+å±å¹•åˆ†è¾¨çŽ‡
+éƒ¨åˆ†åŠŸèƒ½å…³é—­
+æœ€ä½³æ€§èƒ½
+å®‰è£…é©±åŠ¨
 
 winrar
-ÊäÈë·¨
+è¾“å…¥æ³•
 firefox
 
-°²×°»ðÈÞ
-ÁªÍø
-¼¤»î
+å®‰è£…ç«ç»’
+è”ç½‘
+æ¿€æ´»
 .NET Framework 4.5.2
 C++ 2015
 office2013
-¸üÐÂ
+æ›´æ–°
 
 chrome
-Ñ¸À×¾«¼ò°æ
+è¿…é›·ç²¾ç®€ç‰ˆ
 
 git
 node
@@ -36,4 +36,4 @@ treesize
 zeal
 aida64
 
-PDFÔÄ¶ÁÆ÷
+PDFé˜…è¯»å™¨
