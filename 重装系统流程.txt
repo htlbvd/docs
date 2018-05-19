@@ -1,39 +1,49 @@
-aida64
-cpu-z
-crystaldiskinfo
-displayX
+±¸·Ý
+ÊäÈë·¨´Ê¿â
+×ÀÃæ
+htlÎÒµÄÎÄµµ
+Í¬²½firefox
 
 
 
-å®‰è£…win7
-å±å¹•åˆ†è¾¨çŽ‡
-éƒ¨åˆ†åŠŸèƒ½å…³é—­
-æœ€ä½³æ€§èƒ½
-å®‰è£…é©±åŠ¨
+°²×°win7
+ÆÁÄ»·Ö±æÂÊ
+×ÀÃæÍ¼±ê
+ÐÔÄÜ
+ÈÎÎñÀ¸ºÍ¿ªÊ¼²Ëµ¥ÊôÐÔ
+ÎÄ¼þ¼ÐÑ¡Ïî
+²¿·Ö¹¦ÄÜ¹Ø±Õ
+ÏÂÔØÎ»ÖÃ¸ÄÎªD:\downloads
+ÊäÈë·¨¹ÜÀí
+¹Ø±Õ·À»ðÇ½
 
-winrar
-è¾“å…¥æ³•
-firefox
+°²×°winrar²¢ÉèÖÃ
+°²×°ÊäÈë·¨²¢ÉèÖÃ
+°²×°.net4.5.2
+°²×°c++2015
+°²×°Çý¶¯f1-f17£¬ÖÐ¼ä²»ÒªÖØÆô£¬Íê³ÉºóÖØÆô
+ÉèÖÃÊó±ê
+°²×°office
 
-å®‰è£…ç«ç»’
-è”ç½‘
-æ¿€æ´»
-.NET Framework 4.5.2
-C++ 2015
-office2013
-æ›´æ–°
+ÁªÍø
+¼¤»îwindowsºÍofficePRG2C-6MTQ2-RPFKB-QFJRR-CDM36
+¸üÐÂ
+°²×°chrome²¢ÉèÖÃ
+°²×°ÐÂ°æ»ðÈÞ²¢½û¸üÐÂ
+°²×°Ñ¸À×¾«¼ò°æ²¢ÉèÖÃ
+°²×°ÐÂ°æfirefox²¢Í¬²½£¬ÉèÖÃ
+°²×°ÐÂ°ævscode
+°²×°ÐÂ°ægit²¢ÅäÖÃ
+°²×°ÐÂ°ænode
 
-chrome
-è¿…é›·ç²¾ç®€ç‰ˆ
+Çý¶¯f18-19
+¹Ø±ÕÀ¶ÑÀÊÓÆµÂó¿Ë·ç
+KB2852386£¨É¾³ýwin7¾É¸üÐÂ£©
+defenderÉèÖÃ
 
-git
-node
+PDFÔÄ¶ÁÆ÷
 
-ccleaern
-sublime
-vscode
+cc
 treesize
 zeal
 aida64
-
-PDFé˜…è¯»å™¨
