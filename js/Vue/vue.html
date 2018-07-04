@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--开发环境版本，包含了用帮助的命令行警告-->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <!--
+  <div id="app-4">
+    <ol>
+      <li v-for="todo in todos">
+        {{ todo.text }}
+      </li>
+    </ol>
+  </div>
+
+  <div id="app-7">
+    <ol>
+      <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id">
+        
+      </todo-item>
+    </ol>
+  </div> -->
+
+  <div id="app" >
+    <span v-bind:title="message">message: {{ message }}</span>
+    <button v-on:click="reverseMessage">掉头</button>
+    <span>掉头以后是: "{{ reversedMessage }}"</span>
+    <p v-once>不变：{{ message }}</p>
+
+    <span>Can you see me?---</span>
+    <template v-if="Math.random() > 0.5">
+      <span>^v^</span>
+      <p>Now you see me</p>
+    </template>
+    <p v-else>
+      Now you don't
+    </p>
+    <span>show me?:</span>
+    <span v-show="Math.random() > 0.5">^_^Hello!</span>
+    
+    <ul>
+      <li v-for="(item, index) in items">
+        {{ index }} - {{ item.message }}
+      </li>
+      <li v-for="(value, key, index) in object">
+        {{ index }}. {{ key }}: {{ value }}
+      </li>
+      <li v-for="n in even(numbers)">{{ n }}</li>
+    </ul>
+    <div>
+      <span v-for="n in 10">{{ n }} </span>
+    </div>
+    <ul>
+      <template v-for="item in items">
+        <li>{{ item.message }}</li>
+        <li></li>
+      </template>
+    </ul>
+    
+    <input v-model="message" placeholder="edit me">
+    <textarea v-model="message" placeholder="add multiple lines"></textarea>
+    <p>checked: {{ checked }}</p>
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox">htl</label>
+    <p>Checked names: {{ checkedNames }}</p>
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    <label for="john">John</label>
+    <p>spanicked: {{ picked }}</p>
+    <input type="radio" id="one" value="One" v-model="picked">
+    <label for="one">One</label>
+    <input type="radio" id="two" value="Two" v-model="picked">
+    <label for="two">Two</label>
+    <br/>
+    <span>Selected: {{ selected }}</span>
+    <select v-model="selected">
+      <option disabled value="">请选择</option>
+      <option>A</option>
+      <option>B</option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+    <select v-model="selected" multiple style="width: 50px;">
+      <option>A</option>
+      <option>B</option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+    <select v-model="selected">
+      <option v-for="option in options" v-bind:value="option.value">
+        {{ option.text }}
+      </option>
+    </select>
+  </div>
+
+  <script src="vue.js"></script>
+</body>
+</html>
