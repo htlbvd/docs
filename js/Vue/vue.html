@@ -5,27 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!--开发环境版本，包含了用帮助的命令行警告-->
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+  <script src=vue.max.js></script>
   <title>Document</title>
 </head>
 <body>
-  <!--
-  <div id="app-4">
-    <ol>
-      <li v-for="todo in todos">
-        {{ todo.text }}
-      </li>
-    </ol>
-  </div>
-
-  <div id="app-7">
-    <ol>
-      <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id">
-        
-      </todo-item>
-    </ol>
-  </div> -->
-
   <div id="app" >
     <span v-bind:title="message">message: {{ message }}</span>
     <button v-on:click="reverseMessage">掉头</button>
@@ -95,6 +79,16 @@
         {{ option.text }}
       </option>
     </select>
+  </div>
+  <div id="todo-app">
+    <h2>ToDo-App</h2>
+    <input v-model="todo" placeholder="new todo" /><button v-on:click="add">添加</button>
+    <ul>
+      <li v-for="(item, index) in items">{{ item }}<button v-on:click="rm(index)">删除</button></li>
+    </ul>
+  </div>
+  <div id="blog-post-demo" :style="{ fontSize: postFontSize + 'em'}" >
+    <blog-post v-for="post in posts" v-bind:key="post.id" v-bind:post="post" v-on:enlarge-text="onEnlargeText"></blog-post>
   </div>
 
   <script src="vue.js"></script>
