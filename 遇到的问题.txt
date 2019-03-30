@@ -1,0 +1,4 @@
+firefox浏览器重启方法：
+  about:restartrequired
+  打开浏览器控制台，Ctrl+Alt+R
+  
