@@ -1,0 +1,144 @@
+
+
+String 实例
+String.prototype....
+
+属性
+constructor 用于创造对象的原型对象的特定的函数。
+length  返回了字符串的长度。
+N 用于访问第N个位置的字符，其中N是小于 length 和 0之间的正整数。这些属性都是“只读”性质，不能编辑。
+
+方法
+
+charAt(索引)  返回特定位置的字符。
+  如果没有提供索引或索引不是数值，charAt() 将使用0。如果数值超出范围，则返回一个空字符串。
+charCodeAt(索引)  返回表示给定索引的字符的Unicode的值。为0到65535之间的整数。
+  如果没有提供索引或索引不是数值，charCodeAt() 将使用0。如果索引超出范围，则返回 NaN。
+codePointAt() 返回使用UTF-16编码的给定位置的值的非负整数。
+concat()  将一个或多个字符串与原字符串连接合并，形成一个新的字符串并返回。
+  强烈建议使用 赋值操作符（+, +=）代替 concat 方法。
+includes()*  判断一个字符串里是否包含其他字符串。
+  语法
+  str.includes(searchString[, position])
+  参数
+  searchString
+      要在此字符串中搜索的字符串。
+  position
+      可选。从当前字符串的哪个索引位置开始搜寻子字符串，默认值为0。
+  返回值,如果当前字符串包含被搜寻的字符串，就返回 true；否则返回 false。
+endwith()* 判断当前字符串是否是以另外一个给定的子字符串“结尾”的，根据判断结果返回 true 或 false。
+  str.endsWith(searchString [, position]);
+  参数
+  searchString
+      要搜索的子字符串。
+  position
+      可选。作为str的长度，默认值为 str.length。
+  返回值,如果传入的子字符串在搜索字符串的末尾则返回 true；否则将返回 false
+indexOf() 从字符串对象中返回首个被发现的给定值的索引值，如果没有找到则返回-1。
+  语法
+  str.indexOf(searchValue[, fromIndex])
+  参数
+  searchValue
+      一个字符串表示被查找的值。
+  fromIndex 可选
+      表示调用该方法的字符串中开始查找的位置。可以是任意整数。默认值为 0。如果 fromIndex < 0 则查找整个字符串（如同传进了 0）。如果 fromIndex >= str.length，则该方法返回 -1。当被查找的字符串是一个空字符串，fromIndex <= 0时返回0，0 < fromIndex <= str.length时返回fromIndex，fromIndex > str.length时返回str.length。
+  返回指定值的第一次出现的索引; 如果没有找到 -1。
+lastIndexOf() 从字符串对象中返回最后一个被发现的给定值的索引值，如果没有找到则返回-1。
+  fromIndex
+    从调用该方法字符串的此位置处开始查找。可以是任意整数。默认值为 str.length。如果为负值，则被看作 0。如果 fromIndex > str.length，则 fromIndex 被看作 str.length。
+localeCompare()* 返回一个数字表示是否引用字符串在排序中位于比较字符串的前面，后面，或者二者相同。
+match() 检索返回一个字符串匹配正则表达式的的结果。
+  语法
+  str.match(regexp)
+  参数
+  regexp
+      一个正则表达式对象。如果传入一个非正则表达式对象，则会隐式地使用 new RegExp(obj) 将其转换为一个 RegExp 。如果你没有给出任何参数并直接使用match() 方法 ，你将会得到一 个包含空字符串的 Array ：[""] 。
+  返回值
+      如果使用g标志，则将返回与完整正则表达式匹配的所有结果（Array），但不会返回捕获组，或者未匹配 null。
+      如果未使用g标志，则仅返回第一个完整匹配及其相关的捕获组（Array）。 在这种情况下，返回的项目将具有如下所述的其他属性，或者未匹配 null。
+
+  附加属性，匹配的结果包含如下所述的附加特性。
+      groups: 一个捕获组数组 或 undefined（如果没有定义命名捕获组）。
+      index: 匹配的结果的开始位置
+      input: 搜索的字符串.
+  如果正则表达式不包含 g 标志，str.match() 将返回与 RegExp.exec(). 相同的结果。
+normalize()* 按照指定的一种 Unicode 正规形式将当前字符串正规化.
+padEnd()* 在当前字符串尾部填充指定的字符串， 直到达到指定的长度。 返回一个新的字符串。
+  语法
+  str.padEnd(targetLength [, padString])
+  参数
+  targetLength
+      当前字符串需要填充到的目标长度。如果这个数值小于当前字符串的长度，则返回当前字符串本身。
+  padString 可选
+      填充字符串。如果字符串太长，使填充后的字符串长度超过了目标长度，则只保留最左侧的部分，其他部分会被截断。此参数的缺省值为 " "（U+0020）。
+  返回在原字符串末尾填充指定的填充字符串直到目标长度所形成的新字符串。
+padStart()* 在当前字符串头部填充指定的字符串， 直到达到指定的长度。 返回一个新的字符串.
+repeat(重复次数)*  构造并返回一个新字符串，该字符串包含被连接在一起的指定数量的字符串的副本。
+replace() 被用来在正则表达式和字符串直接比较，然后用新的子串来替换被匹配的子串。
+  语法
+  str.replace(regexp|substr, newSubStr|function)
+  参数
+  regexp (pattern)
+      一个RegExp 对象或者其字面量。该正则所匹配的内容会被第二个参数的返回值替换掉。
+  substr (pattern)
+      一个将被 newSubStr 替换的 字符串。其被视为一整个字符串，而不是一个正则表达式。仅第一个匹配项会被替换。
+  newSubStr (replacement)
+      用于替换掉第一个参数在原字符串中的匹配部分的字符串。该字符串中可以内插一些特殊的变量名。参考下面的使用字符串作为参数。
+  function (replacement)
+      一个用来创建新子字符串的函数，该函数的返回值将替换掉第一个参数匹配到的结果。参考下面的指定一个函数作为参数。
+  返回一个部分或全部匹配由替代模式所取代的新的字符串。
+search(正则表达式)  对正则表达式和指定字符串进行匹配搜索，返回第一个出现的匹配项的下标或-1。
+
+slice() 摘取一个字符串区域，返回一个新的字符串。
+  语法
+  str.slice(beginSlice[, endSlice])
+  参数
+  beginSlice
+      从该索引（以 0 为基数）处开始提取原字符串中的字符。如果值为负数，会被当做 sourceLength + beginSlice 看待，这里的sourceLength 是字符串的长度 (例如， 如果beginSlice 是 -3 则看作是: sourceLength - 3)
+  endSlice
+      可选。在该索引（以 0 为基数）处结束提取字符串。如果省略该参数，slice会一直提取到字符串末尾。如果该参数为负数，则被看作是 sourceLength + endSlice，这里的 sourceLength 就是字符串的长度(例如，如果 endSlice 是 -3，则是, sourceLength - 3)。
+  返回一个从原字符串中提取出来的新字符串
+split() 通过分离字符串成字串，将字符串对象分割成字符串数组。
+  语法
+  str.split([separator[, limit]])
+  参数
+  separator
+      指定表示每个拆分应发生的点的字符串。separator 可以是一个字符串或正则表达式。 如果纯文本分隔符包含多个字符，则必须找到整个字符串来表示分割点。如果在str中省略或不出现分隔符，则返回的数组包含一个由整个字符串组成的元素。如果分隔符为空字符串，则将str原字符串中每个字符的数组形式返回。
+  limit
+      一个整数，限定返回的分割片段数量。当提供此参数时，split 方法会在指定分隔符的每次出现时分割该字符串，但在限制条目已放入数组时停止。如果在达到指定限制之前达到字符串的末尾，它可能仍然包含少于限制的条目。新数组中不返回剩下的文本。
+  返回源字符串以分隔符出现位置分隔而成的一个 Array 
+  当字符串为空时，split（）返回一个包含一个空字符串的数组，而不是一个空数组，如果字符串和分隔符都是空字符串，则返回一个空数组。
+startsWith()*  判断当前字符串是否是以另外一个给定的子字符串“开头”的，返回 true 或 false。
+substr()  返回一个字符串中从指定位置开始到指定字符数的字符
+  语法
+  str.substr(start[, length])
+  参数
+  start
+      开始提取字符的位置。如果为负值，则被看作 strLength + start，其中 strLength 为字符串的长度（例如，如果 start 为 -3，则被看作 strLength + (-3)）。
+  length
+      可选。提取的字符数。 
+substring() 返回在字符串中指定两个下标之间的字符。
+  语法
+  str.substring(indexStart[, indexEnd])
+  参数
+  indexStart
+      需要截取的第一个字符的索引，该字符作为返回的字符串的首字母。
+  indexEnd
+      可选。一个 0 到字符串长度之间的整数，以该数字为索引的字符不包含在截取的字符串内。
+  返回包含给定字符串的指定部分的新字符串。
+toLocaleLowerCase() 
+toLocaleUpperCase()
+toLowerCase() 将字符串转换成小写并返回。
+toUpperCase() 将字符串转换成大写并返回。
+toString()  返回指定对象的字符串形式。
+trim()  从字符串的开始和结尾去除空格。
+trimStart()
+trimLeft()  从字符串的左侧去除空格。
+trimEnd()
+trimRight() 从字符串的右侧去除空格。
+valueOf() 返回一个String对象的原始值。等同于toString()
+
+
+
+
+来源：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String
