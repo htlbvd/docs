@@ -64,6 +64,8 @@
 	- [String常见属性方法.txt](js/String常见属性方法.txt)
 	- [Array常见属性方法.txt](js/Array常见属性方法.txt)
 	- [Math常见属性和方法.txt](js/Math常见属性和方法.txt)
+	- [Object.txt](js/Object.txt)
+	- [js运算符优先级.png](js/js运算符优先级.png)
 - [常用英文单词.xls](常用英文单词.xls)
 - [网站结构.txt](网站结构.txt)
 - [计划表.xls](计划表.xls)
