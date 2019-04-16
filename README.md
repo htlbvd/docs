@@ -66,6 +66,7 @@
 	- [Math常见属性和方法.txt](js/Math常见属性和方法.txt)
 	- [Object.txt](js/Object.txt)
 	- [js运算符优先级.png](js/js运算符优先级.png)
+	- [AJAX.txt](js/AJAX.txt)
 - [常用英文单词.xls](常用英文单词.xls)
 - [网站结构.txt](网站结构.txt)
 - [计划表.xls](计划表.xls)

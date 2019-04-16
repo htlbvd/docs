@@ -1,0 +1,13 @@
+*大部分支持，IE等少数不支持
+**
+Object构造函数的属性
+  Object.length     值为1
+  Object.prototype  可以为所有Object类型的对象添加属性
+Object构造函数的方法
+  Object.assign()*  将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。
+    语法            Object.assign(target, ...sources)
+      target        目标对象
+      sources       源对象
+      返回值         目标对象
+    如果目标对象中的属性具有相同的键，则属性将被源对象中的属性覆盖。后面的源对象的属性将类似地覆盖前面的源对象的属性。
+    方法只会拷贝源对象自身的并且可枚举的属性到目标对象

@@ -1,0 +1,157 @@
+var xhr = new XMLHttpRequest();                                      // 新建XMLHttpRequest对象
+xhr.onreadystatechange = function () {                               //状态发生变化时，函数被回调
+  if (xhr.readyState === 4) { 
+      console.log("成功完成，判断响应结果"); 
+      if (xhr.status === 200) { 
+        console.log("成功" + xhr.responseText);
+      } else { 
+        console.log("失败" + xhr.status);
+      }
+  } else { console.log(xhr.readyState + "请求还在继续" + xhr.status);}
+};
+xhr.open('GET', 'verse1.txt');
+xhr.send();
+console.log('请求已发送，请等待响应...');
+
+构造方法
+
+XMLHttpRequest()
+构造函数初始化一个 XMLHttpRequest 对象。必须在所有其他方法被调用前调用构造函数。 
+
+属性 
+此接口继承了 XMLHttpRequestEventTarget 和 EventTarget 的属性。
+XMLHttpRequest....
+.onreadystatechange
+  当readyState属性发生变化时调用的EventHandler
+.readyState 只读
+  返回一个 XMLHttpRequest  代理当前所处的状态。一个 XHR 代理总是处于下列状态中的一个：
+  值 	状态 	              描述
+  0 	UNSENT 	          代理被创建，但尚未调用 open() 方法。
+  1 	OPENED 	          open() 方法已经被调用。
+  2 	HEADERS_RECEIVED 	send() 方法已经被调用，并且头部和状态已经可获得。
+  3 	LOADING 	        下载中； responseText 属性已经包含部分数据。
+  4 	DONE 	            下载操作已完成。
+.status 只读
+  返回XMLHttpRequest 响应中的数字状态码。值是一个无符号短整型，是标准的HTTP status codes。在请求完成前或者XMLHttpRequest 出错，status的值为0
+.statusText 只读
+  返回XMLHttpRequest 请求中由服务器返回的一个DOMString 类型的文本信息。不同于使用一个数字来指示的状态码XMLHTTPRequest.status，这个属性包含了返回状态对应的文本信息，例如"OK"或是"Not Found"。如果请求的状态readyState的值为"UNSENT"或者"OPENED"，则这个属性的值将会是一个空字符串。
+.responseType
+  枚举类型。返回响应数据的类型。
+  它允许我们手动的设置返回数据的类型。如果我们将它设置为一个空字符串，它将使用默认的"text"类型。
+  值              	描述
+  "" 	            将 responseType 设为空字符串与设置为"text"相同， 是默认类型 （实际上是 DOMString）。
+  "arraybuffer" 	response 是一个包含二进制数据的 JavaScript ArrayBuffer 。
+  "blob" 	        response 是一个包含二进制数据的 Blob 对象 。
+  "document" 	    response 是一个 HTML Document 或 XML XMLDocument ，这取决于接收到的数据的 MIME 类型。请参阅 HTML in XMLHttpRequest 以了解使用 XHR 获取 HTML 内容的更多信息。
+  "json" 	        response 是一个 JavaScript 对象。这个对象是通过将接收到的数据类型视为 JSON 解析得到的。
+  "text"        	response 是包含在 DOMString 对象中的文本。
+.response 只读
+  返回响应的正文。返回的类型取决于responseType属性
+  如果请求尚未完成或未成功，则取值是 null 。例外的，读取文本数据时如果将 responseType 的值设置成"text"或空字符串（""）且当请求状态还在是 LOADING readyState (3) 时，response 包含到目前为止该请求已经取得的内容。
+.responseURL 只读
+  返回响应的序列化URL，如果URL为空，则返回空字符串。
+  当URL被返回的时候，任何包含在URL # 后面的fragment都会被删除。 responseURL 的值将会是经过任意多次重定向后的最终 URL 。
+.responseText 只读
+  返回一个DOMString。
+  它包含对文本的请求的响应，如果请求不成功或尚未发送，则返回null。responseText属性在请求完成之前将会得到部分属性。 如果 XMLHttpRequest.responseType 的值不是 text 或者空字符串，届时访问 XMLHttpRequest.responseType 将抛出 InvalidStateError 异常。
+.responseXML 只读
+  返回一个包含请求检索的HTML或XML的Document，如果请求未成功，尚未发送，或者检索的数据无法正确解析为 XML 或 HTML，则为 null。
+  该响应被解析，就像它是一个 “text / xml” 流。当 responseType 设置为 “document” 并且请求已异步执行时，响应将解析为 “text / html” 流。responseXML 对于任何其他类型的数据以及 data: URLs 为 null。
+.timeout 
+  代表着一个请求在被自动终止前所消耗的毫秒数。默认值为 0，意味着没有超时。
+  当超时发生， timeout 事件将会被触发。
+XMLHttpRequestEventTarget.ontimeout
+  当请求超时调用的EventHandler。
+.upload 只读
+  方法返回一个 XMLHttpRequestUpload对象，用来表示上传的进度。这个对象是不透明的，但是作为一个XMLHttpRequestEventTarget，可以通过对其绑定事件来追踪它的进度。
+  可以被绑定在upload对象上的事件监听器如下：
+  事件 	  相应属性的信息类型
+  onloadstart 	获取开始
+  onprogress 	数据传输进行中
+  onabort 	获取操作终止
+  onerror 	获取失败
+  onload 	获取成功
+  ontimeout 	获取操作在用户规定的时间内未完成
+  onloadend 	获取完成（不论成功与否）
+.withCredentials
+  Boolean，用来指定跨域的请求是否应该使用证书（如cookie或授权header头）。
+
+方法
+XMLHttpRequest....
+
+.abort()
+  如果请求已经被发送,则立刻中止请求。
+  当一个请求被终止，它的 readyState 属性将被置为0（ UNSENT )。
+.open()
+  初始化一个请求。该方法只能JavaScript代码中使用，若要在native code（原生代码）中初始化请求，请使用openRequest()替代
+  为已激活的请求调用此方法（open()或openRequest()已被调用）相当于调用abort()。
+  语法
+  xhrReq.open(method, url);
+  xhrReq.open(method, url, async);
+  xhrReq.open(method, url, async, user);
+  xhrReq.open(method, url, async, user, password);
+  参数
+  method
+      要使用的HTTP方法，比如「GET」、「POST」、「PUT」、「DELETE」、等。对于非HTTP(S) URL被忽略。
+  url
+      一个DOMString表示要向其发送请求的URL。
+  async 可选
+      一个可选的布尔参数，默认为true，表示要不要异步执行操作。如果值为false，send()方法直到收到答复前不会返回。如果true，已完成事务的通知可供事件监听器使用。如果multipart属性为true则这个必须为true，否则将引发异常。
+      注意：从Gecko 30.0 (Firefox 30.0 / Thunderbird 30.0 / SeaMonkey 2.27)开始，由于对用户体验的负面影响，主线程上的同步请求已不赞成。
+  user 可选
+      可选的用户名用于认证用途；默认为null。
+  password 可选
+      可选的密码用于认证用途，默认为null。 
+.send()
+  发送请求。如果请求是异步的（默认），那么该方法将在请求发送后立即返回。
+  XMLHttpRequest.send() 方法接受一个可选的参数，其作为请求主体；如果请求方法是 GET 或者 HEAD，则应将请求主体设置为 null。
+.setRequestHeader()
+  设置HTTP请求头的值。必须在open()之后、send()之前调用setRequestHeader()这个方法。
+  如果多次对同一个请求头赋值，只会生成一个合并了多个值的请求头。
+  语法 myReq.setRequestHeader(header, value);
+  参数header属性的名称。value属性的值。 
+.getResponseHeader()
+  返回包含指定响应头的字符串，如果响应尚未收到或响应中不存在该报头，则返回null。
+  语法 var myHeader = getResponseHeader(name);
+.getAllResponseHeader()
+  返回所有的响应头，以 CRLF 分割的字符串，或者 null 如果没有收到任何响应。
+  对于复合请求 （ multipart requests ），这个方法返回当前请求的头部，而不是最初的请求的头部。
+
+
+XMLHttpRequestEventTarget
+是一个描述事件处理程序的接口，你可以在一个用于处理XMLHttpRequest事件的对象中使用到该事件处理程序。
+属性
+XMLHttpRequestEventTarget....
+.onabort
+    当请求失败时调用该方法
+.onerror
+    当请求发生错误时调用该方法
+.onload
+    当一个HTTP请求正确加载出内容后返回时调用。
+.onloadstart
+    当一个HTTP请求开始加载数据时调用。
+.onprogress
+    间歇调用该方法用来获取请求过程中的信息。
+.ontimeout
+    当时间超时时调用；只有通过设置XMLHttpRequest对象的timeout属性来发生超时时，这种情况才会发生。
+.onloadend
+    当内容加载完成，不管失败与否，都会调用该方法 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+来源：https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest
+
