@@ -1,0 +1,226 @@
+EventTarget
+  是一个由可以接收事件的对象实现的接口，并且可以为它们创建侦听器。
+  构造函数
+  EventTarget()
+    创建一个新的 EventTarget 对象实例。
+  方法
+  EventTarget.addEventListener()
+    将指定的监听器注册到 EventTarget 上，当该对象触发指定的事件时，指定的回调函数就会被执行
+    语法
+    target.addEventListener(type, listener[, options]);
+    target.addEventListener(type, listener[, useCapture]);
+    参数
+    type
+      表示监听事件类型的字符串
+    listener
+      当所监听的事件类型触发时，会接收到一个事件通知（实现了 Event 接口的对象）对象.listener 必须是一个实现了 EventListener 接口的对象，或者是一个函数。
+    options 可选
+      一个指定有关 listener 属性的可选参数对象。可用的选项如下：
+      capture:  Boolean，表示 listener 会在该类型的事件捕获阶段传播到该 EventTarget 时触发。
+      once:  Boolean，表示 listener 在添加之后最多只调用一次。如果是 true， listener 会在其被调用之后自动移除。
+      passive: Boolean，设置为true时，表示 listener 永远不会调用 preventDefault()。如果 listener 仍然调用了这个函数，客户端将会忽略它并抛出一个控制台警告。
+    useCapter 可选
+      Boolean，在DOM树中，注册了listener的元素， 是否要先于它下面的EventTarget，调用该listener。 当userCapture(设为true) 时，沿着DOM树向上冒泡的事件，不会触发listener。当一个元素嵌套了另一个元素，并且两个元素都对同一事件注册了一个处理函数时，所发生的事件冒泡和事件捕获是两种不同的事件传播方式。事件传播模式决定了元素以哪个顺序接收事件。进一步的解释可以查看 事件流 及 JavaScript Event order 文档。 如果没有指定， useCapture 默认为 false 。
+    返回值 undefined
+  EventTarget.removeEventListener()
+    删除使用 EventTarget.addEventListener() 方法添加的事件。
+    语法
+    target.removeEventListener(type, listener[, options]);
+    target.removeEventListener(type, listener[, useCapture]);
+    参数
+    type
+      一个字符串，表示需要移除的事件类型
+    listener
+      需要移除的 EventListener 函数（先前使用 addEventListener 方法定义的）。
+    options 可选
+      一个可选择的对象：指定有关事件侦听器的特征。可选项有：
+      capture : 一个 Boolean 表示这个类型的事件将会被派遣到已经注册的侦听器，然后再派遣到DOM树中它下面的任何 EventTarget。
+    useCapture 可选
+      指定需要移除的 EventListener 函数是否为事件捕获。如果无此参数，默认值为 false。
+      如果同一个监听事件分别为“事件捕获”和“事件冒泡”注册了一次，一共两次，这两次事件需要分别移除。两者不会互相干扰。
+    返回值 undefined
+    一个 EventTarget 上的 EventListener 被移除之后，如果此事件正在执行，会立即停止
+  EventTarget.dispatchEvent()
+    将事件分派到此EventTarget。
+  
+Node  -->EventTarget
+  以下接口都从 Node 继承其方法和属性：
+  Document, Element, Attr, CharacterData (which Text, Comment, and CDATASection inherit), ProcessingInstruction, DocumentFragment, DocumentType, Notation, Entity, EntityReference
+  属性
+  从其父类型EventTarget继承属性。
+  Node.baseURI 只读
+    返回一个表示base URL的DOMString。不同语言中的base URL的概念都不一样。 在HTML中，base URL表示协议和域名，以及一直到最后一个'/'之前的文件目录
+  Node.childNodes 只读
+    返回一个包含了该节点所有子节点的实时的NodeList。返回值为 NodeList 类型，且为只读。
+  Node.firstChild 只读
+    返回该节点的第一个子节点Node，如果该节点没有子节点则返回null。
+  Node.lastChild 只读
+    返回该节点的最后一个子节点Node，如果该节点没有子节点则返回null。
+  Node.isConneted 只读
+    返回一个布尔值用来检测该节点是否已连接(直接或者间接)到一个上下文对象上，比如通常DOM情况下的Document对象，或者在shadow DOM情况下的ShadowRoot对象。
+  Node.previousSibling 只读
+    返回一个当前节点同辈的前一个结点( Node) ，或者返回null（如果不存在这样的一个节点的话）。
+  Node.nextSibling 只读
+    返回与该节点同级的下一个节点 Node，如果没有返回null
+  Node.nodeName 只读
+    返回一个包含该节点名字的DOMString。
+    下表列出了所有类型的节点的nodeName属性的值.
+    接口 	            nodeName属性值
+    Attr 	        等同于 Attr.name 属性的值
+    CDATASection    "#cdata-section"
+    Comment         "#comment"
+    Document        "#document"
+    DocumentFragment    "#document-fragment"
+    DocumentType    等同于 DocumentType.name 属性的值
+    Element 	      等同于 Element.tagName 属性的值
+    Entity 	        实体名称
+    EntityReference 实体引用名称
+    Notation       	Notation名称
+    ProcessingInstruction 等同于 ProcessingInstruction.target 属性的值
+    text 	          "#text"
+  Node.nodeType 只读
+    返回一个与该节点类型对应的无符号短整型的值
+    节点类型常量
+    常量 	              值 	    描述
+    Node.ELEMENT_NODE 	1 	一个 元素 节点，例如 <p> 和 <div>。
+    Node.TEXT_NODE 	    3 	Element 或者 Attr 中实际的  文字
+    Node.PROCESSING_INSTRUCTION_NODE 	7 	一个用于XML文档的 ProcessingInstruction ，例如 <?xml-stylesheet ... ?> 声明。
+    Node.COMMENT_NODE 	8 	一个 Comment 节点。
+    Node.DOCUMENT_NODE 	9 	一个 Document 节点。
+    Node.DOCUMENT_TYPE_NODE 	        10 	描述文档类型的 DocumentType 节点。例如 <!DOCTYPE html>  就是用于 HTML5 的。
+    Node.DOCUMENT_FRAGMENT_NODE 	    11 	一个 DocumentFragment 节点
+  Node.nodeValue
+    返回或设置当前节点的值。
+    如果nodeValue的值为null,则对它赋值也不会有任何效果.
+    下表就是不同类型的节点所返回的该属性的值.
+    Attr 	该属性的属性值
+    CDATASection 	    CDATA的文本内容
+    Comment         	注释的文本内容
+    Document 	        null
+    DocumentFragment 	null
+    DocumentType    	null
+    Element         	null
+    NamedNodeMap    	null
+    EntityReference 	null
+    Notation         	null
+    ProcessingInstruction 	整个标签的文本内容
+    Text             	文本节点的内容
+  Node.ownerDocument 只读
+    返回这个元素属于的 Document对象 。 如果没有Document对象与之关联，返回null
+    被此属性返回的 document 对象是在实际的HTML文档中的所有子节点所属的主对象。如果在文档节点自身上使用此属性，则结果是null。
+  Node.parentNode 只读
+    返回一个当前结点 Node的父节点 。
+    一个元素节点的父节点可能是一个元素(Element )节点,也可能是一个文档(Document )节点,或者是个文档碎片(DocumentFragment)节点.
+    对于下面的节点类型: Attr, Document, DocumentFragment, Entity, Notation,其parentNode属性返回null.
+    如果当前节点刚刚被建立,还没有被插入到DOM树中,则该节点的parentNode属性也返回null.
+  Node.parentElement 只读
+    返回一个当前节点的父节点 Element 。 如果当前节点没有父节点或者说父节点不是一个元素(Element), 这个属性返回null。
+  Node.textContent
+    返回或设置一个元素内所有子结点及其后代的文本内容。
+    如果 element 是 Document，DocumentType 或者 Notation 类型节点，则 textContent 返回 null。如果你要获取整个文档的文本以及CDATA数据，可以使用 document.documentElement.textContent。
+    如果节点是个CDATA片段，注释，ProcessingInstruction节点或一个文本节点，textContent 返回节点内部的文本内容（即 nodeValue）。
+    对于其他节点类型，textContent 将所有子节点的 textContent 合并后返回，除了注释、ProcessingInstruction节点。如果该节点没有子节点的话，返回一个空字符串。
+    在节点上设置 textContent 属性的话，会删除它的所有子节点，并替换为一个具有给定值的文本节点。
+  方法
+  从其父类型 EventTarget继承方法
+  Node.appendChild()
+    将指定的 childNode 参数作为最后一个子节点添加到当前节点。
+    var child = node.appendChild(child);
+    node 是要插入子节点的父节点.
+    child 即是参数又是这个方法的返回值
+    返回要插入的这个节点
+    如果被插入的节点已经存在于当前文档的文档树中,则那个节点会首先从原先的位置移除,然后再插入到新的位置.
+    这个方法只能将某个子节点插入到同一个文档的其他位置,如果你想跨文档插入,你需要先调用document.importNode方法
+  Node.cloneNode()
+    返回调用该方法的节点的一个副本.
+    语法
+    var dupNode = node.cloneNode(deep);
+    node  将要被克隆的节点
+    dupNode 克隆生成的副本节点
+    deep 可选 是否采用深度克隆,如果为true,则该节点的所有后代节点也都会被克隆,如果为false,则只克隆该节点本身. 
+      DOM4中默认true,现在默认false。所以应该总是设置其值。
+    在使用Node.appendChild()或其他类似的方法将拷贝的节点添加到文档中之前,那个拷贝节点并不属于当前文档树的一部分,也就是说,它没有父节点.
+    如果原始节点设置了ID，并且克隆节点会被插入到相同的文档中，那么应该更新克隆节点的ID以保证唯一性。name属性可能也需要进行修改，取决于你是否希望有相同名称的节点存在于文档中。
+    想要克隆一个节点来添加到另外一个文档中,请使用Document.importNode()代替本方法.
+  Node.compareDocumentPosition() 
+    比较当前节点与任意文档中的另一个节点的位置关系。
+    语法
+    compareMask = node.compareDocumentPosition( otherNode )
+    参数
+    otherNode  用于比较位置的 Node 
+    返回值是一个具有以下值的位掩码：
+    常量名 	十进制值 	含义
+    DOCUMENT_POSITION_DISCONNECTED 	1 	不在同一文档中
+    DOCUMENT_POSITION_PRECEDING 	2 	otherNode在node之前
+    DOCUMENT_POSITION_FOLLOWING 	4 	otherNode在node之后
+    DOCUMENT_POSITION_CONTAINS 	8 	otherNode包含node
+    DOCUMENT_POSITION_CONTAINED_BY 	16 	otherNode被node包含
+    DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC 	32 	待定
+  Node.contains()
+    返回一个 Boolean 布尔值，来表示传入的节点是否为该节点的后代节点。
+    node.contains( otherNode ) 
+  Node.getRootNode()
+    属性返回上下文的根节点。实验性
+  Node.hasChildNodes()
+    返回一个布尔值,表明当前节点是否包含有子节点.
+  Node.insertBefore()
+    方法在参考节点之前插入一个拥有指定父节点的子节点。
+    语法
+    var insertedNode = parentNode.insertBefore(newNode, referenceNode);
+    insertedNode 已经经过插入newNode的新的节点
+    parentNode 新插入节点的父节点
+    newNode 用于插入的节点
+    referenceNode newNode将要插在这个节点之前
+    如果referenceElement为null则newNode将被插入到子节点的末尾
+    返回被插入过的子节点；当newNode 是DocumentFragment时，返回空DocumentFragment。
+  Node.isDefaultNamespace()
+    接受一个命名空间URI作为参数,如果该命名空间是当前节点的默认命名空间,则返回true,否则返回false
+  Node.isEqualNode()
+    方法可以判断两个节点是否相等。当两个节点的类型相同，定义特征(defining characteristics)相同（对元素来说，即 id，孩子节点的数量等等），属性一致等，这两个节点就是相等的。一些具体的数据指出：多数时候的比较是根据节点的类型来的。
+    var isEqualNode = node.isEqualNode(otherNode);
+  Node.lookupPrefix()
+    返回一个和指定命名空间URI绑定的命名空间前缀.如果没有,返回null. 如果有多个绑定的前缀, 返回的结果根据浏览器实现而定.
+  Node.lookupNamespaceURI()
+    返回当前节点上与指定命名空间前缀绑定的命名空间URI,如果没有,返回null,如果参数为null,返回默认的命名空间.
+  Node.normalize()
+    方法将当前节点和它的后代节点”规范化“（normalized）。在一个"规范化"后的DOM树中，不存在一个空的文本节点，或者两个相邻的文本节点。
+  Node.removeChild()
+    方法从DOM中删除一个子节点。返回删除的节点
+    let oldChild = node.removeChild(child);
+    element.removeChild(child);
+    child 是要移除的那个子节点.
+    node 是child的父节点.
+    oldChild保存对删除的子节点的引用. oldChild === child.
+    被移除的这个子节点仍然存在于内存中,只是没有添加到当前文档的DOM树中,因此,你还可以把这个节点重新添加回文档中,当然,实现要用另外一个变量比如上例中的oldChild来保存这个节点的引用. 如果使用上述语法中的第二种方法, 即没有使用 oldChild 来保存对这个节点的引用, 则认为被移除的节点已经是无用的, 在短时间内将会被内存管理回收.
+  Node​.replace​Child()
+    用指定的节点替换当前节点的一个子节点，并返回被替换掉的节点。
+    replacedNode = parentNode.replaceChild(newChild, oldChild);
+    newChild 用来替换 oldChild 的新节点。如果该节点已经存在于DOM树中，则它会被从原始位置删除。
+    oldChild  被替换掉的原始节点。
+    replacedNode 和oldChild相等
+    
+
+
+
+
+
+
+Document  Document接口描述了任何类型文档的公共属性和方法。
+  属性  此接口也继承自 Node 和 EventTarget 接口。
+
+
+
+
+
+Window
+Element
+Text
+Attr
+Event
+
+其他类型
+NodeList
+DomString
+Connent
+DocumentType
+DocumentFragment
