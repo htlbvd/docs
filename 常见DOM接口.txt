@@ -43,7 +43,7 @@ EventTarget
   EventTarget.dispatchEvent()
     将事件分派到此EventTarget。
   
-Node  -->EventTarget
+Node  -->  EventTarget
   以下接口都从 Node 继承其方法和属性：
   Document, Element, Attr, CharacterData (which Text, Comment, and CDATASection inherit), ProcessingInstruction, DocumentFragment, DocumentType, Notation, Entity, EntityReference
   属性
@@ -198,15 +198,120 @@ Node  -->EventTarget
     newChild 用来替换 oldChild 的新节点。如果该节点已经存在于DOM树中，则它会被从原始位置删除。
     oldChild  被替换掉的原始节点。
     replacedNode 和oldChild相等
-    
 
-
-
-
-
-
-Document  Document接口描述了任何类型文档的公共属性和方法。
+Document  -->  Node  -->  EventTarget
+  Document接口描述了任何类型文档的公共属性和方法。
+  根据文档的类型（例如HTML，XML，SVG，...），可以使用更大的API：HTML文档（使用"text/html"内容类型），它也实现了HTMLDocument接口，而XML和SVG文档实现了XMLDocument接口。
   属性  此接口也继承自 Node 和 EventTarget 接口。
+  Document.anchors  只读，已废弃
+    返回文档中所有锚点元素的列表。
+  Document.body
+    返回当前文档中的 <body> 或 <frameset> 元素。
+    该属性是可写的,且为该属性赋的值必须是一个<body>元素.
+  Document.characterSet 只读
+    返回当前文档的字符编码。该字符编码是用于渲染此文档的字符集，可能与该页面指定的编码不同。（用户可以重写编码方式。）
+  Document.doctype 只读
+    返回当前文档关联的文档类型定义（Document Type Definition (DTD) ）
+    返回的对象实现了 DocumentType 接口. 
+    如果当前文档没有DTD,则该属性返回null.
+    在HTML文档中,如果文档有DTD,则该属性等价于document.firstChild.
+  Document.documentElement 只读
+    返回文档对象（document）的根元素（如HTML文档的 <html> 元素）
+    当前文档的直接子节点。对于 HTML 文档，HTMLHtmlElement 对象一般代表该文档的<html> 元素。
+  Document.documentURI 只读
+    以字符串的类型，返回当前文档的路径。
+  Document.embeds 只读
+    以列表(list)的类型，返回当前文档的嵌入式的元素 <embed> 
+    返回值是一个 HTMLCollection类型的值
+  Document.forms 只读
+    以列表(list)的类型，返回当前文档的表单的元素{ {HTMLElement("form")}} 
+    返回值是一个 HTMLCollection类型的值
+  Document​.head 只读
+    返回当前文档中的 <head> 元素。如果有多个 <head> 元素，则返回第一个。
+  Document.hidden 只读
+    返回布尔值，表示页面是（true）否（false）隐藏。
+  Document.images 只读
+    返回当前文档<img>元素集合。
+    返回值是一个  HTMLCollection类型的值
+  Document.implementation 只读
+    返回一个和当前文档相关联的DOMImplementation对象
+  Document.lastStyleSheetSet 只读 
+    返回最后一个启用的样式表集合,当document.selectedStyleSheetSet属性发生变化时,该属性的值就会变化.
+  Document​.links 只读
+    返回一个文档中所有具有 href 属性值的 <area> 元素与 <a> 元素的集合。
+    返回值是一个 HTMLCollection类型的值
+  Document.plugins 只读
+    返回一个HTMLCollection 对象，该对象包含一个或多个HTMLEmbedElements表示当前文档中的<embed> 元素
+  Document.scripts 只读
+    返回一个HTMLCollection对象,包含了当前文档中所有<script>元素的集合
+  Document​.scrolling​Element 只读
+    返回滚动文档的 Element 对象的引用。 在标准模式下, 这是文档的根元素, document.documentElement.
+  Document.selectedStyleSheetSet
+    表示当前使用的样式表集合的名称
+    返回时，currentStyleSheetSet表示当前使用的样式表集合的名称。 你也可以使用这个属性设置当前样式表集。
+    设置这个属性的值相当于用currentStyleSheetSet的值调用 document.enableStyleSheetsForSet()，然后将lastStyleSheetSet 的值设置为该值。
+  Document.styleSheetSets 只读 
+    返回一个所有当前可用样式表集的实时列表
+  Document​.visibility​State 只读
+    返回document的可见性, 即当前可见元素的上下文环境. 由此可以知道当前文档(即为页面)是在背后, 或是不可见的隐藏的标签页，或者(正在)预渲染.可用的值如下：
+    'visible' : 此时页面内容至少是部分可见. 即此页面在前景标签页中，并且窗口没有最小化.
+    'hidden' : 此时页面对用户不可见. 即文档处于背景标签页或者窗口处于最小化状态，或者操作系统正处于 '锁屏状态' .
+    'prerender' : 页面此时正在渲染中, 因此是不可见的 (considered hidden for purposes of document.hidden). 文档只能从此状态开始，永远不能从其他值变为此状态.注意: 浏览器支持是可选的.
+    'unloaded' : 页面从内存中卸载清除. 注意: 浏览器支持是可选的.
+    当此属性的值改变时, 会递交 visibilitychange 事件给Document.
+  
+  方法  此接口也继承自 Node 和 EventTarget 接口。
+  Document.adoptNode()
+    从其他的document文档中获取一个节点。 
+    node = document.adoptNode(externalNode);
+  Document.createAttribute()
+    创建并返回一个新的属性节点.
+    attribute = document.createAttribute(name)
+    attribute 是一个属性节点.
+    name 是属性节点的属性名.
+  Document.createComment()
+    创建并返回一个注释节点.
+    var commentNode = document.createComment(data)
+    commentNode 是一个注释节点.
+    data 是一个字符串,包含了注释的内容.
+  Document.createDocumentFragment()
+    创建一个新的空白的文档片段( DocumentFragment)。
+  Document.createElement()
+    创建并返回由tagName 指定的HTML元素，或一个HTMLUnknownElement，如果tagName不被识别。
+    let element = document.createElement(tagName[, options]);
+    tagName  指定要创建元素类型的字符串
+    options可选，实验性  一个可选的参数 ElementCreationOptions 是包含一个属性名为 is的对象, 该对象的值是用 customElements.define()方法定义过的一个自定义元素的标签名
+  Document.createEvent()
+    创建一个指定类型的事件
+  Document.createNodeIterator()
+    返回一个新的 NodeIterator 对象.
+  Document.createProcessingInstruction()
+    创建并返回一个新的处理指令节点并返回
+  Document.createRange()
+    返回一个Range对象
+  Document.createTextNode()
+    创建一个新的文本节点
+    var text = document.createTextNode(data);
+    text 是一个文本节点.
+    data 是一个字符串,包含了放在文本节点中的内容.
+  Document.createTreeWalker()
+    创建并返回一个 TreeWalker 对象
+  Document.getElementsByClassName()
+    返回一个包含了所有指定类名的子元素的类数组对象。
+  Document​.get​Elements​ByTagName()
+    返回一个包括所有给定标签名称的元素的HTML集合HTMLCollection。
+  Document.importNode()
+    将外部文档的一个节点拷贝一份,然后可以把这个拷贝的节点插入到当前文档中.
+    var node = document.importNode(externalNode, deep);
+    node  导入当前文档的新节点. 新节点的 parentNode 是 null, 因为它还没有插入当前文档的文档树中,属于游离状态.
+    externalNode 将要从外部文档导入的节点.
+    deep 可选 一个布尔值,表明是否要导入节点的后代节点. 
+    源节点不会从外部文档中删除,被导入的节点是源节点的一个拷贝.
+    将外部文档的节点插入当前文档之前,你必须使用 document.importNode() 从外部文档导入源节点,或者使用 document.adoptNode()导入源节点, 
+
+
+
+
 
 
 
@@ -217,6 +322,9 @@ Element
 Text
 Attr
 Event
+HTMLElement
+ParentNode
+HTMLDocument
 
 其他类型
 NodeList
@@ -224,3 +332,46 @@ DomString
 Connent
 DocumentType
 DocumentFragment
+HTMLHtml​Element
+HTMLCollection
+DOMImplementation
+
+
+
+
+EventTarget 的简单实现：
+var EventTarget = function() {
+  this.listeners = {};
+};
+
+EventTarget.prototype.listeners = null;
+EventTarget.prototype.addEventListener = function(type, callback) {
+  if(!(type in this.listeners)) {
+    this.listeners[type] = [];
+  }
+  this.listeners[type].push(callback);
+};
+
+EventTarget.prototype.removeEventListener = function(type, callback) {
+  if(!(type in this.listeners)) {
+    return;
+  }
+  var stack = this.listeners[type];
+  for(var i = 0, l = stack.length; i < l; i++) {
+    if(stack[i] === callback){
+      stack.splice(i, 1);
+      return this.removeEventListener(type, callback);
+    }
+  }
+};
+
+EventTarget.prototype.dispatchEvent = function(event) {
+  if(!(event.type in this.listeners)) {
+    return;
+  }
+  var stack = this.listeners[event.type];
+  event.target = this;
+  for(var i = 0, l = stack.length; i < l; i++) {
+      stack[i].call(this, event);
+  }
+};
