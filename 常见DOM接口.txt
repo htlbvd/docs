@@ -1,48 +1,3 @@
-EventTarget
-  是一个由可以接收事件的对象实现的接口，并且可以为它们创建侦听器。
-  构造函数
-  EventTarget()
-    创建一个新的 EventTarget 对象实例。
-  方法
-  EventTarget.addEventListener()
-    将指定的监听器注册到 EventTarget 上，当该对象触发指定的事件时，指定的回调函数就会被执行
-    语法
-    target.addEventListener(type, listener[, options]);
-    target.addEventListener(type, listener[, useCapture]);
-    参数
-    type
-      表示监听事件类型的字符串
-    listener
-      当所监听的事件类型触发时，会接收到一个事件通知（实现了 Event 接口的对象）对象.listener 必须是一个实现了 EventListener 接口的对象，或者是一个函数。
-    options 可选
-      一个指定有关 listener 属性的可选参数对象。可用的选项如下：
-      capture:  Boolean，表示 listener 会在该类型的事件捕获阶段传播到该 EventTarget 时触发。
-      once:  Boolean，表示 listener 在添加之后最多只调用一次。如果是 true， listener 会在其被调用之后自动移除。
-      passive: Boolean，设置为true时，表示 listener 永远不会调用 preventDefault()。如果 listener 仍然调用了这个函数，客户端将会忽略它并抛出一个控制台警告。
-    useCapter 可选
-      Boolean，在DOM树中，注册了listener的元素， 是否要先于它下面的EventTarget，调用该listener。 当userCapture(设为true) 时，沿着DOM树向上冒泡的事件，不会触发listener。当一个元素嵌套了另一个元素，并且两个元素都对同一事件注册了一个处理函数时，所发生的事件冒泡和事件捕获是两种不同的事件传播方式。事件传播模式决定了元素以哪个顺序接收事件。进一步的解释可以查看 事件流 及 JavaScript Event order 文档。 如果没有指定， useCapture 默认为 false 。
-    返回值 undefined
-  EventTarget.removeEventListener()
-    删除使用 EventTarget.addEventListener() 方法添加的事件。
-    语法
-    target.removeEventListener(type, listener[, options]);
-    target.removeEventListener(type, listener[, useCapture]);
-    参数
-    type
-      一个字符串，表示需要移除的事件类型
-    listener
-      需要移除的 EventListener 函数（先前使用 addEventListener 方法定义的）。
-    options 可选
-      一个可选择的对象：指定有关事件侦听器的特征。可选项有：
-      capture : 一个 Boolean 表示这个类型的事件将会被派遣到已经注册的侦听器，然后再派遣到DOM树中它下面的任何 EventTarget。
-    useCapture 可选
-      指定需要移除的 EventListener 函数是否为事件捕获。如果无此参数，默认值为 false。
-      如果同一个监听事件分别为“事件捕获”和“事件冒泡”注册了一次，一共两次，这两次事件需要分别移除。两者不会互相干扰。
-    返回值 undefined
-    一个 EventTarget 上的 EventListener 被移除之后，如果此事件正在执行，会立即停止
-  EventTarget.dispatchEvent()
-    将事件分派到此EventTarget。
-  
 Node  -->  EventTarget
   以下接口都从 Node 继承其方法和属性：
   Document, Element, Attr, CharacterData (which Text, Comment, and CDATASection inherit), ProcessingInstruction, DocumentFragment, DocumentType, Notation, Entity, EntityReference
@@ -89,9 +44,9 @@ Node  -->  EventTarget
     Node.DOCUMENT_NODE 	9 	一个 Document 节点。
     Node.DOCUMENT_TYPE_NODE 	        10 	描述文档类型的 DocumentType 节点。例如 <!DOCTYPE html>  就是用于 HTML5 的。
     Node.DOCUMENT_FRAGMENT_NODE 	    11 	一个 DocumentFragment 节点
-  Node.nodeValue
+  Node.node
     返回或设置当前节点的值。
-    如果nodeValue的值为null,则对它赋值也不会有任何效果.
+    如果node的值为null,则对它赋值也不会有任何效果.
     下表就是不同类型的节点所返回的该属性的值.
     Attr 	该属性的属性值
     CDATASection 	    CDATA的文本内容
@@ -118,7 +73,7 @@ Node  -->  EventTarget
   Node.textContent
     返回或设置一个元素内所有子结点及其后代的文本内容。
     如果 element 是 Document，DocumentType 或者 Notation 类型节点，则 textContent 返回 null。如果你要获取整个文档的文本以及CDATA数据，可以使用 document.documentElement.textContent。
-    如果节点是个CDATA片段，注释，ProcessingInstruction节点或一个文本节点，textContent 返回节点内部的文本内容（即 nodeValue）。
+    如果节点是个CDATA片段，注释，ProcessingInstruction节点或一个文本节点，textContent 返回节点内部的文本内容（即 node）。
     对于其他节点类型，textContent 将所有子节点的 textContent 合并后返回，除了注释、ProcessingInstruction节点。如果该节点没有子节点的话，返回一个空字符串。
     在节点上设置 textContent 属性的话，会删除它的所有子节点，并替换为一个具有给定值的文本节点。
   方法
@@ -202,7 +157,11 @@ Node  -->  EventTarget
 Document  -->  Node  -->  EventTarget
   Document接口描述了任何类型文档的公共属性和方法。
   根据文档的类型（例如HTML，XML，SVG，...），可以使用更大的API：HTML文档（使用"text/html"内容类型），它也实现了HTMLDocument接口，而XML和SVG文档实现了XMLDocument接口。
-  属性  此接口也继承自 Node 和 EventTarget 接口。
+  接口继承 Node 和 EventTarget 接口。
+  实现ParentNode
+  构造函数
+  Document()
+  属性
   Document.anchors  只读，已废弃
     返回文档中所有锚点元素的列表。
   Document.body
@@ -312,66 +271,340 @@ Document  -->  Node  -->  EventTarget
 
 
 
-
-
-
-
-
-Window
-Element
-Text
-Attr
-Event
-HTMLElement
-ParentNode
-HTMLDocument
-
-其他类型
-NodeList
-DomString
-Connent
-DocumentType
-DocumentFragment
-HTMLHtml​Element
-HTMLCollection
+Attr -->  Node  -->  EventTarget(在DOM4将不再继承自Node。)
+  该类型使用对象来表示一个DOM元素的属性。
+  属性
+  .name 只读
+    该属性的名称
+  .namespaceURI 只读
+    表示该属性的命名空间URIDOMString，如果该元素不在命名空间中，则返回null。
+  .localName 只读
+    表示该属性的命名空间限定的本地名称DOMString。
+  .prefix 只读
+    表示该属性的命名空间前缀DOMString，如果没有前缀指定则返回null。
+  .ownerElement 只读
+    该属性所附属的元素节点
+  .specified 只读
+    如果这个属性你在源代码或者在脚本中明确指定的话，它总是返回真。否则它是由文档的DTD默认定义的，将总是返回假。
+NonDocumentTypeChildNode
+  这个接口适用于除DocumentType外有父节点的Node节点
+  无法创建这个类型的对象，是通过Element,CharacterData对象实现的。
+  不从任何接口继承属性和方法，也没有特有的方法
+  属性
+  .previousElementSibling 只读
+    返回当前元素在其父元素的子元素节点中的前一个元素节点,如果该元素已经是第一个元素节点,则返回null
+  .nextElementSibling 只读
+    返回当前元素在其父元素的子元素节点中的后一个元素节点,如果该元素已经是最后一个元素节点,则返回null
+CharacterData -->  Node  -->  EventTarget
+  CharacterData 抽象接口，代表 Node 对象包含的字符。
+  没有这个类型的对象。通过 Text、Comment 或 ProcessingInstruction 这些非抽象接口实现的。
+  继承Node,实现ChildNode,NonDocumentTypeChildNode接口
+  属性
+  .data
+    一个 DOMString，表示该对象中包含的文本数据。
+  .length 只读
+    返回一个 unsigned long 的表示 CharacterData.data 包含的字符串的大小
+  方法
+  .appendData()
+    为 CharacterData.data 字符串追加指定的 DOMString ；当方法返回时，data 包含的是已合并的 DOMString.
+  .deleteData()
+    在 CharacterData.data 字符串中，从指定位置开始，删除指定数量的字符；当方法返回时，data 包含的是缩短了的 DOMString.
+  .insertData()
+    在 CharacterData.data 字符串中，在指定的位置，插入指定的字符；当方法返回时，data 包含的是已修改的 DOMString.
+  .replaceData()
+    在 CharacterData.data 字符串中，从指定位置开始，把指定数量的字符替换为指定的 DOMString; 当方法返回时, data 包含的是已修改的 DOMString.
+  .substringData()
+    返回一个包含了从 CharacterData.data 中的指定位置开始，指定长度的 DOMString 。
+ChildNode
+  接口包含特定于Node 对象的方法，这些对象可以有一个父对象。
+  原始接口，并且不能创建此类型的对象；它通过Element、DocumentType 和 CharacterData 对象实现。
+  没有继承来的方法和属性
+  没有特定的属性
+  方法
+  .remove()
+    将ChildNode从其父节点的子节点列表中移除
+    语法  node.remove(); 
+  .before() 实验
+    在其父节点的子节点列表中插入一些Node或DOMString对象。插入位置为ChildNode之前。DOMString对象会被以Text的形式插入。
+    语法
+      [Throws, Unscopable] 
+      void ChildNode.before((Node or DOMString)... nodes);
+    参数 
+      nodes
+      一系列的 Node 或者 DOMString  
+  .after() 实验
+    在其父节点的子节点列表中插入一些Node或DOMString对象。插入位置为ChildNode之后。DOMString对象会被以Text的形式插入
+    语法，参数与.before()相同
+  .replaceWith() 实验
+    使用一些Node或DOMString对象替换ChildNode 。DOMString对象会以Text的形式插入
+    语法，参数与.before()相同
+Comment  -->  CharacterData  -->  Node  -->  EventTarget
+  代表标签（markup）之间的文本符号（textual notations）。在 HTML 和 XML 里，注释（Comments）为 '<!--' 和 '-->' 之间的内容。
+  继承CharacterData,Node,EventTarget
+  没有特定的属性和方法
+  构造函数
+  Comment() 实验
+    文本内容作为参数，返回一个 Comment 对象。
+    语法
+    comment1 = new Comment(); // Create an empty comment
+    comment2 = new Comment("This is a comment");
+CustomEvent  -->  Event
+  由程序创建的，可以有任意自定义功能的事件。
+  继承Event
+  构造函数
+  CustomEvent()
+    创建一个自定义事件
+    语法
+    event = new CustomEvent(typeArg, customEventInit);
+    参数
+    typeArg
+      是DOMString 类型，表示所创建事件的名称。
+    eventInit可选
+      是一个 CustomEventInit 字典，接受以下字段:
+        "detail",可选的默认值是 null 的任意类型数据，是一个与 event 相关的值
+        "bubbles"，可选，Boolean类型，默认值为 false，表示该事件是否冒泡。
+        "cancelable"，可选，Boolean类型，默认值为 false， 表示该事件能否被取消。
+        "composed"，可选，Boolean类型，默认值为 false，指示事件是否会在影子DOM根节点之外触发侦听器
+  属性
+  .detail 只读
+    初始化事件对象时传递过来的任何类型数据。
+  方法
+  .initCustomEvent() 已废弃
+Domcument
+  ...
+DocumentFragment  -->  Node  -->  EventTarget
+  文档片段接口，表示一个没有父级文件的最小文档对象
+  继承Node，实现ParentNode
+  没有特定的属性
+  构造函数
+  DocumentFragment() 实验
+    返回一个新创建的 DocumentFragment 对象。
+    语法  fragment = new DocumentFragment()
+  方法
+  .getElementById()
+DocumentType --> Node --> EventTarget
+  表示了一个包含文档类型的节点
+  继承Node,实现ChildNode
+  属性
+  .name 只读
+    DOMString，文档类型的名称，例：<!DOCTYPE HTML>中的“html”
+  .publicId 只读
+    一个DOMString，例：HTML5中的空字符串——"-//W3C//DTD HTML 4.01//EN"。
+  .systemId 只读
+    一个DOMString，例：HTML5中的空字符串—— "http://www.w3.org/TR/html4/strict.dtd"
+DOMException
+  ...
 DOMImplementation
+  ...
+DOMString
+  ...
+DOMTimeStamp
+  ...
+DOMSettableTokenList
+  ...
+DOMTokenList
+  ...
+Element -->  Node  -->  EventTarget
+  Element是非常通用的基类，所有 Document对象下的对象都继承它. 这个接口描述了所有相同种类的元素所普遍具有的方法和属性。 这些继承自Element并且增加了一些额外功能的接口描述了具体的行为. 
+  继承Node,EventTarget,实现ParentNode, ChildNode, NonDocumentTypeChildNode, 和Animatable.
+  ...
+Event
+  ...
+EventTarget
+  是一个由可以接收事件的对象实现的接口，并且可以为它们创建侦听器。
+  构造函数
+  EventTarget()
+    创建一个新的 EventTarget 对象实例。
+  方法
+  .addEventListener()
+    将指定的监听器注册到 EventTarget 上，当该对象触发指定的事件时，指定的回调函数就会被执行
+    语法
+    target.addEventListener(type, listener[, options]);
+    target.addEventListener(type, listener[, useCapture]);
+    参数
+    type
+      表示监听事件类型的字符串
+    listener
+      当所监听的事件类型触发时，会接收到一个事件通知（实现了 Event 接口的对象）对象.listener 必须是一个实现了 EventListener 接口的对象，或者是一个函数。
+    options 可选
+      一个指定有关 listener 属性的可选参数对象。可用的选项如下：
+      capture:  Boolean，表示 listener 会在该类型的事件捕获阶段传播到该 EventTarget 时触发。
+      once:  Boolean，表示 listener 在添加之后最多只调用一次。如果是 true， listener 会在其被调用之后自动移除。
+      passive: Boolean，设置为true时，表示 listener 永远不会调用 preventDefault()。如果 listener 仍然调用了这个函数，客户端将会忽略它并抛出一个控制台警告。
+    useCapter 可选
+      Boolean，在DOM树中，注册了listener的元素， 是否要先于它下面的EventTarget，调用该listener。 当userCapture(设为true) 时，沿着DOM树向上冒泡的事件，不会触发listener。当一个元素嵌套了另一个元素，并且两个元素都对同一事件注册了一个处理函数时，所发生的事件冒泡和事件捕获是两种不同的事件传播方式。事件传播模式决定了元素以哪个顺序接收事件。进一步的解释可以查看 事件流 及 JavaScript Event order 文档。 如果没有指定， useCapture 默认为 false 。
+    返回值 undefined
+  .removeEventListener()
+    删除使用 EventTarget.addEventListener() 方法添加的事件。
+    语法
+    target.removeEventListener(type, listener[, options]);
+    target.removeEventListener(type, listener[, useCapture]);
+    参数
+    type
+      一个字符串，表示需要移除的事件类型
+    listener
+      需要移除的 EventListener 函数（先前使用 addEventListener 方法定义的）。
+    options 可选
+      一个可选择的对象：指定有关事件侦听器的特征。可选项有：
+      capture : 一个 Boolean 表示这个类型的事件将会被派遣到已经注册的侦听器，然后再派遣到DOM树中它下面的任何 EventTarget。
+    useCapture 可选
+      指定需要移除的 EventListener 函数是否为事件捕获。如果无此参数，默认值为 false。
+      如果同一个监听事件分别为“事件捕获”和“事件冒泡”注册了一次，一共两次，这两次事件需要分别移除。两者不会互相干扰。
+    返回值 undefined
+    一个 EventTarget 上的 EventListener 被移除之后，如果此事件正在执行，会立即停止
+  .dispatchEvent()
+    将事件分派到此EventTarget。
+    语法 cancelled = !target.dispatchEvent(event)
+    参数
+    event 是要被派发的事件对象。
+    target 被用来初始化 事件 和 决定将会触发 目标.
+    返回值
+    当该事件是可取消的(cancleable为true)并且至少一个该事件的 事件处理方法 调用了Event.preventDefault()，则返回值为false；否则返回true。
+HTMLCollection
+  表示一个包含了元素（元素顺序为文档流中的顺序）的通用集合（generic collection）
+  HTML DOM 中的 HTMLCollection 是即时更新的（live）；当其所包含的文档结构发生改变时，它会自动更新。
+  属性
+  .length 只读
+    返回集合当中子元素的数目。
+  方法
+  .item()
+    根据给定的索引（从0开始），返回具体的节点。
+    语法
+    var element = HTMLCollection.item(index)
+    参数
+    index
+    想要被返回的Node的位置. 元素在HTML Collection中的顺序和他们在源文档的顺序保持一致。
+    返回值
+    指定的index的Node , 如果index小于0或者不小于它的长度属性则返回null。
+  namedItme()
+    根据 Id 返回指定节点，或者作为备用，根据字符串所表示的 name 属性来匹配。根据 name 匹配只能作为最后的依赖，并且只有当被引用的元素支持 name 属性时才能被匹配。如果不存在符合给定 name 的节点，则返回 null。
+MutationObserver
+  ...
+MutationRecord
+  ...
+Node
+  ...
+NodeFilter
+  ...
+NodeIterator
+  ...
+NodeList
+  NodeList 对象是一个节点的集合，是由 Node.childNodes 和 document.querySelectorAll 返回的.
+  Node.childNodes 是实时的，如果文档中的节点树发生变化，则已经存在的实时 NodeList 对象也会随之变化。
+  在其他情况下，NodeList 是一个静态集合，也就意味着随后对文档对象模型的任何改动都不会影响集合的内容。比如document.querySelectorAll 就会返回一个静态的 NodeList。
+  属性
+  .length
+    NodeList 中包含的节点个数,是个整数
+  方法
+  .item()
+    返回 NodeList 对象中指定索引的节点，如果索引越界，则返回null。等价的写法是 nodeList[i]，不过，在这种情况下，越界访问将返回 undefined。
+    语法
+    nodeItem = nodeList.item(index)
+    参数
+    nodeList是一个NodeList对象.通常是由某个DOM属性或方法返回的,比如childNodes.
+    index 是给定的索引. 从0开始.
+    nodeItem 是根据索引index由item方法从nodeList中获取到的节点.
+  .entries()
+    ...
+  .forEach()
+    ...
+  .keys()
+    ...
+  .values()
+    ...
+ParentNode
+  拥有子项的所有类型的 Node对象
+  ParentNode 是一个原始接口，不能够创建这种类型的对象；它在 Element、Document 和 DocumentFragment 对象上被实现。
+  属性
+  .children 只读
+    返回 一个Node的子elements ，是一个动态更新的 HTMLCollection。
+  .fristElementChild 只读
+    返回父节点的第一个Element后代，没有时候返回null其他类型
+  .lastElementChild 只读
+    返回父节点的最后一个Element后代，没有时返回null
+  .childElementCount 只读
+    返回一个无符号长整型，表示给定元素的子元素数。
+  方法
+  .append() 实验
+    ParentNode的最后一个子节点之后插入一组 Node 对象或 DOMString 对象。
+    被插入的 DOMString 对象等价为 Text 节点。
+    语法
+    [Throws, Unscopable] 
+    void ParentNode.append((Node or DOMString)... nodes);
+    nodes  一组要插入的 Node 或 DOMString 对象。 
+    与 Node.appendChild() 的差异：
+    ParentNode.append()允许追加  DOMString 对象，而 Node.appendChild() 只接受 Node 对象。
+    ParentNode.append() 没有返回值，而 Node.appendChild() 返回追加的 Node 对象。
+    ParentNode.append() 可以追加几个节点和字符串，而 Node.appendChild() 只能追加一个节点。
+  .prepend() 实验
+    父节点的第一个子节点之前插入一系列Node对象或者DOMString对象。DOMString会被当作Text节点对待
+    语法 ParentNode.prepend((Node or DOMString)... nodes);
+    参数 nodes    要插入的一系列Node或者DOMString。
+    返回值 undefined.
+  .querySelector()
+    返回一个 Element 表示与指定的选择器组匹配的第一个元素，这些选择器是调用该方法的对象的后代。
+    ...
+  .querySelectorAll()
+    ...
+ProcessingInstruction
+  ...
+Promise
+  ...
+PromiseResolver
+  ...
+Range
+  ...
+Text --> CharacterData --> Node --> EventTarget
+  ...
+TreeWalker
+  ...
+URL 实验
+  ...
+Window
+  ...
+Worker
+  ...
+XMLDocument 实验
+  ...
+
+
+
+HTML接口
+HTMLDocument
+  ...
+HTMLElement
+  ...
+HTMLHtml​Element
+  ...
+...
+...
 
 
 
 
-EventTarget 的简单实现：
-var EventTarget = function() {
-  this.listeners = {};
-};
+继承，只能是单线的，比如只能继承一个父级接口，以及父级的一个父级接口...
+实现，可以实现多个接口
 
-EventTarget.prototype.listeners = null;
-EventTarget.prototype.addEventListener = function(type, callback) {
-  if(!(type in this.listeners)) {
-    this.listeners[type] = [];
-  }
-  this.listeners[type].push(callback);
-};
 
-EventTarget.prototype.removeEventListener = function(type, callback) {
-  if(!(type in this.listeners)) {
-    return;
-  }
-  var stack = this.listeners[type];
-  for(var i = 0, l = stack.length; i < l; i++) {
-    if(stack[i] === callback){
-      stack.splice(i, 1);
-      return this.removeEventListener(type, callback);
-    }
-  }
-};
+接口：
+描述
+继承
+实现
+构造函数
 
-EventTarget.prototype.dispatchEvent = function(event) {
-  if(!(event.type in this.listeners)) {
-    return;
-  }
-  var stack = this.listeners[event.type];
-  event.target = this;
-  for(var i = 0, l = stack.length; i < l; i++) {
-      stack[i].call(this, event);
-  }
-};
+属性：
+  名称
+  兼容性
+  可读写
+  描述：返回
+  返回值类型
+  （其他注意事项）
+
+方法：
+  名称
+  兼容性
+  语法
+  参数
+  描述：行为及返回
+  返回值类型
+  （其他注意事项）
