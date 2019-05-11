@@ -1,0 +1,39 @@
+语法
+选项
+实例属性和方法
+指令
+特殊特性
+内置组件
+
+语法
+var app=new Vue({
+  选项/数据:选项值，
+  选项/DOM:选项值，
+  选项/生命周期钩子:函数，//在实例的对应生命周期执行函数
+  选项/资源:选项值，
+  选项/组合:选项值，
+  选项/其他:选项值
+})
+
+let app = new Vue({...});
+app.实例属性；
+app.实例方法/数据();
+app.实例方法/事件();
+app.实例方法/生命周期();
+
+<div 指令></div>
+<div 指令=值></div>
+<div 指令:参数=值></div>
+<div 指令:参数.修饰符=值></div>
+
+<div 特殊特性=特性值></div>
+
+<内置组件></内置组件>
+
+选项/数据
+  data
+  computed 计算属性
+    { [key: string]: Function | { get: Function, set: Function } }
+  methods 方法
+    { [key: string]: Function }
+  watch 侦听属性

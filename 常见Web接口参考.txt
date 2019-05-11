@@ -1,3 +1,8 @@
+常见DOM接口
+常见HTML接口
+常见CSS接口
+
+
 Node  -->  EventTarget
   以下接口都从 Node 继承其方法和属性：
   Document, Element, Attr, CharacterData (which Text, Comment, and CDATASection inherit), ProcessingInstruction, DocumentFragment, DocumentType, Notation, Entity, EntityReference
@@ -586,25 +591,6 @@ HTMLHtml​Element
 实现，可以实现多个接口
 
 
-接口：
-描述
-继承
-实现
-构造函数
-
-属性：
-  名称
-  兼容性
-  可读写
-  描述：返回
-  返回值类型
-  （其他注意事项）
-
-方法：
-  名称
-  兼容性
-  语法
-  参数
-  描述：行为及返回
-  返回值类型
-  （其他注意事项）
+接口：描述、继承、实现、构造函数
+属性：名称、兼容性、可读写、描述：返回、返回值类型、（其他注意事项）
+方法：名称、兼容性、语法、参数、描述：行为及返回、返回值类型、（其他注意事项）

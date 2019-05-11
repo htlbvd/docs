@@ -1,0 +1,181 @@
+目录
+  值属性
+    Infinity NaN undefined null字面量 globalThis
+  函数属性
+    eval() isFinite() isNaN parseFloat() parseInt() ...
+  基本对象
+    Object Function Boolean Symbol Error ...
+  数字和日期对象
+    Number BigInt Math Data
+  字符串
+    String RegExp
+  和可索引的集合对象
+    Array ...
+  使用键的集合对象
+    Map Set WeakMap WeakSet
+  结构化数据
+    ArrayBuffer ShareArrayBuffer Atomics DataView JSON
+  控制抽象对象
+    Promise Generator GeneratorFunction AsyncFunction
+  反射
+    Reflect Proxy
+  国际化
+    Intl ...
+  WebAssembly
+    WebAssembly ...
+  其他
+    arguments
+
+
+
+值属性
+  Infinity      全局属性 数值类型 表示无穷大 初始值是Number.POSITIVE_INFINITY 三不可
+  NaN      全局属性 数值类型 表示不是个数字 初始值是NaN Number.NaN 三不可
+  undefined      全局属性 undefined类型 最初值就是原始数据类型undefined 三不可
+  null      字面量 指示变量未指向任何对象
+  globalThis      全局对象 在 Web 中，也可以通过window、self 或者 frames获取到全局对象
+  全局属性，即全局作用域的一个变量
+  三不可，即 不可写 不可枚举 不可配置
+
+
+函数属性
+  eval('')      将传入的字符串当做 JavaScript 代码进行执行
+  isFinite()      将参数转换为数值，再判断此值是否为一个有穷数
+  isNaN()      将参数转换为数值，再判断此值是否为NaN
+  parseFloat('')      将参数转换为字符串,解析并返回一个浮点数
+  parseInt('',2-36)      将参数转换为字符串，解析并返回一个指定基数的整数
+
+
+基本对象
+Object
+
+  .assign({},{},...)      复制对象
+  .create({},{})      创建对象
+  .defineProperty({},'',{})      添加一个属性或修改属性的配置
+  .defineProperties({},{})      添加多个属性或修改属性的配置
+  
+  .entries()       返回 自身可枚举属性:[[key, value],...]
+  .keys()      返回 自身可枚举属性的名称:['',...]
+  .values()      返回 自身可枚举属性的值:[]
+  .getOwnPropertyNames()       返回 自身属性的 属性名:['',...] （包括不可枚举，不包括Symbol属性）
+  .getOwnPropertyDescriptor({},'')      返回 指定自身属性的 配置:{}
+  .getOwnPropertySymbols()       返回 所有自身Symbol属性:[]
+ 
+  .getPrototypeOf()      返回 原型:{} （内部[[Prototype]]属性的值）
+  .setPrototypeOf({},{})      设置原型（即内部[[Prototype]]属性）。
+
+  .freeze()      冻结对象：不能在做任何修改
+  .seal()      封闭对象：阻止添加新属性并将所有现有属性标记为不可配置。
+  .preventExtensions()       使对象不可扩展：不能再添加新属性。
+  .isFrozen()      判断对象是否已经冻结。
+  .isSealed()      判断对象是否已经密封。
+  .isExtensible()      判断对象是否可扩展。
+
+  .is(x,y)      判断两个值是否相同。所有 NaN 值都会判断为相同。
+
+Object.prototype
+  .hasOwnProperty()      判断自身属性中是否有指定属性
+  .propertyIsEnumerable()      判断指定属性是否可是自身可枚举属性
+  .isPrototypeOf()      判断指定的对象是否在本对象的原型链中。
+
+  .toLocaleString()      直接调用 toString()方法
+  .toString()      返回对象的字符串表示
+  .valueOf()      返回对象的原始值
+
+Function.prototype
+  .apply()      使用指定this值调用函数 通传入数组或类数组对象为此函数传入参数
+  .bind()      bind()方法会创建一个新函数,称为绑定函数.当调用这个绑定函数时,绑定函数会以创建它时传入 bind()方法的第一个参数作为 this,传入 bind()方法的第二个以及以后的参数加上绑定函数运行时本身的参数按照顺序作为原函数的参数来调用原函数.
+  .call()      使用指定this值调用函数；以列表形式为此函数传入参数
+  .toString()      获取函数的实现源码的字符串。覆盖了 Object.prototype.toString 方法。
+
+Error
+  ...
+
+
+数字和日期对象
+Number
+  .EPSILON      2^-52约为2.220446E-16 两个可表示数之间的最小间隔
+  .MAX_SAFE_INTEGER      2^53-1约为9E15 JS中最大的安全整数。
+  .MIN_SAFE_INTEGER      2^53-1约为9E15 JS中最小的安全整数
+  .MAX_VALUE      约为1.79E308 能表示的最大正数。最小的负数是 -MAX_VALUE。
+  .MIN_VALUE      约为5E-324 能表示的最小正数即最接近 0 的正数 (实际上不会变成 0)。最大的负数是 -MIN_VALUE。
+  .POSITIVE_INFINITY      Infinity 正无穷大值
+  .NEGATIVE_INFINITY      -Infinity 负无穷大值
+  .NaN      表示非数字
+  以上各属性都是数值类型，三不可
+
+  .isNaN()      判断参数是否为 数值类型且是NaN
+  .isInteger()      判断参数是否为 数值类型且是整数。
+  .isSafeInteger()      判断参数是否为 数值类型且是安全整数(-(2^53-1)至2^53-1之间)。
+  .isFinite()      判断参数是否为 数值类型且是有穷数
+  .parseFloat()      和全局 parseFloat() 一样。
+  .parseInt()      和全局 parseInt() 一样。
+Number.prototype.
+  .toExponential(0-20)      以科学记数法表示此数:''
+  .toFixed(0-20)      以固定的小数位数表示此数:''
+  .toPrecision(0-100)      以指定的精度表示此数:''
+  .toString(2-36)      以指定的进制表示此数:'' 覆盖了Object.prototype.toString()。
+  
+  .toLocaleString([locales[,options]])      返回这个数字在特定语言环境下的表示字符串
+  .valueOf()      返回指定Number对象的原始值的数字
+
+Math
+  .E      约等于2.718 欧拉常数
+  .LN2      约为0.693 ln2
+  .LN10      约为2.303 ln10
+  .LOG2E      约为1.443 log2E
+  .LOG10E      约为0.434 log10E
+  .PI      约为3.14159 圆周率π
+  .SQRT1_2      1/2的平方根 约为0.707.
+  .SQRT2      2的平方根 约为1.414
+
+  .random()      [0,1)范围的伪随机数
+  .max()      最大值
+  .min()      最小值
+
+  .abs()      绝对值
+  .ceil()      向上取整
+  .floor()      向下取整
+  .round()      返回四舍五入后的整数
+
+  .sqrt()      平方根
+  .log()      自然对数
+  .exp(x)      E^x
+  .pow(x,y)      x的y次幂
+
+  .sin()      正弦值
+  .cos()      余弦值
+  .tan()      正切值
+  .asin()      反正弦值
+  .acos()      反余弦值
+  .atan()      以介于 -PI/2 与 PI/2 弧度之间的数值来返回反正切值
+Date
+  ...
+
+
+字符串
+String
+  ...
+
+RegExp
+  ...
+
+
+可索引的集合对象
+Array
+  ...
+
+
+结构化数据
+JSON
+  .parse(''[,func])      解析JSON字符串，构造由字符串描述的JavaScript值或对象。
+  .stringify(x[,func[,space]])
+
+
+其他
+arguments
+  ...
+
+
+
+

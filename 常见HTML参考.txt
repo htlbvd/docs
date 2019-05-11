@@ -1,0 +1,149 @@
+全局属性
+常见元素
+
+属性：名称、描述、兼容性、枚举还是布尔、DOM接口
+元素：名称、描述：语义、内容类别、允许内容、允许父元素、DOM接口、特有属性
+、
+常见的基本HTML全局属性：
+class  值是一个以空格分隔的元素的类名（classes ）列表.
+  它允许 CSS 和 Javascript 通过类选择器 (class selectors) 或DOM方法( document.getElementsByClassName)来选择和访问特定的元素。
+contenteditable  枚举属性，表示元素是否可被用户编辑。 如果可以，浏览器会修改元素的部件以允许编辑。
+  该属性必须是下面的值之一：
+    true 或空字符串，表示元素是可编辑的；
+    false 表示元素不是可编辑的。
+  如果没有设置该属性，其默认值继承自父元素。
+  可以使用CSS caret-color 属性设置用于绘制文本插入光标的颜色。
+  HTMLElement.contentEditable and HTMLElement.isContentEditable
+data-*  是一类被称为自定义数据属性的属性，它赋予我们在所有 HTML 元素上嵌入自定义数据属性的能力，并可以通过脚本(一般指JavaScript) 与 HTML 之间进行专有数据的交换
+  所有这些自定义数据属性都可以通过所属元素的 HTMLElement 接口来访问。  HTMLElement.dataset 属性可以访问它们。
+  * 可以使用遵循 xml名称生产规则 的任何名称来被替换，并具有以下限制：
+    该名称不能以xml开头，无论这些字母是大写还是小写；
+    该名称不能包含任何分号 (U+003A)；
+    该名称不能包含A至Z的大写字母。
+  注意，HTMLElement.dataset 属性是一个DOMStringMap，并且自定义数据属性 data-test-value 可以通过 HTMLElement.dataset.testValue ( 或者是 HTMLElement.dataset["testValue"] )  来访问，任何破折号(U+002D) 都会被下个字母的大写替代(驼峰拼写)。
+dir  是一个指示元素中文本方向的枚举属性。它的取值如下：
+    ltr, 指从左到右，用于那种从左向右书写的语言（比如英语）；
+    rtl, 指从右到左，用于那种从右向左书写的语言（比如阿拉伯语）；
+    auto, 指由用户代理决定方向。它在解析元素中字符时会运用一个基本算法，直到发现一个具有强方向性的字符，然后将这一方向应用于整个元素。
+    这个属性对有不同语义的<bdo>元素是必须的。
+    这个属性在<bdi>元素中不可继承。未赋值时，它的默认值是auto。
+    这个属性可以被CSS属性direction和unicode-bidi覆盖，如果CSS网页有效且该元素支持这些属性的话。
+    由于文本的方向是和内容的语义而不是和表现相关，因此有可能的话，网页开发者使用这一属性而非CSS属性是被推荐的。这样，即使在不支持CSS或禁用CSS的浏览器中，文本也会正常显示。
+    auto应当用于方向未知的数据，如用户输入的数据，最终保存在数据库中的数据。
+    对应这个属性的HTMLElement.dir
+hidden  布尔属性,表示该元素尚未或不再相关。
+  ...
+id  定义唯一标识符（ID），该标识符在整个文档中必须是唯一的。
+  Element.id 
+  ...
+lang  参与了元素语言的定义。
+  ...
+style  包含应用到元素的 CSS 样式声明。
+  ...
+tabindex  指示其元素是否可以聚焦，以及它是否/在何处参与顺序键盘导航
+  它接受一个整数作为值，具有不同的结果，具体取决于整数的值：
+    tabindex=负值 (通常是tabindex=“-1”)，表示元素是可聚焦的，但是不能通过键盘导航来访问到该元素，用JS做页面小组件内部键盘导航的时候非常有用。
+    tabindex="0" ，表示元素是可聚焦的，并且可以通过键盘导航来聚焦到该元素，它的相对顺序是当前处于的DOM结构来决定的。
+    tabindex=正值，表示元素是可聚焦的，并且可以通过键盘导航来访问到该元素；它的相对顺序按照tabindex 的数值递增而滞后获焦。如果多个元素拥有相同的 tabindex，它们的相对顺序按照他们在当前DOM中的先后顺序决定。
+  根据键盘序列导航的顺序，值为 0 、非法值、或者没有 tabindex 值的元素应该放置在 tabindex 值为正值的元素后面。
+  如果我们在 <div> 上设置了 tabindex 属性，它的子元素内容不能使用箭头键来滚动，除非我们在内容上也设置 tabindex。
+  注：tabindex 的最大值不应超过 32767。如果没有指定，它的默认值为 -1。
+title  包含表示与其所属元素相关信息的文本。 这些信息通常可以作为提示呈现给用户,但不是必须的。
+  一些典型用例：
+    链接：被链接文档的标题或描述
+    媒体元素，例如图像：描述或关联信息
+    段落：脚注或者相关的评论
+    引用：作者信息，以及其他
+  如果省略了这个属性，就意味着这个元素的最近祖先的标题仍然是相关的（并且可以用作元素的提示信息）。如果这个属性设为空字符串，它就明确意味着，它的最近祖先的标题是不相关的（并且不应用于这个元素的提示信息）。
+  ...
+
+特别的全局属性
+xml:lang 和 xml:base————两者都是从XHTML规范继承，但为了兼容性而被保留的。
+多重aria-*属性，用于改善可访问性。
+事件处理程序属性：onabort, onautocomplete, onautocompleteerror, onblur, oncancel, oncanplay, oncanplaythrough, onchange, onclick, onclose, oncontextmenu, oncuechange, ondblclick, ondrag, ondragend, ondragenter, ondragexit, ondragleave, ondragover, ondragstart, ondrop, ondurationchange, onemptied, onended, onerror, onfocus, oninput, oninvalid, onkeydown, onkeypress, onkeyup, onload, onloadeddata, onloadedmetadata, onloadstart, onmousedown, onmouseenter, onmouseleave, onmousemove, onmouseout, onmouseover, onmouseup, onmousewheel, onpause, onplay, onplaying, onprogress, onratechange, onreset, onresize, onscroll, onseeked, onseeking, onselect, onshow, onsort, onstalled, onsubmit, onsuspend, ontimeupdate, ontoggle, onvolumechange, onwaiting.
+
+常用HTML元素
+内容分区,以下元素皆只有全局属性，开始和结束标签都不能省略，
+<header> 用于展示介绍性内容，通常包含一组介绍性的或是辅助导航的实用元素。它可能包含一些标题元素，但也可能包含其他元素，比如 Logo、搜索框、作者名称，等等。
+<nav> HTML导航栏 (<nav>) 描绘一个含有多个超链接的区域，这个区域包含转到其他页面，或者页面内部其他部分的链接列表.
+<hgroup> 代表一个段的标题。它规定了在文档轮廓里的单一标题是它所属的隐式或显式部分的标题。
+<h1>-<h6> 标题(Heading)元素
+<main> 呈现了文档的 <body> 或应用的主体部分。
+  这部分内容在文档中应当是独一无二的，不包含任何在一系列文档中重复的内容，比如侧边栏，导航栏链接，版权信息，网站 Logo，搜索框（除非搜索框为文档的主要功能）。 
+<Section>  表示文档中的一个区域（或节），比如，内容中的一个专题组，一般来说会有包含一个标题（heading）
+<article> 元素表示文档、页面、应用或网站中的独立结构，其意在成为可独立分配的或可复用的结构，如在发布中，它可能是论坛帖子、杂志或新闻文章、博客、用户提交的评论、交互式组件，或者其他独立的内容项目。
+<aside> 表示一个和其余页面内容几乎无关的部分，被认为是独立于该内容的一部分并且可以被单独的拆分出来而不会使整体受影响。其通常表现为侧边栏或者标注框
+<footer> 表示最近一个章节内容或者根节点元素的页脚。一个页脚通常包含该章节作者、版权数据或者与文档相关的链接等信息。
+<address> 表示其中的 HTML 提供了某个人或某个组织（等等）的联系信息。
+  通常，<address> 元素可以放在 <footer> 元素之中
+
+表格内容
+<table> 表示表格数据 — 即通过二维数据表表示的信息。
+<caption> 表格标题元素，展示一个表格的标题， 它常常作为 <table> 的第一个子元素出现
+<colgroup> 标签用来定义表中的一组列表。
+<col> 定义表格中的列它通常位于<colgroup>元素内。
+<thead> 元素定义了一组定义表格的列头的行
+<tfoot>  定义了一组表格中各列的汇总行
+<tr> 表格中的行
+<th> 表格内的表头单元格
+  scope属性：
+    这个枚举属性定义了表头元素 (在<th>中定义) 关联的单元格。它可能有以下值：
+        row:  表头关联一行中所有的单元格。
+        col: 表头关联一列中所有的单元格。
+        rowgroup:表头属于一个行组并与其中所有单元格相关联。这些单元格可以被放在表头的左侧或右侧，取决于 <table> 元素中 dir 属性的值 。
+        colgroup: 表头属于一个列组并与其中所有单元格相关联。
+        auto
+<td> 表格中的单元格
+以上二元素父元素只能是<tr>
+  有属性：
+  colspan
+    这个属性包含一个正整数表示了每单元格中扩展列的数量。默认值为1. 如果该值被设置为 0, 这个单元格就被扩展为<colgroup>中的最后一个元素。超过1000的值被视作1000。
+  headers
+    这个属性包含了一个空间分隔的字符串的列表, 每个与其他<th>元素相关联的id 属性一一对应。
+  rowspan
+    这个属性包含一个正整数表示了每单元格中扩展列的数量。默认值为1. 如果该值被设置为 0, 这个单元格就被扩展为(<thead>，<tbody> 或<tfoot>)中表格部分的最后一个元素。比65534大的值被视作65534
+
+
+表单
+<form>
+<fieldset> 通常用来对表单中的控制元素进行分组(也包括 label 元素)
+<legend> 代表一个用于表示它的父元素<fieldset>的内容的标题。
+<label> 表示用户界面中某个元素的说明。
+<input>
+  text：单行字段；换行会将自动从输入的值中移除。
+  email：HTML5 用于编辑 e-mail 的字段。 合适的时候可以使用 :valid 和 :invalid CSS 伪类。
+  url：HTML5 用于编辑URL的字段。 The user may enter a blank or invalid address. 换行会被自动从输入值中移队。可以使用如：pattern 和 maxlength 样的属性来约束输入的值。 恰当的时候使可以应用 :valid 和 :invalid CSS 伪类。
+  search：HTML5用于输入搜索字符串的单行文本字段。换行会被从输入的值中自动移除。
+  password：一个值被遮盖的单行文本字段。使用 maxlength 指定可以输入的值的最大长度 。
+  tel：HTML5 用于输入电话号码的控件；换行会被自动从输入的值中移除A，但不会执行其他语法。可以使用属性，比如 pattern 和 maxlength 来约束控件输入的值。恰当的时候，可以应用 :valid 和 :invalid CSS 伪类。
+  number: HTML5 用于输入浮点数的控件。
+  range：HTML5 用于输入不精确值控件。如果未指定相应的属性，控件使用如下缺省值：
+      min：0
+      max：100
+      value：min + (max-min)/2，或当 max 小于 min 时使用 min
+      step：1
+  radio：单选按钮。必须使用 value 属性定义此控件被提交时的值。使用checked 必须指示控件是否缺省被选择。在同一个”单选按钮组“中，所有单选按钮的 name 属性使用同一个值； 一个单选按钮组中是，同一时间只有一个单选按钮可以被选择。
+  checkbox： 复选框。必须使用 value 属性定义此控件被提交时的值。使用 checked 属性指示控件是否被选择。也可以使用 indeterminate 指示复选框在一种不确定状态（大多数平台上，显示为一条穿过复选框的水平线）。
+  color：HTML5 用于指定颜色的控件。
+  file：此控件可以让用户选择文件。使用 accept 属性可以定义控件可以选择的文件类型。
+  image：图片提交按钮。必须使用 src 属性定义图片的来源及使用 alt 定义替代文本。还可以使用 height 和 width 属性以像素为单位定义图片的大小。
+  button：无缺省行为按钮。
+  submit：用于提交表单的按钮。
+  reset：用于将表单所内容设置为缺省值的按钮。
+  date：HTML5 用于输入日期的控件（年，月，日，不包括时间）。
+  month：HTML5 用于输入年月的控件，不带时区。
+  week：HTML5 用于输入一个由星期-年组成的日期，日期不包括时
+  time：HTML5 用于输入不含时区的时间控件。
+  datetime：HTML5 基于 UTC 时区的日期时间输入控件（时，分，秒及几分之一秒）。
+  datetime-local：HTML5 用于输入日期时间控件，不包含时区。
+  hidden：不显示在页面上的控件，但它的值会被提交到服务器。
+  
+<textarea>
+<select> 表示一个控件，提供一个选项菜单
+<button>
+<optgroup> 在选项菜单中创建一组选项
+<option>  单个选项，父元素为<select>、<optgroup>或<datalist>
+<datalist>  包含一组<option>,表示其他表单控件可选值
+<meter> 用来显示已知范围的标量值或者分数值。 
+<progress> 用来显示一项任务的完成进度
+<output> 示计算或用户操作的结果。
