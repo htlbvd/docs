@@ -1,31 +1,17 @@
 目录
-  值属性
-    Infinity NaN undefined null字面量 globalThis
-  函数属性
-    eval() isFinite() isNaN parseFloat() parseInt() ...
-  基本对象
-    Object Function Boolean Symbol Error ...
-  数字和日期对象
-    Number BigInt Math Data
-  字符串
-    String RegExp
-  和可索引的集合对象
-    Array ...
-  使用键的集合对象
-    Map Set WeakMap WeakSet
-  结构化数据
-    ArrayBuffer ShareArrayBuffer Atomics DataView JSON
-  控制抽象对象
-    Promise Generator GeneratorFunction AsyncFunction
-  反射
-    Reflect Proxy
-  国际化
-    Intl ...
-  WebAssembly
-    WebAssembly ...
-  其他
-    arguments
-
+  值属性      Infinity NaN undefined null字面量 globalThis
+  函数属性      eval() isFinite() isNaN parseFloat() parseInt() ...
+  基本对象      Object Function Boolean Symbol Error ...
+  数字和日期对象      Number BigInt Math Data
+  字符串      String RegExp
+  和可索引的集合对象      Array ...
+  使用键的集合对象      Map Set WeakMap WeakSet
+  结构化数据      ArrayBuffer ShareArrayBuffer Atomics DataView JSON
+  控制抽象对象      Promise Generator GeneratorFunction AsyncFunction
+  反射      Reflect Proxy
+  国际化      Intl ...
+  WebAssembly      WebAssembly ...
+  其他      arguments
 
 
 值属性
@@ -48,11 +34,13 @@
 
 基本对象
 Object
-
+  .is(x,y)      判断两个值是否相同。所有 NaN 值都会判断为相同。
   .assign({},{},...)      复制对象
   .create({},{})      创建对象
   .defineProperty({},'',{})      添加一个属性或修改属性的配置
   .defineProperties({},{})      添加多个属性或修改属性的配置
+  .getPrototypeOf()      返回 原型:{} （内部[[Prototype]]属性的值）
+  .setPrototypeOf({},{})      设置原型（即内部[[Prototype]]属性）。
   
   .entries()       返回 自身可枚举属性:[[key, value],...]
   .keys()      返回 自身可枚举属性的名称:['',...]
@@ -60,9 +48,6 @@ Object
   .getOwnPropertyNames()       返回 自身属性的 属性名:['',...] （包括不可枚举，不包括Symbol属性）
   .getOwnPropertyDescriptor({},'')      返回 指定自身属性的 配置:{}
   .getOwnPropertySymbols()       返回 所有自身Symbol属性:[]
- 
-  .getPrototypeOf()      返回 原型:{} （内部[[Prototype]]属性的值）
-  .setPrototypeOf({},{})      设置原型（即内部[[Prototype]]属性）。
 
   .freeze()      冻结对象：不能在做任何修改
   .seal()      封闭对象：阻止添加新属性并将所有现有属性标记为不可配置。
@@ -70,8 +55,6 @@ Object
   .isFrozen()      判断对象是否已经冻结。
   .isSealed()      判断对象是否已经密封。
   .isExtensible()      判断对象是否可扩展。
-
-  .is(x,y)      判断两个值是否相同。所有 NaN 值都会判断为相同。
 
 Object.prototype
   .hasOwnProperty()      判断自身属性中是否有指定属性
@@ -110,12 +93,12 @@ Number
   .isFinite()      判断参数是否为 数值类型且是有穷数
   .parseFloat()      和全局 parseFloat() 一样。
   .parseInt()      和全局 parseInt() 一样。
+
 Number.prototype.
   .toExponential(0-20)      以科学记数法表示此数:''
   .toFixed(0-20)      以固定的小数位数表示此数:''
   .toPrecision(0-100)      以指定的精度表示此数:''
   .toString(2-36)      以指定的进制表示此数:'' 覆盖了Object.prototype.toString()。
-  
   .toLocaleString([locales[,options]])      返回这个数字在特定语言环境下的表示字符串
   .valueOf()      返回指定Number对象的原始值的数字
 
@@ -132,7 +115,6 @@ Math
   .random()      [0,1)范围的伪随机数
   .max()      最大值
   .min()      最小值
-
   .abs()      绝对值
   .ceil()      向上取整
   .floor()      向下取整
@@ -155,15 +137,109 @@ Date
 
 字符串
 String
-  ...
+  .fromCharCode()       返回由指定的UTF-16数值序列创建的字符串
+  .fromCodePoint()      返回使用指定的代码点序列创建的字符串。
+  .raw()      返回给定模板字符串的原始字符串。
+String.prototype
+  以下所有函数都不会改变原字符串，对原字符串进行操作的函数会返回操作后得到的新字符串。
+  .charAt()      返回指定位置的字符。
+  .charCodeAt()      返回指定位置字符的UTF-16代码点数值
+  .codePointAt()      返回指定位置字符的UTF-16代码点数值。能够正确处理 4 个字节储存的字符
+  .slice(beginSlice[,endSlice])      摘取本字符串指定范围内的字符串片段
+  .substr(indexStart[,length])      摘取本字符串以指定索引处开始指定字符数的字符串，建议以.substring代替
+  .substring(indexStart[,indexEnd])      摘取本字符串指定索引范围内[indexStart,indexEnd)的字符串
+  
+  .split([''[, limit]])      将本字符串分隔成数组
+  .localeCompare()      判断指定字符串是否在本字符串：返回值 前面：正数，相同：0，后面：负数
+  
+  .includes(''[,position])      判断本字符串里是否包含指定字符串
+  .startsWith(''[,position])      判断本字符串是否以指定字符串开头
+  .endsWith(''[,length])      判断在本字符串是否以指定字符串结尾 
+  .indexOf(''[,fromIndex])      返回本字符串中首次出现指定字符串的索引值，如果没有找到则返回-1。
+  .lastIndexOf(''[,fromIndex])      从字符串对象中返回最后一个被发现的给定值的索引值，如果没有找到则返回-1。
+  .search(//)      返回本字符串中首次匹配指定正则表达式的索引值
+  .match(//)      返回本字符串匹配指定正则表达式的的结果：[]
+  .replace(//|'', ''|function)      将本字符串中按指定规则匹配到的字符串替换为指定字符串或指定函数返回值
 
-RegExp
-  ...
+  .toLowerCase()      将字符串全部转换成小写
+  .toUpperCase()      将字符串全部转换成大写
+  .toLocaleLowerCase()      根据当前区域设置，将本字符串中的字符转换成小写。对于大多数语言来说，toLowerCase的返回值是一致的。
+  .toLocaleUpperCase()      根据当前区域设置，将本字符串中的字符转换成大写，对于大多数语言来说，toUpperCase的返回值是一致的。
+  .repeat(count)      将本字符串重复指定次数
+  .padEnd(targetLength[,''])      用指定字符串在本字符串尾部向右重复填充直到达到指定长度
+  .padStart(targetLength[,''])      用指定字符串在本字符串头部向右重复填充直到达到指定长度
+  
+  .toString()      将本对象用字符串表示。重写 Object.prototype.toString 方法。
+  .valueOf()      返回特定对象的原始值。重写 Object.prototype.valueOf 方法。等同于String.prototype.toString()。
+  
+  .trim()      删除字符串两端空白字符
+  .trimStart()
+  .trimLeft()      删除字符串开头空白字符
+  .trimEnd()
+  .trimRight()      删除字符串末尾空白字符
+
+  .concat()      将原字符串和指定多个字符串连接，强烈建议用+代替
+  .normalize()      将本字符串按照指定形式正规化
+  .anchor(name)      创建一个name为指定值的<a>HTML锚元素
+
+RegExp.prototype
+  .global      判断正则表达式是否使用了"g"标志
+  .ignoreCase      判断正则表达式是否使用了"i"标志
+  .multiline      判断正则表达式是否使用了"m"标志
+  .sticky      判断正则表达式是否使用了"y"标志
+  .source      正则对象的源模式文本：''，不含'/'和标识符
+  以上属性都是三不可
+  .lastIndex      下次匹配开始的字符串索引位置。可写
+
+  .exec('')      返回成功匹配的字符串:[]
+  .test('')      判断本正则表达式是否匹配指定字符串
+  .toString()      返回一个该正则表达式的字符串形式。含'/'和标识符。覆盖了Object.prototype.toString() 方法。 
 
 
 可索引的集合对象
 Array
-  ...
+  .from(arrayLike[,mapFn[,thisArg]])      将类数组对象或者可迭代对象转换为一个数组
+  .isArray()      判断参数是否是一个数组
+  .of()      将参数作为数组的项创建一个数组并返回
+Array.prototype
+修改器方法，下面的这些方法会改变调用它们的对象自身的值：
+  .copyWithin(target[,start[,end]])      将数组指定索引范围[start,end)复制到该数组指定索引处，覆盖原有的值。并返回该数组。参数如果是负数，将从末尾开始计算。
+  .fill(value[,start[,end]])      将数组指定索引范围[start,end)所有元素的值，都替换成指定值。并返回该数组。
+  
+  .splice(start[,deleteCount[,item1[,item2[, ...]]]])      从数组指定索引处开始删除指定数目的元素，并将其后的参数从此处添加进数组中，返回被删掉元素:[],若开始位置为负数，从末尾开始数
+  .shift()      删除数组的第一个元素，并返回这个元素。
+  .pop()      删除数组的最后一个元素，并返回这个元素。
+  .unshift()      将指定的多个元素添加到数组开头，并返回数组的新长度。
+  .push()      将指定的多个元素添加到数组末尾，并返回数组的新长度。
+  
+  .reverse()      颠倒数组中元素的排列顺序，并返回该数组。
+  .sort([compareFunction])      对数组元素进行排序，并返回该数组。
+访问方法，下面的这些方法绝对不会改变调用它们的对象的值
+  .join('')      使用指定分隔符连接所有数组元素组成一个字符串。并返回
+  .concat()      将本数组与指定数组或元素拼接并返回该数组
+  .includes(valueToFind[, fromIndex])      判断当前数组是否包含指定的值，
+  .indexOf(searchElement[,fromIndex])      返回数组中第一个与指定值相等的元素的索引，如果找不到这样的元素，则返回 -1。
+  .lastIndexOf(searchElement[,fromIndex])      返回数组中最后一个与指定值相等的元素的索引，如果找不到这样的元素，则返回 -1。
+  以上fromIndex若为负数，视为array.length + fromIndex
+  .slice([begin[,end]])      抽取当前数组中的一段元素组合成一个新数组。
+  .toString()      返回一个由所有数组元素组合而成的用逗号分隔的字符串。覆盖了原型链上的 Object.prototype.toString() 方法。
+  .toLocaleString()      返回一个由所有数组元素组合而成的本地化后的字符串。覆盖了原型链上的 Object.prototype.toLocaleString() 方法。
+迭代方法，在下面的众多遍历方法中，有很多方法都需要指定一个回调函数作为参数。在每一个数组元素都分别执行完回调函数之前，数组的length属性会被缓存在某个地方，所以，如果你在回调函数中为当前数组添加了新的元素，那么那些新添加的元素是不会被遍历到的。此外，如果在回调函数中对当前数组进行了其它修改，比如改变某个元素的值或者删掉某个元素，那么随后的遍历操作可能会受到未预期的影响。总之，不要尝试在遍历过程中对原数组进行任何修改，虽然规范对这样的操作进行了详细的定义，但为了可读性和可维护性，请不要这样做。
+  .forEach()      为数组中的每个元素执行一次回调函数。返回undefined
+  .filter()      返回所有满足测试函数的元素；[]
+  .every()      判断数组中是否都每个元素满足测试函数
+  .some()      判断数组中是否至少有一个元素满足测试函数
+  .find()      返回第一个满足测试函数的元素的值，如果找不到，则返回 undefined。
+  .findIndex()      返回第一个满足测试函数的元素的索引，如果找不到，则返回 -1。
+  .map()      返回一个由回调函数的返回值组成的新数组。
+  以上回调函数参数：当前元素，当前元素索引，当前数组。满足测试函数即测试函数返回true。every和some一旦确定结果不会再继续执行回调函数
+  .reduce()      从左到右为每个数组元素执行一次回调函数，并把上次回调函数的返回值放在一个暂存器中传给下次回调函数，并返回最后一次回调函数的返回值。
+  .reduceRight()      从右到左为每个数组元素执行一次回调函数，并把上次回调函数的返回值放在一个暂存器中传给下次回调函数，并返回最后一次回调函数的返回值。
+  以上两个回调函数的参数：累计器，当前元素，当前元素索引，当前数组
+  .entries()      返回一个数组迭代器对象，该迭代器会包含所有数组元素的键值对
+  .keys()      返回一个数组迭代器对象，该迭代器会包含所有数组元素的键。。
+  .values()      返回一个数组迭代器对象，该迭代器会包含所有数组元素的值。
+  [@@iterator]()      和上面的 values() 方法是同一个函数。
 
 
 结构化数据
@@ -178,4 +254,6 @@ arguments
 
 
 
+
+来源：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects
 
