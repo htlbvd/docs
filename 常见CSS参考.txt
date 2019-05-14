@@ -8,6 +8,7 @@
         数值和单位
 
 
+
 层叠：
   顺序      来源      重要程度
   1      用户代理      普通
@@ -121,103 +122,180 @@
   ::marker      选择列表的前置标记，一般包含着重符号或数字。 任何设置 display: list-item属性的元素或伪元素都能使用::marker  比如 <li> 和<summary> 元素.
 
 常见属性
-  background
-    ...
-  font
-    ...
-  border
-    ...
+盒模型
   padding
     ...
   margin
     ...
-  outline
-    ...
-  color
-  clear
-  cursor
+视觉格式化模型
   display
-  float
-  visibility
-  overflow
-  height
-  line-height
-  max-height
-  min-height
+  position      定位方案
+  top
+  right
+  bottom
+  left      偏移量
+  z-index      堆叠层级
+
+  float      浮动
+  clear      清除浮动
+
+视觉格式化模型细节
+  
   width
-  max-width
   min-width
-  box-sizing
-  box-shadow
-  filter
-  background-blend-mode
-  mix-blend-mode
-Font 样式:
-  font-variant: 在小型大写字母和普通文本选项之间切换。
-  font-kerning: 开启或关闭字体间距选项。
-  font-feature-settings: 开启或关闭不同的 OpenType 字体特性。
-  font-variant-alternates: 控制给定的自定义字体的替代字形的使用。
-  font-variant-caps: 控制大写字母替代字形的使用。
-  font-variant-east-asian: 控制东亚文字替代字形的使用, 像日语和汉语。
-  font-variant-ligatures: 控制文本中使用的连写和上下文形式。
-  font-variant-numeric: 控制数字，分式和序标的替代字形的使用。
-  font-variant-position: 控制位于上标或下标处，字号更小的替代字形的使用。
-  font-size-adjust: 独立于字体的实际大小尺寸，调整其可视大小尺寸。
+  max-width
+  height
+  min-height
+  max-height
+  line-height      元素内行框最小高度
+  vertical-align      行内级元素生成的盒的行框内部的垂直定位
+可视化效果
+  overflow      溢出
+  clip      裁剪
+  visibility      可见性
+内容自动生成，自动编号和列表
+  content      ::before ::after伪元素的生成内容
+  quote      指定引号
+  counter-reset
+  counter-increment
+  list-style
+    ...
+分页媒体
+  page-break-before
+  page-break-after
+  page-break-inside      分页符控制
+  orphans
+  widow
+颜色与背景和边框（CSS3）
+  color
+  opacity      透明度
+  background      背景      <bg-layer># , <final-bg-layer>
+    <bg-layer> = <bg-image> || <bg-position> [ / <bg-size> ]? || <repeat-style> || <attachment> || <box> || <box>
+    <final-bg-layer> =  <‘-color’> || <bg-image> || <bg-position> [ / <bg-size> ]? || <repeat-style> || <attachment> || <box> || <box>
+    -corlor      背景颜色<color>
+    -image      背景图片<bg-image>#      <bg-image> = <image> | none
+    -repeat      图片重复<repeat-style>#      <repeat-style> = repeat-x | repeat-y | [repeat | space | round | no-repeat]{1,2}
+    -attachment      图片跟随内容滚动<attachment>#      <attachment> = scroll | fixed | local
+    -position      图片位置<bg-position> = [  [ left | center | right | top | bottom | <length-percentage> ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ] | [ center | [ left | right ] <length-percentage>? ] && [ center | [ top | bottom ] <length-percentage>? ] ]
+    -origin      图片放置位置<box>#
+    -clip      图片裁剪位置<box>#      <box> = border-box | padding-box | content-box
+    -size      图片大小<bg-size>#      <bg-size> = [ <length-percentage> | auto ]{1,2} | cover | contain
+  border,-top,-right,-bottom,-left      边框      <line-width> || <line-style> || <color>
+    -corlor      <color>{1,4}
+      -top-,-right-,-bottom-,-left-      <color>
+    -style      <line-style>{1,4}
+      -top-,-right-,-bottom-,-left-      <line-style> = none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset
+    -width      <line-width>{1,4}
+      -top-,-right-,-bottom-,-left-      <line-width> = <length> | thin | medium | thick
+  border-radius      圆角      <length-percentage> {1,4} [/ <length-percentage> {1,4}]？
+    -top-left-,-top-right-,-bottom-right-,-bottom-left-      <length-percentage> {1,2}
+  border-image      边框图像      <‘-source’> || <‘-slice’> [ / <‘-width’> | / <‘-width’>? / <‘-outset’> ]? || <‘-repeat’>
+    -source      none | <image>
+    -slice      图片裁剪为边框的位置[<number> | <percentage>]{1,4} && fill?
+    -width      [ <length-percentage> | <number> | auto ]{1,4}
+    -outset      [ <length> | <number> ]{1,4}
+    -repeat      四边和中间放置方式[ stretch | repeat | round | space ]{1,2}
+  box-shadow      none | <shadow>#      <shadow> = inset？ &&  <length> {2,4}  &&  <color> ？
+字体（CSS3）
+  font      字体      [ [ <‘-style’> || <-variant-css21> || <‘-weight’> || <‘-stretch’> ]? <‘-size’> [ / <‘line-height’> ]? <‘-family’> ] | caption | icon | menu | message-box | small-caption | status-bar
+    ...
+  font-size-adjust      字体的可视大小尺寸
+  font-synthesis      
+  font-kerning      字体间距
+  font-variant      字体变形
+    ...
+  font-feature-setting      开启或关闭不同的 OpenType 字体特性。
+
+书写模式（CSS3）
+  direction      文本方向      ltr | rtl
+  unicode-bidi
+  writing-mode      书写模式      horizontal-tb | vertical-rl | vertical-lr
+  text-orientation      垂直书写模式下的文字方向
+  text-combine-upright      垂直书写模式下文本组合
+文本模块（CSS3）
+  text-transform      大小写转换      none | [capitalize | uppercase | lowercase ] || full-width || full-size-kana
+  white-space      处理空白字符      normal | pre | nowrap | pre-wrap | break-spaces | pre-line
+  tab-size      制表符大小      <number> | <length>
+  
+  word-break      单词换行前判断将要溢出部分是否断词换行      normal | keep-all | break-all
+  line-break      标点处换行规则      auto | loose | normal | strict | anywhere
+  hyphens      连字符      none | manual | auto
+  overflow-wrap      等同于word-wrap
+  word-wrap      单词换行后判断将要溢出部分是否断词换行      normal | break-word | anywhere
+  
+  text-align      文本对齐方式      start | end | left | right | center | justify | match-parent | justify-all
+  text-align-all      默认文本对齐方式      start | end | left | right | center | justify | match-parent
+  text-align-last      最后一行对齐方式      auto | start | end | left | right | center | justify | match-parent
+  text-justify      auto | none | inter-word | inter-character
+  
+  word-spacing      单词间隔      normal | <length>
+  letter-spacing      字母间隔      normal | <length>
+  text-indent      首行缩进      [ <length-percentage> ] && hanging? && each-line?
+  hanging-punctuation      标点悬挂      none | [ first || [ force-end | allow-end ] || last ]
+文本装饰模块（CSS3）
+  text-decoration文本装饰      <‘-line’> || <‘-style’> || <‘-color’>
+    -line      装饰线位置      none | [ underline || overline || line-through || blink ]
+    -style      装饰线样式      solid | double | dotted | dashed | wavy
+    -color      装饰线颜色      <color>
+  text-underline-position      下划线位置      auto | [ under || [ left | right ] ]
+
+  text-emphasis      文本强调      <‘-style’> || <‘-color’>
+    -style      强调样式      none | [ [ filled | open ] || [ dot | circle | double-circle | triangle | sesame ] ] | <string>
+    -color      强调颜色<color>
+  text-emphasis-position      强调位置      [ over | under ] && [ right | left ]?
+
+  text-shadow      文本阴影      none | [ <color>? && <length>{2,3} ]#
+
+
+表格
+  table-layout      表格布局算法
+  caption-side      标题位置
+  border-collapse      边框模型
+  border-spacing      相邻单元格边框之间的距离
+  empty-cells      空单元格的边框与背景是否显示
+用户界面（CSS3）
+  cursor      光标
+  box-sizing      宽度算法
+  outline      轮廓      [ <-color> || <-style> || <-width> ]
+    ...
+  outline-offset     偏移
+  resize      调整大小
+  text-overflow      文本溢出处理方式
+  caret-color      插入符号颜色
+弹性盒（CSS3）
+  flex-flow      <‘flex-direction’> || <‘flex-wrap’>
+    flex-direction      布局方向      row | row-reverse | column | column-reverse
+    flex-wrap      换行      nowrap | wrap | wrap-reverse
+  justify-content      主轴内各元素对齐方式      flex-start | flex-end | center | space-between | space-around
+  align-items      交叉轴行内各元素对齐方式      flex-start | flex-end | center | baseline | stretch
+  align-content      交叉轴上各行对齐方式      flex-start | flex-end | center | space-between | space-around | stretch
+
+  order      设置显示顺序，只适用于弹性盒<integer>
+  flex      none | [ <‘-grow’> <‘-shrink’>? || <‘-basis’> ]      默认=(0 1 auto) auto=(1 1 auto) none=(0 0 auto) 正数=(正数 1 0)
+    -grow      拉伸因子      <number>
+    -shrink      收缩规则      <number>
+    -basis      初始主轴大小      content | <‘width’>
+  align-self      元素交叉轴对齐方式      auto | flex-start | flex-end | center | baseline | stretch
+变换（CSS3）
+  ...
+
+其他属性
+
+  text-orientation: 定义行内文本的方向。
+  punctuation-trim
+  text-outline
+  
   font-stretch: 在给定字体的可选拉伸版本中切换。
   text-underline-position: 指定下划线的排版位置，通过使用 text-decoration-line 属性的underline 值。
   text-rendering: 尝试执行一些文本渲染优化。
-
-文本布局样式：
-  text-indent: 指定文本内容的第一行前面应该留出多少的水平空间。
-  text-overflow: 定义如何向用户表示存在被隐藏的溢出内容。
-  white-space: 定义如何处理元素内部的空白和换行。
-  word-break: 指定是否能在单词内部换行。
-  direction: 定义文本的方向 (这取决于语言，并且通常最好让HTML来处理这部分，因为它是和文本内容相关联的。)
-  hyphens: 为支持的语言开启或关闭连字符。
-  line-break: 对东亚语言采用更强或更弱的换行规则。
-  text-align-last: 定义一个块或行的最后一行，恰好位于一个强制换行前时，如何对齐。
-  text-orientation: 定义行内文本的方向。
-  word-wrap: 指定浏览器是否可以在单词内换行以避免超出范围。
-  writing-mode: 定义文本行布局为水平还是垂直，以及后继文本流的方向。
-  letter-spacing
-  line-height
-  text-align
-  text-decoration
-  text-shadow
-  text-transform
-  unicode-bidi
-  word-spacing
-  hanging-punctuation
-  punctuation-trim
-  text-emphasis
-  text-justify
-  text-outline
-
-  list-style
   start
   reversed
   value
 
+  filter
+  background-blend-mode
+  mix-blend-mode
 
-  caption-side
-  empty-cells
-  table-layout
-  border-collaps
-
-  position
-  top
-  right
-  bottom
-  left
-  overflow
-  clip
-  vertical-align
-  z-index
-  flex
-  flex-flow
-  align-items
-  align-self
-  justify-content
 
 数值和单位
 
@@ -277,3 +355,79 @@ repeat() repeating-linear-gradient() repeating-redial-gradient()
   cubic-bezier()
   steps()
 
+CSS官方定义
+
+css2，最新版（包括勘误表）      （Level2,latest revision）[CSS2]      这定义了CSS的核心，其中的一部分被后来的规范所覆盖。我们特别推荐阅读第2章，其中介绍了CSS的一些基本概念及其设计原则。
+css语法3      （CSS syntax Level 3）[CSS-SYNTAX-3]      替换CSS2§4.1，CSS2§4.2，CSS2§4.4和CSS2§G，定义如何解析CSS。
+CSS样式属性      （CSS Style Attributes）[CSS-STYLE-ATTR]      定义如何在标记属性中嵌入CSS声明。
+媒体查询3      （Media Queries Level 3）[CSS3-MEDIAQUERIES]      替换CSS2§7.3并扩展特定于媒体的样式的语法。
+CSS条件规则      （CSS Conditional Rules Level 3）[CSS3-CONDITIONAL]      替换CSS2§7.2，更新@media规则的定义以允许嵌套，并为功能支持查询引入@supports规则。
+CSS命名空间      （CSS Namespaces）[CSS3-NAMESPACE]      引入@namespace规则以允许以名称空间为前缀的选择器。
+选择器3      （Selectors Level 3）[SELECT]      替换CSS2§5和CSS2§6.4.3，定义了扩展的选择器范围。
+CSS层叠和继承3      （CSS Cascading and Inheritance Level 3）[CSS-CASCADE-3]      取代CSS2§1.4.3和CSS2§6
+CSS值和单位3      （CSS Values and Units Level 3）[CSS-VALUES-3]      替换CSS2§1.4.2.1，CSS2§4.3和CSS2§A.2.1-3，定义CSS的属性定义语法并扩展其单元集。
+
+CSS颜色3      （CSS Color Level 3）[CSS3-COLOR]      替换CSS2§4.3.6，CSS2§14.1和CSS2§18.2，定义了扩展的颜色值范围。还介绍了opacity属性。
+CSS背景和边框3      （CSS Backgrounds and Borders Level 3）[CSS3-BACKGROUND]      取代CSS2§8.5和CSS2§14.2，提供更多的背景和边框控制，包括分层背景图像，图像边框和阴影。
+CSS图像值和替换内容3      （CSS Image Vaule and Replaced Content Level 3）[CSS3-IMAGES]      为替换元素（如图像）的大小调整提供新的基础文本，为其大小和方向添加其他控件，并在CSS中引入渐变作为图像的语法。
+CSS字体3      （CSS Fonts Level 3）[CSS-FONTS-3]      取代CSS2§15，并提供对字体选择和功能选择的更多控制。
+CSS多列布局1      （CSS Multi-column Layout Level 1）[CSS3-MULTICOL]      向CSS布局引入多列流。
+CSS用户界面3      （CSS User Interface Module Level 3）[CSS-UI-3]      替换CSS2§18.1和CSS2§18.4，定义游标，大纲和几个新的CSS功能，这些功能也增强了用户界面。
+CSS合成和混合1      （CSS Compositiong and Blending Level 1）[COMPOSITING]      定义叠加内容的合成和混合，并引入控制其模式的功能。
+CSS书写模式3      （CSS Writing Modes Level 3）[CSS-WRITING-MODES-3]      为各种国际书写模式定义CSS支持，例如从左到右（例如拉丁语或印度语），从右到左（例如希伯来语或阿拉伯语），双向（例如混合拉丁语和阿拉伯语）和垂直（例如亚洲文字） 。
+CSS弹性盒模块      （CSS Flexible Box Module Level 1）[CSS-FLEXBOX-1]      为CSS引入灵活的线性布局模型。
+CSS用于层叠变量的自定义属性模块1      （CSS Custom Properties for Cascading Variables Module Level 1）[CSS-VARIABLES-1]      引入级联变量作为所有CSS属性接受的新原始值类型，以及用于定义它们的自定义属性。
+CSS变换1      （CSS Transforms Level 1）[CSS3-TRANSFORMS]      介绍CSS的图形转换。
+
+CSS过渡1      （CSS Transitions Level 1）[CSS3-TRANSITIONS]
+CSS动画      （CSS Animations Level 1）[CSS3-ANIMATIONS]
+[CSS-EASING-1]。      定义用于随时间转换CSS属性的计算值的机制。
+CSS网格布局模块1      （CSS Grid Layout Module Level 1）[CSS-GRID-1]      定义基于网格的二维布局系统，针对用户界面设计进行了优化。在网格布局模型中，网格容器的子节点可以定位在预定义的灵活或固定大小的布局网格中的任意插槽中。
+CSS文本模块3      （CSS Text Module Level 3）[CSS-TEXT-3]      定义文本操作的属性并指定其处理模型。它包括换行，对齐和对齐，空白处理和文本转换。
+（CSS Will Change Level 1）[CSS-WILL-CHANGE-1]      引入一个名为will-change的性能提示属性。
+滤镜效果模块1      （Filter Effects Module Level 1）[FILTER-EFFECTS-1]      滤镜效果是在元素在文档中显示之前处理元素渲染的一种方式。
+
+CSS计数器样式等3      （CSS Counter Styles Level 3）[CSS-COUNTER-STYLES-3]      扩展<counter-style>的可能值，并为自定义计数器样式提供@ counter-style语法。
+（CSS Masking Level 1）[CSS-MASKING-1]      取代CSS2§11.1.2并引入了更强大的剪切和屏蔽内容的方法。
+CSS形状模块1      （CSS Shapes Module Level 1）[CSS-SHAPES-1]      延伸浮动以实现非矩形包裹形状。
+CSS文字装饰3      （CSS Text Decoration Level 3）[CSS-TEXT-DECOR-3]      替换CSS2§16.3，提供对文本修饰线的更多控制，并添加指定文本强调标记和文本阴影的功能。
+CSS语音模块1      （CSS Speech Module Level 1）[CSS3-SPEECH]      取代CSS2§A，彻底改变（非规范性）语音渲染章节。
+（CSS Box Alignment Module Level 3）[CSS-ALIGN-3]      包含CSS的功能，这些功能与各种CSS框布局模型中容器内框的对齐有关：块布局，表格布局，弹性布局和网格布局。
+CSS碎片模块3      （CSS Fragmentation Module Level 3）[CSS-BREAK-3]      描述将流划分为页面，列或区域的碎片模型。
+（CSS Containment Module Level 1）[CSS-CONTAIN-1]      描述contains属性，指示元素的子树独立于页面的其余部分。这样，如果使用得当，用户代理可以进行大量优化。
+（CSS Scroll Snap Module 1）[CSS-SCROLL-SNAP-1]      包含通过“捕捉位置”控制平移和滚动行为的功能。
+媒体查询4      （Media Queries Level 4）[MEDIAQUERIES-4]      扩展并取代[CSS3-MEDIAQUERIES]，扩展语法，弃用大多数媒体类型以及引入新的媒体功能。
+CSS层叠和继承4      （CSS Cascading and Inheritance Level 4）[CSS-CASCADE-4]      扩展并取代[CSS-CASCADE-3]，描述如何整理样式规则并为所有元素的所有属性赋值。通过级联和继承，为所有元素上的所有属性传播值。
+
+CSS 2.1规范目录
+1 关于CSS 2.1规范
+2 CSS 2.1简介
+3 一致性：要求和建议
+4 语法和基本数据类型
+5 选择器
+6 属性值赋值、层叠（Cascading）和继承
+7 媒体类型
+8 盒模型
+9 视觉格式化模型
+10 视觉格式化模型细节
+11 可视化效果
+12 内容生成，自动编号与列表
+13 分页媒体
+14 颜色与背景
+15 字体
+16 文本
+17 表格
+18 用户界面
+附录 A. 听觉（Aural）样式表
+附录 B. 参考文献
+附录 C. 改动
+附录 D. HTML 4的默认样式表
+附录 E. 层叠上下文（Stacking Contexts）详细描述
+附录 F. 属性表
+附录 G. CSS 2.1语法
+附录 I. 索引
+
+
+来源：
+https://www.w3.org/TR/css/
+http://www.ayqy.net/doc/css2-1/cover.html
