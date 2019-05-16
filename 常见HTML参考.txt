@@ -3,7 +3,253 @@
 
 属性：名称、描述、兼容性、枚举还是布尔、DOM接口
 元素：名称、描述：语义、内容类别、允许内容、允许父元素、DOM接口、特有属性
-、
+
+根元素
+  <html>      根元素
+文档元数据      元数据（Metadata）含有页面的相关信息，包括样式、脚本及数据，能帮助一些软件（例如 搜索引擎、浏览器 等等）更好地运用和渲染页面。对于样式和脚本的元数据，可以直接在网页里定义，也可以链接到包含相关信息的外部文件。
+  <base>      指定用于一个文档中包含的所有相对URL的基本URL。一份中只能有一个<base>元素。
+  <head>      文档元数据
+  <link>      链接外部资源，最常用于链接样式表。
+  <meta>      其他元数据
+  <style>      文档的样式信息
+  <title>       文档标题
+分区根元素
+  <body>      文档的内容
+内容分区      内容分区元素允许你将文档内容从逻辑上进行组织划分。使用包括页眉(header)、页脚(footer)、导航(nav)和标题(h1~h6)等分区元素，来为页面内容创建明确的大纲，以便区分各个章节的内容。
+  <address>      可以让作者为它最近的<article>或者<body>祖先元素提供联系信息。在后一种情况下，它应用于整个文档。
+  <article>      表示文档、页面、应用或网站中的独立结构，其意在成为可独立分配的或可复用的结构，如在发布中，它可能是论坛帖子、杂志或新闻文章、博客、用户提交的评论、交互式组件，或者其他独立的内容项目。
+  <aside>      表示一个和其余页面内容几乎无关的部分，被认为是独立于该内容的一部分并且可以被单独的拆分出来而不会使整体受影响。其通常表现为侧边栏或者嵌入内容。他们通常包含在工具条，例如来自词汇表的定义。也可能有其他类型的信息，例如相关的广告、笔者的传记、web 应用程序、个人资料信息，或在博客上的相关链接。
+  <footer>      表示最近一个章节内容或者根节点（sectioning root ）元素的页脚。一个页脚通常包含该章节作者、版权数据或者与文档相关的链接等信息。
+  <header>      用于展示介绍性内容，通常包含一组介绍性的或是辅助导航的实用元素。它可能包含一些标题元素，但也可能包含其他元素，比如 Logo、搜索框、作者名称，等等。
+  <h1>, <h2>, <h3>, <h4>, <h5>, <h6>      标题
+  <hgroup>      代表一个段的标题
+  <main>      本文档主体部分
+  <nav>      含有多个超链接的区域
+  <section>       表示文档中的一个区域,一般包含一个标题
+文本内容      使用 HTML 文本内容元素来组织在开标签 <body> 和闭标签 </body> 里的块或章节的内容。这些元素能标识内容的宗旨或结构，而这对于 accessibility 和 SEO 很重要。
+  <dl>       包含术语定义以及描述的列表
+  <dt>       描述列表中的术语
+  <dd>      描述列表中一个或多个术语的描述
+  <ol>       有序列表
+  <ul>      无序列表
+  <li>       列表项
+  <div>       是一个通用型的流内容容器
+  <figure>      代表一段独立的内容，比如主文中引用的图片，表格，代码等
+  <figcaption>       figure元素里的标题
+  <hr>      段落级元素之间的主题转换，是一个水平线
+  <p>      段落
+  <blockquote>      块级引用内容
+  <pre>      预定义格式文本
+内联文本语义      使用 HTML 内联文本语义（Inline text semantics）定义一个单词、一行内容，或任意文字的语义、结构或样式。
+  <a>      超链接
+  <abbr>      缩写
+  <b>      强调文本，显示粗体
+  <strong>      十分重要内容，粗体
+  <i>       技术术语、外文短语或是小说中人物的思想活动等通常以斜体显示的文本，显示斜体
+  <s>       不再相关，不再准确，删除线
+  <u>      表示具有未标注的文本跨度，显示渲染，非文本注释，中文文本中的专有名称或拼写错误。显示下划线
+  <small>      边注释和附属细则，包括版权和法律文本等通常以小号字体显示的内容，显示小字
+  <em>       着重内容
+  <bdi>       双向隔离元素
+  <bdo>      双向覆盖元素
+  <br>      换行
+  <cite>      一个作品的引用
+  <code>      代码
+  <data>       将一个指定内容和机器可读的翻译联系在一起。但如果内容是与 time 或者 date 相关的，一定要使用 <time>。?
+  <dfn>       术语的一个定义?
+  <kbd>      (<kbd>) 用于表示用户输入，它将产生一个行内元素，以浏览器的默认monospace字体显示。?
+  <mark>      突出显示
+  <q>      行内引用
+  <ruby>       被用来展示东亚文字注音或字符注释。
+  <rb>      The HTML Ruby Base (<rb>) element is used to delimit the base text component of a  <ruby> annotation, i.e. the text that is being annotated.
+  <rt>      包含字符的发音，字符在 ruby 注解中出现，它用于描述东亚字符的发音。这个元素始终在 <ruby> 元素中使用。
+  <rtc>      包含文字的语义注解，它们在 <rb> 元素中展示。<rb> 元素可以拥有发音 (<rt>) 和语义(<rtc>) 注解。
+  <rp>      用于为那些不能使用 <ruby> 元素展示 ruby 注解的浏览器，提供随后的圆括号。
+  <samp>      <samp> 元素用于标识计算机程序输出，通常使用浏览器缺省的 monotype 字体（例如 Lucida Console）。
+  <span>      是短语内容的通用行内容器，并没有任何特殊语义。可以使用它来编组元素以达到某种样式意图（通过使用类或者Id属性），或者这些元素有着共同的属性，比如lang。应该在没有其他合适的语义元素时才使用它。<span> 与 <div> 元素很相似，但 <div> 是一个 块元素 而 <span> 则是 行内元素 .
+  <sub>      下标
+  <sup>      上标
+  <time>      HTML time 标签(<time>) 用来表示24小时制时间或者公历日期，若表示日期则也可包含时间和时区。
+  <tt>       (<tt>) 产生一个内联元素，使用浏览器内置的 monotype 字体展示。这个元素用于给文本排版，使其等宽展示，就像电报那样。使用 <code> 元素来展示等宽文本可能更加普遍。
+  <var>      <var> 标签表示变量的名称，或者由用户提供的值。
+  <wbr>      一个文本中的位置，其中浏览器可以选择来换行，虽然它的换行规则可能不会在这里换行。
+图片和多媒体      HTML 支持各种多媒体资源，例如图像，音频和视频。
+  <map>      与area属性一起使用来定义一个图像映射
+  <area>       在图片上定义一个热点区域，可以关联一个超链接。仅在map元素内部使用。
+  <video>       视频内容。
+  <audio>      音频内容
+  <img>      图像
+  <track>       被当作媒体元素—<audio> 和 <video>的子元素来使用。它允许指定计时字幕（或者基于事件的数据），例如自动处理字幕。
+内嵌内容      除了常规的多媒体内容，HTML 可以包括各种其他的内容，即使它并不容易交互。
+  <applet>      标志着包含了Java的applet。
+  <embed>      将外部内容嵌入文档中的指定位置。此内容由外部应用程序或其他交互式内容源（如浏览器插件）提供。
+  <iframe>       表示嵌套的浏览上下文，有效地将另一个HTML页面嵌入到当前页面中。
+  <object>      （或者称作 HTML 嵌入对象元素）表示引入一个外部资源，这个资源可能是一张图片，一个嵌入的浏览上下文，亦或是一个插件所使用的资源。
+  <param>      为<object>元素定义参数
+  <picture>      是一个容器，用来为其内部特定的 <img> 元素提供多样的 <source> 元素。浏览器会根据当前页面（即图片所在的盒子的容器）的布局以及当前浏览的设备（比如普通的屏幕和高清屏幕）去从中选择最合适的资源。
+  <source>      为 <picture>, <audio> 或者 <video> 元素指定多个媒体资源。这是一个空元素。它通常用于以不同浏览器支持的多种格式提供相同的媒体内容。 It is commonly used to serve the same media content in multiple formats supported by different browsers.
+脚本      为了创建动态内容和 Web 应用程序，HTML 支持使用脚本语言，最突出的就是 JavaScript。某些元素支持此功能。
+  <canvas>      绘制图形
+  <noscript>      定义脚本未被执行时的替代内容
+  <script>      用于嵌入或引用可执行脚本。
+编辑标识      这些元素能标示出某个文本被更改过的部分。
+  <del>      HTML的<del>标签表示一些被从文档中删除的文字内容。比如可以在需要显示修改记录或者源代码差异的情况使用这个标签。<ins>标签的作用恰恰于此相反：表示文档中添加的内容。
+  <ins>      定义已经被插入文档中的文本。
+表格内容      这里的元素用于创建和处理表格数据。
+  <caption>       表格标题
+  <col>       定义表格中的列，它通常位于<colgroup>元素内。
+  <colgroup>      列组
+  <table>      表格
+  <thead>      定义了一组定义表格的列头的行。
+  <tfoot>      汇总行。
+  <tbody>      表格内容
+  <tr>      行
+  <td>      单元格
+  <th>       表头单元格
+表单      HTML 提供了许多可一起使用的元素，这些元素能用来创建一个用户可以填写并提交到网站或应用程序的表单。详情请参阅 HTML forms guide。
+  <form>       表单
+  <fieldset>      一组表单元素
+  <legend>      一组表单元素的标题
+  <label>      表单元素的说明
+  <input>      输入控件
+  <button>      按钮
+  <textarea>      多行纯文本编辑控件。
+  <select>      选项菜单
+  <optgroup>      select元素中的一组选项
+  <option>      <select>、<optgroup>或<datalist>下的一项
+  <datalist>      可选列表
+  <meter>      用来显示已知范围的标量值或者分数值。
+  <progress>      完成进度
+  <output>      表示计算或用户操作的结果。
+交互元素      HTML 提供了一系列有助于创建交互式用户界面对象的元素。
+  <details>      详细信息展现元素
+  <dialog>      表示一个对话框或其他交互式组件，例如一个检查员或窗口。
+  <menu>       呈现了一组用户可执行或激活的命令。这既包含了可能出现在屏幕顶端的列表菜单，也包含了那些隐藏在按钮之下、当点击按钮后显示出来的文本菜单。
+  <menuitem>      弹出式菜单
+  <summary>       用作 一个<details>元素的一个内容的摘要，标题或图例。
+Web 组件      Web 组件是一种与 HTML 相关联（HTML-related）的技术，简单来说，它允许创建自定义元素，并如同普通的 HTML 一样使用它们。此外，你甚至可以创建经过自定义的标准 HTML 元素。
+  <slot>      Web Components 技术的一部分，是自定义web组件的占位符，目的是分离创建DOM树和DOM树的表现（）。
+  <template>      是一种用于保存客户端内容机制，该内容在加载页面时不会呈现，但随后可以在运行时使用JavaScript实例化。
+
+
+
+属性列表
+  属性名      元素      描述
+  accept      "<form>, <input>"      服务器接受内容或文件类型的列表。
+  accept-charset      <form>      支持的字符集列表。
+  accesskey      Global attribute      定义键盘快捷键来激活或者聚焦元素
+  action      <form>      表单信息提交的url地址，指向进行处理的程序。
+  align      "<applet>, <caption>, <col>, <colgroup>,? <hr>, <iframe>, <img>, <table>, <tbody>,? <td>,? <tfoot> , <th>, <thead>, <tr>"      设置元素的水平对齐。
+  alt      "<applet>, <area>, <img>, <input>"      在图片无法呈现时的替代文本。
+  async      <script>      表示该脚本应该异步执行。
+  autocomplete      "<form>, <input>"      表示该表单中是否可以由浏览器自动完成填值。
+  autofocus      "<button>, <input>, <keygen>, <select>, <textarea>"      在网页加载后该元素应该自动聚焦。
+  autoplay      "<audio>, <video>"      ?audio或video应该自动播放
+  bgcolor      "<body>, <col>, <colgroup>, <marquee>, <table>, <tbody>, <tfoot>, <td>, <th>, <tr>"      "元素的背景颜色。NOTE：这是一个遗留属性，请使用css{“background-color"":}代替。"
+  border      "<img>, <object>, <table>"      边框宽度。Note:这是遗留属性，请使用 CSS border 属性代替。
+  buffered      "<audio>, <video>"      包含已缓存媒体的时间范围。
+  challenge      <keygen>      与公钥一起提交的挑战字符。
+  charset      "<meta>, <script>"      申明该页面或脚本的字符编码。
+  checked      "<command>, <input>"      指出该元素在页面加载后是否处于选中状态。
+  cite      "<blockquote>, <del>, <ins>, <q>"      包含一个URI，用来指明引用或修改的源地址。
+  class      Global attribute      经常和CSS一起配合使用来修饰元素。
+  code      <applet>      标明被加载和执行的applet类文件的URL。
+  codebase      <applet>      指出存放applet类文件基本URL地址(绝对或相对)，这些文件由code属性标明。
+  color      "<basefont>, <font>, <hr>"      "此属性可用于指定颜色
+  cols      <textarea>      定义一个textarea中包含多少列。
+  colspan      "<td>, <th>"      "该属性一般用在td标签中,用于指定一个单元格占用多少列,例如:<td colspan='2'>表示占用一个单元格占2列."
+  content      <meta>      A value associated with http-equiv or name depending on the context.
+  contenteditable      Global attribute      指出该元素的内容是否可以被编辑。
+  contextmenu      Global attribute      Defines the ID of a <menu> element which will serve as the element's context menu.
+  controls      "<audio>, <video>"      指出浏览器是否对用户显示播放控制台(前进或回退)
+  coords      <area>      A set of values specifying the coordinates of the hot-spot region.
+  data      <object>      资源URL地址
+  data-*      Global attribute      允许你对于一个HTML元素绑定自定义的属性。
+  datetime      "<del>, <ins>, <time>"      Indicates the date and time associated with the element.
+  default      <track>      Indicates that the track should be enabled unless the user's preferences indicate something different.
+  defer      <script>      Indicates that the script should be executed after the page has been parsed.
+  dir      Global attribute      Defines the text direction. Allowed values are ltr (Left-To-Right) or rtl (Right-To-Left)
+  dirname      "<input>, <textarea>"      
+  disabled      "<button>, <command>, <fieldset>, <input>, <keygen>, <optgroup>, <option>, <select>, <textarea>"      Indicates whether the user can interact with the element.
+  download      "<a>, <area>"      Indicates that the hyperlink is to be used for downloading a resource.
+  draggable      Global attribute      Defines whether the element can be dragged.
+  dropzone      Global attribute      Indicates that the element accept the dropping of content on it.
+  enctype      <form>      Defines the content type of the form date when the method is POST.
+  for      "<label>, <output>"      描述与当前元素绑定的元素。
+  form      "<button>, <fieldset>, <input>, <keygen>, <label>, <meter>, <object>, <output>, <progress>, <select>, <textarea>"      Indicates the form that is the owner of the element.
+  headers      "<td>, <th>"      IDs of the <th> elements which applies to this element.
+  height      "<canvas>, <embed>, <iframe>, <img>, <input>, <object>, <video>"      注意：在某些情况下，例如<div>，这是一个遗留属性，在这种情况下应该使用CSS height属性。 在其他情况下，例如<canvas>，必须使用此属性指定高度。
+  hidden      Global attribute      Indicates the relevance of an element.
+  high      <meter>      Indicates the lower bound of the upper range.
+  href      "<a>, <area>, <base>, <link>"      关联资源的URL。
+  hreflang      "<a>, <area>, <link>"      Specifies the language of the linked resource.
+  http-equiv      <meta>      
+  icon      <command>      Specifies a picture which represents the command.
+  id      Global attribute      Often used with CSS to style a specific element. The value of this attribute must be unique.
+  ismap      <img>      Indicatesthat the image is part of a server-side image map.
+  itemprop      Global attribute      
+  keytype      <keygen>      Specifies the type of key generated.
+  kind      <track>      Specifies the kind of text track.
+  label      <track>      Specifies a user-readable title of the text track.
+  lang      Global attribute      Defines the language used in the element.
+  language      <script>      Defines the script language used in the element.
+  list      <input>      Identifies a list of pre-defined options to suggest to the user.
+  loop      "<audio>, <bgsound>, <marquee>, <video>"      Indicates whether the media should start playing from the start when it's finished.
+  low      <meter>      Indicates the upper bound of the lower range.
+  manifest      <html>      Specifies the URL of the document's cache manifest.
+  max      "<input>, <meter>, <progress>"      Indicates the maximum value allowed.
+  maxlength      "<input>, <textarea>"      Defines the maximum number of characters allowed in the element.
+  media      "<a>, <area>, <link>, <source>, <style>"      Specifies a hint of the media for which the linked resource was designed.
+  method      <form>      Defines which HTTP method to use when submitting the form. Can be GET (default) or POST.
+  min      "<input>, <meter>"      Indicates the minimum value allowed.
+  multiple      "<input>, <select>"      Indicates whether multiple values can be entered in an input of the type email or file.
+  name      "<button>, <form>, <fieldset>, <iframe>, <input>, <keygen>, <object>, <output>, <select>, <textarea>, <map>, <meta>, <param>"      Name of the element. For example used by the server to identify the fields in form submits.
+  novalidate      <form>      This attribute indicates that the form shouldn't be validated when submitted.
+  open      <details>      Indicates whether the details will be shown on page load.
+  optimum      <meter>      Indicates the optimal numeric value.
+  pattern      <input>      Defines a regular expression which the element's value will be validated against.
+  ping      "<a>, <area>"      
+  placeholder      "<input>, <textarea>"      Provides a hint to the user of what can be entered in the field.
+  poster      <video>      A URL indicating a poster frame to show until the user plays or seeks.
+  preload      "<audio>, <video>"      "Indicates whether the whole resource, parts of it or nothing should be preloaded."
+  pubdate      <time>      Indicates whether this date and time is the date of the nearest <article> ancestor element.
+  radiogroup      <command>      
+  readonly      "<input>, <textarea>"      Indicates whether the element can be edited.
+  rel      "<a>, <area>, <link>"      Specifies the relationship of the target object to the link object.
+  required      "<input>, <select>, <textarea>"      Indicates whether this element is required to fill out or not.
+  reversed      <ol>      Indicates whether the list should be displayed in a descending order instead of a ascending.
+  rows      <textarea>      Defines the number of rows in a textarea.
+  rowspan      "<td>, <th>"      Defines the number of rows a table cell should span over.
+  sandbox      <iframe>      
+  spellcheck      Global attribute      Indicates whether spell checking is allowed for the element.
+  scope      <th>      
+  scoped      <style>      
+  seamless      <iframe>      
+  selected      <option>      Defines a value which will be selected on page load.
+  shape      "<a>, <area>"      
+  size      "<input>, <select>"      Defines the width of the element (in pixels). If the element's type attribute is text or password then it's the number of characters.
+  sizes      <link>      
+  span      "<col>, <colgroup>"      
+  src      "<audio>, <embed>, <iframe>, <img>, <input>, <script>, <source>, <track>, <video>"      The URL of the embeddable content.
+  srcdoc      <iframe>      
+  srclang      <track>      
+  start      <ol>      Defines the first number if other than 1.
+  step      <input>      
+  style      Global attribute      定义CSS样式，这些样式会覆盖之前设置的样式。
+  summary      <table>      
+  tabindex      Global attribute      Overrides the browser's default tab order and follows the one specified instead.
+  target      "<a>, <area>, <base>, <form>"      
+  title      Global attribute      当鼠标悬停在元素上面时，提示框显示的文本。
+  type      "<button>, <input>, <command>, <embed>, <object>, <script>, <source>, <style>, <menu>"      定义元素的类型。
+  usemap      "<img>,? <input>, <object>"      
+  value      "<button>, <option>, <input>, <li>, <meter>, <progress>, <param>"      定义页面加载时，在元素内显示的默认值。
+  width      "<canvas>, <embed>, <iframe>, <img>, <input>, <object>, <video>"      "Note: In some instances, such as <div>, this is a legacy attribute, in which case the CSS width?property should be used instead. In other cases, such as <canvas>, the width must be specified with this attribute."
+  wrap      <textarea>      Indicates whether the text should be wrapped.
+
+
+
+
+
 常见的基本HTML全局属性：
 class  值是一个以空格分隔的元素的类名（classes ）列表.
   它允许 CSS 和 Javascript 通过类选择器 (class selectors) 或DOM方法( document.getElementsByClassName)来选择和访问特定的元素。
@@ -146,4 +392,11 @@ xml:lang 和 xml:base————两者都是从XHTML规范继承，但为了兼
 <datalist>  包含一组<option>,表示其他表单控件可选值
 <meter> 用来显示已知范围的标量值或者分数值。 
 <progress> 用来显示一项任务的完成进度
-<output> 示计算或用户操作的结果。
+<output> 显示计算或用户操作的结果。
+
+
+
+来源：
+https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element
+https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes
+https://html.spec.whatwg.org/multipage/indices.html

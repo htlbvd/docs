@@ -39,6 +39,7 @@
 @规则
   @charset      定义样式表使用的字符集。      @charset "<charset>";
   @import      告诉CSS引擎引入一个外部样式表。      @import [ <string> | <url> ] [ <media-query-list> ]?
+    <url> = url( <string> <url-modifier>* )
   @namespace      告诉CSS引擎必须考虑XML命名空间。       @namespace <namespace-prefix>? [ <string> | <url> ];
   嵌套@规则 是嵌套语句的子集,不仅可以作为样式表里的一个语句，也可以用在条件规则组里：
     @page      描述打印文档时布局的变化。
@@ -46,8 +47,36 @@
       ...
     @keyframes      描述CSS动画的中间步骤。
     条件规则组
-    @media      如果满足媒介查询的条件则条件规则组里的规则生效。       @media <media-query-list> { <group-rule-body> }
-      ...
+    @media      媒体查询       @media <media-query-list> { <group-rule-body> }
+      <media-query> = <media-condition> | [ not | only ]? <media-type> [ and <media-condition-without-or> ]?
+      <media-condition> = not <media-in-parens> | <media-in-parens> [ [ and <media-in-parens> ]* | [ or <media-in-parens> ]* ]
+      <media-condition-without-or> = not <media-in-parens> | <media-in-parens> [ and <media-in-parens> ]*
+      <media-in-parens> = ( <media-condition> ) | ( [ <mf-name> : <mf-value> | <mf-name> | <mf-range> ] ) | <general-enclosed>
+      <mf-range> = <mf-name> [ '<' | '>' ]? '='? <mf-value> | <mf-value> [ '<' | '>' ]? '='? <mf-name> | <mf-value> '<' '='? <mf-name> '<' '='? <mf-value> | <mf-value> '>' '='? <mf-name> '>' '='? <mf-value>
+      <media-type> = all | print | screen | speech
+      <mf-name>:
+        name      名称      value      type
+        视口/页面尺寸
+          width      宽      <length>      range
+          height      高      <length>      range
+          aspect-ratio      宽高比      <ratio>      range
+          orientation      方向      portrait | landscape      discrete
+        显示标准
+          resolution      分辨率      <resolution> | infinite      range
+          scan      显示类型      interlace | progressive      discrete
+          grid      栅格      0|1      discrete
+          update      更新频率      none | slow | fast      discrete
+          overflow-block      块溢出处理      none | scroll | optional-paged | paged      discrete
+          overflow-inline      行溢出处理      none | scroll      discrete
+        颜色
+          color      彩色程度      <integer>      range
+          color-index      颜色查找表的条目的数量      <integer>      range
+          monochrome      在单色帧缓冲器每像素的比特数      <integer>      range
+          color-gamut      色域      srgb | p3 | rec2020      discrete
+        不推荐使用
+          device-width      设备宽度      <length>      range
+          device-height      设备高度      <length>      range
+          device-aspect-ratio      设备宽高比      <ratio>      range
     @supports      如果满足给定条件则条件规则组里的规则生效。
     @document      如果文档样式表满足给定条件则条件规则组里的规则生效。 (推延至CSSLevel 4 规范)
 
@@ -126,7 +155,8 @@
 
   ::slotted()      匹配被放在 HTML模板 中的元素
   ::placeholder      可以选择一个表单元素的占位文本，它允许开发者和设计师自定义占位文本的样式。
-  ::marker      选择列表的前置标记，一般包含着重符号或数字。 任何设置 display: list-item属性的元素或伪元素都能使用::marker  比如 <li> 和<summary> 元素.
+  ::marker      选择列表的前置标记，一般包含着重符号或数字。任何设置 display: list-item属性的元素或伪元素都能使用::marker  比如 <li> 和<summary> 元素.
+
 
 常见属性
 显示类型（CSS3）
@@ -172,13 +202,51 @@
     <mask-layer> = <mask-reference> <masking-mode>? || <position> [ / <bg-size> ]? || <repeat-style> || <geometry-box> || [ <geometry-box> | no-clip ] || <compositing-operator>
     ...
 生成的内容（CSS3）、列表样式（CSS3）
-  content      ::before ::after伪元素的生成内容
-  quote      指定引号
+  content      生成内容      [ [ <image> | <url> ] ',' ]* [ normal | none | <content-list> ] [/ <string> ]?
+  <content-list> = [ <string> | contents | <uri> | <quote> | document-url | <target> | leader() ]+
+  quote      指定引号      [ <string> <string> ]+ | none
     ...
-  counter-reset
-  counter-increment
-  list-style
-    ...
+  list-style      列表样式      <'-position'> || <'-image'> || <'-type'>
+    -position     inside | outside
+    -image      <image> | none
+    -type      <counter-style> | <string> | none
+      <counter-style> = <counter-style-name> | symbols();
+      <counter-style-name>
+        数字
+        decimal      西方十进制数      (1, 2, 3, ..., 98, 99, 100).
+        decimal-leading-zero      由初始零填充的十进制数      (01, 02, 03, ..., 98, 99, 100).
+        arabic-indic      阿拉伯语编号      (١‎, ٢‎, ٣‎, ٤‎, ..., ٩٨‎, ٩٩‎, ١٠٠‎).
+        armenian，upper-armenian      大写亚美尼亚语编号      (Ա, Բ, Գ, ..., ՂԸ, ՂԹ, Ճ).
+        cjk-decimal      汉字十进制数     (一, 二, 三, ..., 九八, 九九, 一〇〇).
+        devanagari      梵文编号     (१, २, ३, ..., ९८, ९९, १००).
+        georgian      格鲁吉亚编号     (ა, ბ, გ, ..., ჟჱ, ჟთ, რ).
+        mongolian      蒙古语编号     (᠑, ᠒, ᠓, ..., ᠙᠘, ᠙᠙, ᠑᠐᠐).
+        lower-roman      小写罗马数字     (i, ii, iii, ..., xcviii, xcix, c).
+        upper-roman      大写罗马数字     (I, II, III, ..., XCVIII, XCIX, C).
+        tibetan      藏文编号     (༡, ༢, ༣, ..., ༩༨, ༩༩, ༡༠༠).
+        ...
+        字母
+        lower-alpha,lower-latin      小写拉丁字母     (a, b, c, ..., z, aa, ab).
+        upper-alpha,upper-latin      大写拉丁字母     (A, B, C, ..., Z, AA, AB).
+        cjk-earthly-branch      地支     (子, 丑, 寅, ..., 亥, 子子, 子丑).
+        cjk-heavenly-stem      天干     (甲, 乙, 丙, ..., 癸, 甲甲, 甲乙).
+        lower-greek      小写希腊字母     (α, β, γ, ..., ω, αα, αβ).
+        hiragana      字典顺序平假名     (あ, い, う, ..., ん, ああ, あい).
+        hiragana-iroha      伊吕波平假名     (い, ろ, は, ..., す, いい, いろ).
+        katakana      字典顺序片假名     (ア, イ, ウ, ..., ン, アア, アイ).
+        katakana-iroha      伊吕波片假名     (イ, ロ, ハ, ..., ス, イイ, イロ)
+        形状
+        disc      实心圆点(默认值)
+        circle      空心圆点
+        square      实心方块
+        disclosure-open      列表打开
+        disclosure-closed      列表关闭
+        复杂的（-9999~9999）
+        simp-chinese-informal      小写简体中文数字
+        simp-chinese-formal      大写简体中文数字
+  marker-side      标记位置      match-self | match-parent
+  counter-increment      计数器增量      [ <custom-ident> <integer>? ]+ | none
+  counter-reset,counter-set      固定名次      [ <custom-ident> <integer>? ]+ | none
   ...
 颜色、背景、边框、阴影（CSS3）
   color      颜色      <color>
@@ -222,9 +290,9 @@
   font-size-adjust      字体的可视大小尺寸      none | <number>
   font-synthesis      字体合成      none | [ weight || style ]
   font-kerning      字体间距      auto | normal | none
-  font-variant      字体变形      	normal | none | [ <common-lig-values> || <discretionary-lig-values> || <historical-lig-values> || <contextual-alt-values> ]
+  font-variant      字体变形      normal | none | [ <common-lig-values> || <discretionary-lig-values> || <historical-lig-values> || <contextual-alt-values> ]
     ...
-  font-feature-setting      开启或关闭不同的 OpenType 字体特性。      	normal | <feature-tag-value> #
+  font-feature-setting      开启或关闭不同的 OpenType 字体特性。      normal | <feature-tag-value> #
 书写模式（CSS3）
   direction      文本方向      ltr | rtl
   unicode-bidi      normal | embed | isolate | bidi-override | isolate-override | plaintext
@@ -285,6 +353,7 @@
     e-resize | n-resize | ne-resize | nw-resize | s-resize | se-resize | sw-resize | 
     w-resize | ew-resize | ns-resize | nesw-resize | nwse-resize | col-resize | row-resize | 
     all-scroll | zoom-in | zoom-out ] ]
+    ...
   caret-color      光标颜色      auto | <color>
 弹性盒（CSS3）
   flex-flow      <‘flex-direction’> || <‘flex-wrap’>
@@ -332,7 +401,7 @@
   ...
 
 
-数值和单位 https://www.w3.org/TR/css-values-3/
+数值和单位
 CSS属性值定义语法
   基本组成元素
     关键字
@@ -444,6 +513,7 @@ CSS 2.1规范目录
 
 
 来源：
+https://developer.mozilla.org/zh-CN/docs/Web/CSS
 https://www.w3.org/TR/css/
 https://www.w3.org/TR/CSS22
 http://www.ayqy.net/doc/css2-1/cover.html
