@@ -1,39 +1,114 @@
+目录
+  语法
+  选项
+  实例属性和方法
+  指令
+  特殊特性
+  内置组件
+
 语法
+  var app=new Vue({
+    选项/数据:选项值，
+    选项/DOM:选项值，
+    选项/生命周期钩子:函数，//在实例的对应生命周期执行函数
+    选项/资源:选项值，
+    选项/组合:选项值，
+    选项/其他:选项值
+  })
+
+  let app = new Vue({...});
+  app.实例属性；
+  app.实例方法/数据();
+  app.实例方法/事件();
+  app.实例方法/生命周期();
+
+  <div 指令></div>
+  <div 指令=值></div>
+  <div 指令:参数=值></div>
+  <div 指令:参数.修饰符=值></div>
+
+  <div 特殊特性=特性值></div>
+
+  <内置组件></内置组件>
+
+  选项/数据
+    data
+    computed 计算属性
+      { [key: string]: Function | { get: Function, set: Function } }
+    methods 方法
+      { [key: string]: Function }
+    watch 侦听属性
+
+
 选项
-实例属性和方法
-指令
-特殊特性
-内置组件
-
-语法
-var app=new Vue({
-  选项/数据:选项值，
-  选项/DOM:选项值，
-  选项/生命周期钩子:函数，//在实例的对应生命周期执行函数
-  选项/资源:选项值，
-  选项/组合:选项值，
-  选项/其他:选项值
-})
-
-let app = new Vue({...});
-app.实例属性；
-app.实例方法/数据();
-app.实例方法/事件();
-app.实例方法/生命周期();
-
-<div 指令></div>
-<div 指令=值></div>
-<div 指令:参数=值></div>
-<div 指令:参数.修饰符=值></div>
-
-<div 特殊特性=特性值></div>
-
-<内置组件></内置组件>
-
-选项/数据
+数据
   data
-  computed 计算属性
-    { [key: string]: Function | { get: Function, set: Function } }
-  methods 方法
-    { [key: string]: Function }
-  watch 侦听属性
+  props
+  propsData
+  computed
+  methods
+  watch
+DOM
+  el
+  tmplate
+  render
+  renderError
+生命周期钩子
+  beforeCreate
+  created
+  beforeMount
+  mounted
+  beforeUpdata
+  updated
+  activated
+  deactivated
+  beforeDestroy
+  destroyed
+  errorCaptured
+...
+
+
+实例属性和方法
+  ...
+
+
+指令
+  v-text：更新元素的textContent
+  v-html：更新元素的 innerHTML
+  v-show：条件渲染，根据表达式之真假值，切换元素的CSS display属性。当条件变化时该指令触发过渡效果
+  v-if:条件渲染，根据表达式的值的真假条件渲染元素。当条件变化时该指令触发过渡效果。
+  v-else：
+  v-else-if：
+  v-for：列表渲染，基于源数据多次渲染元素或模板块。
+  v-on：@，绑定事件监听器。
+    .stop：调用 event.stopPropagation()。
+    .prevent：调用 event.preventDefault()。
+    .capture：添加事件侦听器时使用 capture 模式。
+    .self：只当事件是从侦听器绑定的元素本身触发时才触发回调。
+    .{keyCode | keyAlias}：只当事件是从特定键触发时才触发回调。
+    .native：监听组件根元素的原生事件。
+    .once：只触发一次回调。
+    .left：(2.2.0) 只当点击鼠标左键时触发。
+    .right：(2.2.0) 只当点击鼠标右键时触发。
+    .middle：(2.2.0) 只当点击鼠标中键时触发。
+    .passive：(2.3.0) 以 { passive: true } 模式添加侦听器
+  v-bind：:，动态地绑定一个或多个特性，或一个组件 prop 到表达式。
+    .prop：被用于绑定 DOM 属性 (property)。(差别在哪里？)
+    .camel：(2.1.0+) 将 kebab-case 特性名转换为 camelCase. (从 2.1.0 开始支持)
+    .sync (2.3.0+) 语法糖，会扩展成一个更新父组件绑定值的 v-on 侦听器。
+  v-model：在表单控件或者组件上创建双向绑定。
+    .lazy：取代 input 监听 change 事件
+    .number：输入字符串转为有效的数字
+    .trim：输入首尾空格过滤
+  v-slot：#，提供具名插槽或需要接收 prop 的插槽。
+  v-pre：跳过这个元素和它的子元素的编译过程。可用于优化
+  v-cloak：这个指令保持在元素上直到关联实例结束编译。
+  v-once：只渲染元素和组件一次。可用于优化
+
+
+特殊特性
+  ...
+
+
+内置组件
+  ...

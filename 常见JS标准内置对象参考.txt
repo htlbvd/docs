@@ -1,6 +1,6 @@
 目录
   值属性      Infinity NaN undefined null字面量 globalThis
-  函数属性      eval() isFinite() isNaN parseFloat() parseInt() ...
+  函数属性      eval() isFinite() isNaN() parseFloat() parseInt() ...
   基本对象      Object Function Boolean Symbol Error ...
   数字和日期对象      Number BigInt Math Data
   字符串      String RegExp
@@ -252,6 +252,10 @@ JSON
 arguments
   ...
 
+
+
+属性：名称、兼容性、可读写、描述：返回、返回值类型、（其他注意事项）
+方法：名称、兼容性、语法、参数、描述：行为及返回、返回值类型、（其他注意事项）
 
 
 
