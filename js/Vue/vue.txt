@@ -128,3 +128,10 @@ v-model 会忽略所有表单元素的 value、checked、selected 特性的初�
 如果想自动将用户的输入值转为数值类型，可以给 v-model 添加 number 修饰符
 .trim
 如果要自动过滤用户输入的首尾空白字符，可以给 v-model 添加 trim 修饰符
+
+
+
+如果你想要将一个对象的所有属性都作为 prop 传入，你可以使用不带参数的 v-bind (取代 v-bind:prop-name)。
+
+自定义事件名推荐始终使用 kebab-case
+组件和prop命名

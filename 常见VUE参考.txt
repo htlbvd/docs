@@ -1,5 +1,7 @@
 目录
   语法
+  全局配置
+  全局API
   选项
   实例属性和方法
   指令
@@ -40,13 +42,39 @@
     watch 侦听属性
 
 
+全局配置
+  silent
+  optionMergeStrategies
+  devtools
+  errorHandler
+  warnHandler
+  ignoredElements
+  keyCodes
+  performance
+  productionTip
+全局API
+  Vue.extend
+  Vue.nextTick
+  Vue.set
+  Vue.delete
+  Vue.directive
+  Vue.filter
+  Vue.component( id, [definition] )：注册或获取全局组件。
+  Vue.use
+  Vue.mixin
+  Vue.compile
+  Vue.observable
+  Vue.version
+
+
+
 选项
 数据
-  data
-  props
+  data：Object | Function：Vue 实例的数据对象
+  props：Array<string> | Object：组件的自定义特性，接收来自父组件的数据。
   propsData
-  computed
-  methods
+  computed：{ [key: string]: Function | { get: Function, set: Function } }：
+  methods：{ [key: string]: Function }：
   watch
 DOM
   el
@@ -65,11 +93,53 @@ DOM
   beforeDestroy
   destroyed
   errorCaptured
-...
+资源
+  directives
+  filters
+  components：Object：包含 Vue 实例可用组件的哈希表。
+组合
+  parent
+  mixins
+  extends
+  provide / inject
+其它
+    name
+    delimiters
+    functional
+    model
+    inheritAttrs：boolean：默认false：父作用域的不被认作 props 的特性绑定是否将会“回退”且作为普通的 HTML 特性应用在子组件的根元素上。
+    comments
 
 
 实例属性和方法
-  ...
+实例属性
+  vm.$data
+  vm.$props
+  vm.$el
+  vm.$options
+  vm.$parent
+  vm.$root
+  vm.$children
+  vm.$slots
+  vm.$scopedSlots
+  vm.$refs
+  vm.$isServer
+  vm.$attrs：{ [key: string]: string }：只读：包含了父作用域中不作为 prop 被识别 (且获取) 的特性绑定(class 和 style 除外)。
+  vm.$listeners
+实例方法 / 数据
+  vm.$watch
+  vm.$set
+  vm.$delete
+实例方法 / 事件
+  vm.$on( event, callback )：监听当前实例上的自定义事件。
+  vm.$once
+  vm.$off
+  vm.$emit( eventName, […args] )：触发当前实例上的事件。
+实例方法 / 生命周期
+  vm.$mount
+  vm.$forceUpdate
+  vm.$nextTick
+  vm.$destroy
 
 
 指令
@@ -100,6 +170,10 @@ DOM
     .lazy：取代 input 监听 change 事件
     .number：输入字符串转为有效的数字
     .trim：输入首尾空格过滤
+    表单类型：
+      text和textarea元素：绑定value属性，input事件
+      checkbox和radio：绑定checked属性，change事件
+      select：绑定prop，change事件
   v-slot：#，提供具名插槽或需要接收 prop 的插槽。
   v-pre：跳过这个元素和它的子元素的编译过程。可用于优化
   v-cloak：这个指令保持在元素上直到关联实例结束编译。
@@ -107,8 +181,17 @@ DOM
 
 
 特殊特性
-  ...
+  key
+  ref
+  is
+  slot
+  slot-scope
+  scope 
 
 
 内置组件
-  ...
+  component
+  transition
+  transition-group
+  keep-alive
+  slot
