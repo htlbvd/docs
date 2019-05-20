@@ -103,12 +103,12 @@ DOM
   extends
   provide / inject
 其它
-    name
-    delimiters
-    functional
-    model
-    inheritAttrs：boolean：默认false：父作用域的不被认作 props 的特性绑定是否将会“回退”且作为普通的 HTML 特性应用在子组件的根元素上。
-    comments
+  name
+  delimiters
+  functional
+  model：{ prop?: string, event?: string }：允许一个自定义组件在使用 v-model 时定制 prop 和 event。
+  inheritAttrs：boolean：默认false：父作用域的不被认作 props 的特性绑定是否将会“回退”且作为普通的 HTML 特性应用在子组件的根元素上。
+  comments
 
 
 实例属性和方法
@@ -117,8 +117,8 @@ DOM
   vm.$props
   vm.$el
   vm.$options
-  vm.$parent
-  vm.$root
+  vm.$parent：Vue instance：当前实例的父实例
+  vm.$root：Vue instance：当前组件树的根 Vue 实例。
   vm.$children
   vm.$slots
   vm.$scopedSlots
@@ -184,14 +184,17 @@ DOM
   key
   ref
   is
-  slot
-  slot-scope
-  scope 
+  slot：自2.6.0起被废弃
+  slot-scope：自2.6.0起被废弃
+  scope：移除
 
 
 内置组件
   component
   transition
   transition-group
-  keep-alive
+  keep-alive：包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们。
+    include：',',//,[,]
+    exclude
+    max：
   slot
