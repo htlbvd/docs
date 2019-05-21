@@ -398,10 +398,70 @@
       opacity() = opacity(<number-percentage> ?)      对输入图像中的样本应用透明度。      不允许使用负值。省略时的默认值为1。插值的初始值为1。
       saturate() =饱和(<number-percentage> ?)      饱和输入图像。      不允许使用负值。省略时的默认值为1。插值的初始值为1。
       sepia() = sepia(<number-percentage> ?)      将输入图像转换为棕褐色。      不允许使用负值。省略时的默认值为1。插值的初始值为0。
+过渡[CSS3-TRANSITIONS]、动画[CSS3-ANIMATIONS]、[CSS-EASING-1]
+  transition      过渡      [ [ none | all | <custom-ident> ] || <time> || <timing-function> || <time> ]#
+    -property      应用过渡的属性      none | [ all | <custom-ident> ]#
+    -duration      持续时间      <time>#
+    -delay      延迟时间      <time>#
+    -timing-function      <timing-function>#
+
+  animation      动画      <single-animation>#
+    <single-animation> = <time> || <timing-function> || <time> || <single-animation-iteration-count> || <single-animation-direction> || <single-animation-fill-mode> || <single-animation-play-state> || [ none | <keyframes-name> ]
+    -name      名称      [ none | <keyframes-name> ]#
+    -duration      单周期持续时间      <time>#
+    -timing-function      <timing-function>#
+    -iteration-count      重复次数      <single-animation-iteration-count>#
+      <single-animation-iteration-count> = infinite | <number>
+    -direction      方向      <single-animation-direction>#
+      <single-animation-direction> = normal | reverse | alternate | alternate-reverse
+    -play-state      播放状态      <single-animation-play-state>#
+      <single-animation-play-state> = running | paused
+    -delay      延迟时间      <time>#
+    -fill-mode      <single-animation-fill-mode>#
+      <single-animation-fill-mode> = none | forwards | backwards | both
+
+    @keyframes = @keyframes <keyframes-name> { <rule-list> }
+    <keyframes-name> = <custom-ident> | <string>
+    <keyframe-block> = <keyframe-selector># { <declaration-list> }
+    <keyframe-selector> = from | to | <percentage>
+  
+  <timing-function>
+  <easing-function> = linear | <cubic-bezier-easing-function> | <step-easing-function>
+  <cubic-bezier-easing-function> = ease | ease-in | ease-out | ease-in-out | cubic-bezier(<number>, <number>, <number>, <number>)
+  <step-easing-function> = step-start | step-end | steps(<integer>[, <step-position>]?)
+  <step-position> = jump-start | jump-end | jump-none | jump-both | start | end
+
+  <declaration-list>      声明列表
+  <rule-list>      规则列表
+...
+
+
+数值和单位[CSS-VALUES-3]
+
+  <custom-ident>      自定义标识符
+  <string>
+  <url>
+
+  <integer>
+  <number>
+  <percentage>
+
+  <length>
+
+  <angle>
+  <time>
+  <frequency>
+  <resolution>
+
+  <color>
+  <image>
+  <position>
+
+  calc()
+  attr()
   ...
+...
 
-
-数值和单位
 CSS属性值定义语法
   基本组成元素
     关键字
@@ -435,9 +495,6 @@ CSS属性值定义语法
   max() min() minmax()
   radial-gradient() linear-gradient()
   repeat() repeating-linear-gradient() repeating-redial-gradient()
-  <timing-function>
-    cubic-bezier()
-    steps()
 
 CSS官方定义
 
@@ -449,7 +506,7 @@ CSS官方定义
   CSS命名空间      （CSS Namespaces）[CSS3-NAMESPACE]      引入@namespace规则以允许以名称空间为前缀的选择器。
   选择器3      （Selectors Level 3）[SELECT]      替换CSS2§5和CSS2§6.4.3，定义了扩展的选择器范围。
   CSS层叠和继承3      （CSS Cascading and Inheritance Level 3）[CSS-CASCADE-3]      取代CSS2§1.4.3和CSS2§6
-  CSS值和单位3      （CSS Values and Units Level 3）[CSS-VALUES-3]      替换CSS2§1.4.2.1，CSS2§4.3和CSS2§A.2.1-3，定义CSS的属性定义语法并扩展其单元集。
+  CSS数值和单位3      （CSS Values and Units Level 3）[CSS-VALUES-3]      替换CSS2§1.4.2.1，CSS2§4.3和CSS2§A.2.1-3，定义CSS的属性定义语法并扩展其单元集。
 
   CSS颜色3      （CSS Color Level 3）[CSS3-COLOR]      替换CSS2§4.3.6，CSS2§14.1和CSS2§18.2，定义了扩展的颜色值范围。还介绍了opacity属性。
   CSS背景和边框3      （CSS Backgrounds and Borders Level 3）[CSS3-BACKGROUND]      取代CSS2§8.5和CSS2§14.2，提供更多的背景和边框控制，包括分层背景图像，图像边框和阴影。
@@ -465,7 +522,7 @@ CSS官方定义
 
   CSS过渡1      （CSS Transitions Level 1）[CSS3-TRANSITIONS]
   CSS动画      （CSS Animations Level 1）[CSS3-ANIMATIONS]
-  [CSS-EASING-1]。      定义用于随时间转换CSS属性的计算值的机制。
+  [CSS-EASING-1]      定义用于随时间转换CSS属性的计算值的机制。
   CSS网格布局模块1      （CSS Grid Layout Module Level 1）[CSS-GRID-1]      定义基于网格的二维布局系统，针对用户界面设计进行了优化。在网格布局模型中，网格容器的子节点可以定位在预定义的灵活或固定大小的布局网格中的任意插槽中。
   CSS文本模块3      （CSS Text Module Level 3）[CSS-TEXT-3]      定义文本操作的属性并指定其处理模型。它包括换行，对齐和对齐，空白处理和文本转换。
   （CSS Will Change Level 1）[CSS-WILL-CHANGE-1]      引入一个名为will-change的性能提示属性。

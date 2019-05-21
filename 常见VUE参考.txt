@@ -1,12 +1,15 @@
 目录
   语法
-  全局配置
-  全局API
-  选项
-  实例属性和方法
-  指令
-  特殊特性
-  内置组件
+  API
+  过渡
+    全局配置
+    全局API
+    选项
+    实例属性和方法
+    指令
+    特殊特性
+    内置组件
+
 
 语法
   var app=new Vue({
@@ -42,6 +45,36 @@
     watch 侦听属性
 
 
+过渡
+在进入/离开的过渡中，会有 6 个 class 切换。
+  v-enter：定义进入过渡的开始状态。
+  v-enter-active：定义进入过渡生效时的状态。
+  v-enter-to：定义进入过渡的结束状态。
+  v-leave：定义离开过渡的开始状态。
+  v-leave-active：定义离开过渡生效时的状态。
+  v-leave-to：定义离开过渡的结束状态。
+
+  过渡：
+  操作              点击                                      点击
+  类名所在时间  隐藏时间 |延迟时间|     过渡时间   |增加的时间|显示时间|延迟时间|         过渡时间       |增加的时间|  隐藏时间
+  被添加的类名 --- none | enter | enter-to  -->  enter-to | none --- none | leave-to      -->      leave-to | none ---
+  被添加的类名 --- none | enter-active  ---  enter-active | none --- none | leave-active  -->  leave-active | none ---
+  元素状态      静态  突|变 静态 |    持续变化    |  静态  突|变   静态       |         持续变化      |  静态  突|变  静态
+
+  定义类：enter-active;enter;leave-active;
+
+  过渡是enter/none时刻的样式过渡到处于enter-to/leave-to时刻元素所拥有的样式
+
+自定义过渡的类名
+  enter-class
+  enter-active-class
+  enter-to-class
+  leave-class
+  leave-active-class
+  leave-to-class
+
+
+API
 全局配置
   silent
   optionMergeStrategies
@@ -191,7 +224,31 @@ DOM
 
 内置组件
   component
-  transition
+  transition：
+    Props
+      name
+      appear
+      css
+      type
+      mode
+      duration
+      enter-class,leave-class,appear-class
+      enter-to-class,leave-to-class,appear-to-class
+      enter-active-class,leave-active-class,appear-active-class
+    事件
+      before-enter
+      before-leave
+      before-appear
+      enter
+      leave
+      appear
+      after-enter
+      after-leave
+      after-appear
+      enter-cancelled
+      leave-cancelled (v-show only)
+      appear-cancelled
+
   transition-group
   keep-alive：包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们。
     include：',',//,[,]
