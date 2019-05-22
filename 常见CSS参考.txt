@@ -387,18 +387,18 @@
 滤镜效果（CSS3）
   filter      none | <filter-value-list>
     <filter-value-list> = [ <filter-function> | <url> ]+
-    <filter-function> = <blur()> | <brightness()> | <contrast()> | <drop-shadow()> | <grayscale()> | <hue-rotate()> | <invert()> | <opacity()> | <sepia()> | <saturate()>
-      blur() = blur(<length> ?)      对输入图像应用高斯模糊。      不允许使用负值。省略时的默认值为0px。插值的初始值为0px。
-      brightness() =brightness(<number-percentage> ?)      调整亮度      不允许使用负值。省略时的默认值为1。插值的初始值为1。
-      contrast() =contrast(<number-percentage> ?)      调整输入的对比度。      不允许使用负值。省略时的默认值为1。插值的初始值为1。
-      drop-shadow() = drop-shadow(<color> ? &&  <length> {2,3})      对投影图像应用阴影效果。      省略长度的默认值为0，省略颜色默认为color属性值。插值的初始值是所有长度值设置为0并且使用的颜色设置为透明。注意：不接受spread值或多个阴影。
-      grayscale() =grayscale(<number-percentage> ?)      将输入图像转换为灰度。      不允许使用负值。省略时的默认值为1。插值的初始值为0。
-      hue-rotate() = hue-rotate([ <angle>  |  <zero> ] ?)      在输入图像上应用色调旋转。      如果<angle>为零，则可以省略单元标识符。省略时的默认值为0deg。插值的初始值为0deg。
-      invert() = invert(<number-percentage> ?)      反转输入图像中的样本。      不允许使用负值。省略时的默认值为1。插值的初始值为0。
-      opacity() = opacity(<number-percentage> ?)      对输入图像中的样本应用透明度。      不允许使用负值。省略时的默认值为1。插值的初始值为1。
-      saturate() =饱和(<number-percentage> ?)      饱和输入图像。      不允许使用负值。省略时的默认值为1。插值的初始值为1。
-      sepia() = sepia(<number-percentage> ?)      将输入图像转换为棕褐色。      不允许使用负值。省略时的默认值为1。插值的初始值为0。
-过渡[CSS3-TRANSITIONS]、动画[CSS3-ANIMATIONS]、[CSS-EASING-1]
+    <filter-function>
+      blur(<length>?)      对输入图像应用高斯模糊。      不允许使用负值。省略时的默认值为0px。插值的初始值为0px。
+      brightness(<number-percentage>?)      调整亮度      不允许使用负值。省略时的默认值为1。插值的初始值为1。
+      contrast(<number-percentage>?)      调整输入的对比度。      不允许使用负值。省略时的默认值为1。插值的初始值为1。
+      drop-shadow(<color>? && <length> {2,3})      对投影图像应用阴影效果。      省略长度的默认值为0，省略颜色默认为color属性值。插值的初始值是所有长度值设置为0并且使用的颜色设置为透明。注意：不接受spread值或多个阴影。
+      grayscale(<number-percentage>?)      将输入图像转换为灰度。      不允许使用负值。省略时的默认值为1。插值的初始值为0。
+      hue-rotate([ <angle>  |  <zero> ]?)      在输入图像上应用色调旋转。      如果<angle>为零，则可以省略单元标识符。省略时的默认值为0deg。插值的初始值为0deg。
+      invert(<number-percentage>?)      反转输入图像中的样本。      不允许使用负值。省略时的默认值为1。插值的初始值为0。
+      opacity(<number-percentage>?)      对输入图像中的样本应用透明度。      不允许使用负值。省略时的默认值为1。插值的初始值为1。
+      saturate(<number-percentage>?)      饱和输入图像。      不允许使用负值。省略时的默认值为1。插值的初始值为1。
+      sepia(<number-percentage>?)      将输入图像转换为棕褐色。      不允许使用负值。省略时的默认值为1。插值的初始值为0。
+过渡[CSS3-TRANSITIONS]、动画[CSS3-ANIMATIONS]、缓动函数[CSS-EASING-1]
   transition      过渡      [ [ none | all | <custom-ident> ] || <time> || <timing-function> || <time> ]#
     -property      应用过渡的属性      none | [ all | <custom-ident> ]#
     -duration      持续时间      <time>#
@@ -423,44 +423,118 @@
     @keyframes = @keyframes <keyframes-name> { <rule-list> }
     <keyframes-name> = <custom-ident> | <string>
     <keyframe-block> = <keyframe-selector># { <declaration-list> }
+    此处<rule-list> = <keyframe-block>*
     <keyframe-selector> = from | to | <percentage>
   
   <timing-function>
   <easing-function> = linear | <cubic-bezier-easing-function> | <step-easing-function>
-  <cubic-bezier-easing-function> = ease | ease-in | ease-out | ease-in-out | cubic-bezier(<number>, <number>, <number>, <number>)
-  <step-easing-function> = step-start | step-end | steps(<integer>[, <step-position>]?)
+  <cubic-bezier-easing-function>      立方贝塞尔函数      ease | ease-in | ease-out | ease-in-out | cubic-bezier(<number>, <number>, <number>, <number>)
+  <step-easing-function>      阶梯函数      step-start | step-end | steps(<integer>[, <step-position>]?)
   <step-position> = jump-start | jump-end | jump-none | jump-both | start | end
 
   <declaration-list>      声明列表
   <rule-list>      规则列表
-...
 
 
 数值和单位[CSS-VALUES-3]
-
-  <custom-ident>      自定义标识符
-  <string>
-  <url>
-
-  <integer>
-  <number>
-  <percentage>
-
-  <length>
-
-  <angle>
-  <time>
-  <frequency>
-  <resolution>
-
-  <color>
-  <image>
-  <position>
-
-  calc()
-  attr()
+值定义语法
   ...
-...
+文本数据类型
+  initial      初始值
+  inherit      继承值，父元素的计算值
+  unset      设为初始值或继承值
+  <custom-ident>      自定义标识符
+  <string>      由双引号或单引号分隔的字符
+  <url>      资源定位器      url（<string>  <url-modifier>*）
+数字数据类型
+  <integer>      整数
+  <number>      实数
+  <dimension>      带有单位的数字
+  <percentage>      百分数，一个后跟百分号％的数字
+  <length-percentage>
+  <frequency-percentage>
+  <angle-percnetage>
+  <time-percentage>
+  <number-percentage>      [ <number> | <percentage> ]
+距离单位
+  <length>
+  相对长度
+    字体相对长度
+    em	当前元素的font-size的计算值
+    ex	x-height of the element’s font
+    ch	width of the "0" (ZERO, U+0030) glyph in the element’s font
+    rem	根元素的font-size的计算值
+    视口百分比长度
+    vw	视口宽度的1%
+    vh	视口高度的1%
+    vmin	视口宽度和高度中较小值的1%
+    vmax	视口宽度和高度中较大值的1%
+  绝对长度，都是兼容单位
+    cm	厘米	1cm = 96px/2.54
+    mm	毫米	1mm = 1/10th of 1cm
+    Q	0.25毫米	1Q = 1/40th of 1cm
+    in	英寸	1in = 2.54cm = 96px
+    pc	派卡	1pc = 1/6th of 1in
+    pt	点	1pt = 1/72th of 1in
+    px	像素	1px = 1/96th of 1in      规范单位
+其他数量，以下都是兼容单位
+  <angle>      角度单位
+    deg      度      规范单位
+    grad      梯度
+    rad      弧度
+    turn      转
+  <time>      时间单位
+    s      秒      规范单位
+    ms      毫秒
+  <frequency>      频率单位
+    Hz      赫兹      规范单位
+    kHz      千赫
+  <resolution>      分辨率单位
+    dpi      每英寸点数
+    dpcm      每厘米点数
+    dppx      每px点数      规范单位
+其他数据类型
+  <color>
+    基本颜色关键字
+      aqua, black, blue, fuchsia, gray, green, lime, maroon
+      浅绿色，黑色，蓝色，紫红色，灰色，绿色，石灰，栗色
+      navy, olive, purple, red, silver, teal, white, yellow
+      海军蓝，橄榄色，紫色，红色，银色，蓝绿色，白色，黄色
+    扩展颜色关键字
+      ...
+    surrentColor      继承color属性的计算值
+    数值颜色值
+      RGB      #f00，#ff0000，rgb(255,0,0),rgb(100%,0%,0%)
+      RGBA      rgba(255,0,0,0.5),rgba(100%,0%,0%,0.5)
+      transparent      完全透明，透明黑色，rgba(0,0,0,0)
+      HSL      hsl(0,100%,50%)
+      HSLA      hsla(0,100%,50%,0.5)
+  <image>      <url> | <image-list> | <element-reference>  | <gradient>
+    <image-list> = image( [ <image-decl> , ]* [ <image-decl> | <color> ] )
+    <image-decl> = [ <url> | <string> | <element-reference> ]
+    <gradient> = [ <linear-gradient> | <radial-gradient> | <repeating-linear-gradient> | <repeating-radial-gradient> ]
+    <linear-gradient> = linear-gradient([ [ <angle> | to <side-or-corner> ] ,]? <color-stop>[, <color-stop>]+)
+    <repeating-linear-gradient> = reapeating-linear-gradient(...)
+    <side-or-corner> = [left | right] || [top | bottom]
+    <radial-gradient> = radial-gradient( [ [ <shape> || <size> ] [ at <position> ]? , | at <position>, ]? <color-stop> [ , <color-stop> ]+)
+    <repeating-radial-gradient> = repeating-radial-gradient(...)
+    <color-stop> = <color> [ <percentage> | <length> ]?
+  <position>
+    <position> = [ [ left | center | right ] || [ top | center | bottom ] | [ left | center | right | <length-percentage> ] [ top | center | bottom | <length-percentage> ]? | [ [ left | right ] <length-percentage> ] && [ [ top | bottom ] <length-percentage> ] ]
+
+函数表示
+  calc()
+    <calc()> = calc( <calc-sum> )
+    <calc-sum> = <calc-product> [ [ '+' | '-' ] <calc-product> ]*
+    <calc-product> = <calc-value> [ '*' <calc-value> | '/' <calc-number-value> ]*
+    <calc-value> = <number> | <dimension> | <percentage> | ( <calc-sum> )
+    <calc-number-sum> = <calc-number-product> [ [ '+' | '-' ] <calc-number-product> ]*
+    <calc-number-product> = <calc-number-value> [ '*' <calc-number-value> | '/' <calc-number-value> ]*
+    <calc-number-value> = <number> | ( <calc-number-sum> )
+  attr()      属性引用，返回元素上属性的值
+    attr( <attr-name> <type-or-unit>? [ , <attr-fallback> ]? )
+    ...
+
 
 CSS属性值定义语法
   基本组成元素
@@ -488,16 +562,10 @@ CSS属性值定义语法
     !      叹号      组必须产生一个值      [ bold? smaller? ]!
 
 函数
-  url() rgb() calc() attr() brightness()
-  clamp() conic-gradient() counter() cross-fade() element() env() 
-  fit-content() var()
-  image-set() image()
-  max() min() minmax()
-  radial-gradient() linear-gradient()
-  repeat() repeating-linear-gradient() repeating-redial-gradient()
+  brightness() clamp() conic-gradient() counter() cross-fade() element() env() 
+  fit-content() var() image-set() max() min() minmax()
 
 CSS官方定义
-
   css2，最新版（包括勘误表）      （Level2,latest revision）[CSS2]      这定义了CSS的核心，其中的一部分被后来的规范所覆盖。我们特别推荐阅读第2章，其中介绍了CSS的一些基本概念及其设计原则。
   css语法3      （CSS syntax Level 3）[CSS-SYNTAX-3]      替换CSS2§4.1，CSS2§4.2，CSS2§4.4和CSS2§G，定义如何解析CSS。
   CSS样式属性      （CSS Style Attributes）[CSS-STYLE-ATTR]      定义如何在标记属性中嵌入CSS声明。
@@ -522,7 +590,7 @@ CSS官方定义
 
   CSS过渡1      （CSS Transitions Level 1）[CSS3-TRANSITIONS]
   CSS动画      （CSS Animations Level 1）[CSS3-ANIMATIONS]
-  [CSS-EASING-1]      定义用于随时间转换CSS属性的计算值的机制。
+  CSS缓动      [CSS-EASING-1]      定义用于随时间转换CSS属性的计算值的机制。
   CSS网格布局模块1      （CSS Grid Layout Module Level 1）[CSS-GRID-1]      定义基于网格的二维布局系统，针对用户界面设计进行了优化。在网格布局模型中，网格容器的子节点可以定位在预定义的灵活或固定大小的布局网格中的任意插槽中。
   CSS文本模块3      （CSS Text Module Level 3）[CSS-TEXT-3]      定义文本操作的属性并指定其处理模型。它包括换行，对齐和对齐，空白处理和文本转换。
   （CSS Will Change Level 1）[CSS-WILL-CHANGE-1]      引入一个名为will-change的性能提示属性。
@@ -569,8 +637,8 @@ CSS 2.1规范目录
   附录 I. 索引
 
 
-来源：
-https://developer.mozilla.org/zh-CN/docs/Web/CSS
-https://www.w3.org/TR/css/
-https://www.w3.org/TR/CSS22
-http://www.ayqy.net/doc/css2-1/cover.html
+参考：
+  https://developer.mozilla.org/zh-CN/docs/Web/CSS
+  https://www.w3.org/TR/css/
+  https://www.w3.org/TR/CSS22
+  http://www.ayqy.net/doc/css2-1/cover.html
