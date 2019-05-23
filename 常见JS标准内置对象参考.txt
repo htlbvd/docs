@@ -59,11 +59,13 @@ Object
 Object.prototype
   .hasOwnProperty()      判断自身属性中是否有指定属性
   .propertyIsEnumerable()      判断指定属性是否可是自身可枚举属性
-  .isPrototypeOf()      判断指定的对象是否在本对象的原型链中。
-
+  .isPrototypeOf()      判断本对象是否在指定对象的原型链中。
   .toLocaleString()      直接调用toString()方法
   .toString()      返回对象的字符串表示
   .valueOf()      返回对象的原始值
+  自身，本对象（无参数时）或指定对象（调用静态方法时）
+  本对象，操作对象，调用方法的对象
+  指定对象，参数中的对象
 
 Function.prototype
   .apply()      使用指定this值调用函数通过传入数组或类数组对象为此函数传入参数
@@ -259,5 +261,6 @@ arguments
 
 
 
-来源：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects
+参考：
+  https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects
 
