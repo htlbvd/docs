@@ -1,11 +1,160 @@
+ES5
+创建对象
 1.工厂模式
-function createrPerson(name,age,job){
-	var o = new Object();
-	o.name=name;
-	o.age = age;
-	o.job = job;
-	o.sayName = function(){
-		alert(this.name);
-	};
-	return o;
+function createrPerson(name){
+  var o = new Object();
+  o.name=name;
+  o.sayName = function(){
+    alert(this.name);
+  };
+  return o;
 }
+var person1 = createPerson('bvd');
+2.构造函数模式
+function Person(name){
+  this.name = name;
+  this.sayName = function(){
+    alert(this.name);
+  }
+}
+var person1 = new Person('bvd');
+3.原型模式
+function Person(){}
+Person.prototype.name = 'bvd';
+Person.prototype.sayName = function(){
+  alert(this.name);
+}
+var person1 = new Person();
+4.组合构造函数模式和原型模式（常用）
+function Person(name){
+  this.name = name;
+}
+Person.prototype.sayName = function(){
+  alert(this.name);
+}
+var person1 = new Person('bvd')
+5.动态原型模式
+function (name){
+  this.name = name;
+  if (typeof this.sayName != "function"){
+    Person.prototype.sayName = function(){
+      alert(this.name);
+    }
+  }
+}
+var person1 = new Person('bvd');
+6.寄生构造函数模式
+function Person(name){
+  var o new Object();
+  o.sayName = function(){
+    alert(this.name);
+  }
+  return o;
+}
+var person1 = new Person('bvd');
+7.稳妥构造函数模式
+function Person(name){
+  var o = new Object();
+  o.sayName = function{
+    alert(name);
+  }
+  return o;
+}
+var person1 = Person('bvd')
+
+
+继承
+1.原型链
+function SuperType(){
+  this.property = true;
+}
+SuperType.prototype.getSuperValue = function(){
+  return this.property;
+}
+function SubType(){
+  this.subproperty = false;
+}
+SubType.prototype = new SuperType();
+SubType.prototype.getSubValue = function(){
+  return this.subproperty;
+}
+var instance = new SubType;
+2.借用构造函数
+function SuperType(){
+  this.colors = ['red','blue','green'];
+}
+function SubType(){
+  SuperType.call(this);
+}
+var instance = new SubType();
+3.组合继承
+function SuperType(name){
+  this.name = name;
+  this.colors = ['red','blue','green']
+}
+SuperType.prototype.sayName = function(){
+  alert(this.name);
+};
+function SubType(name,age){
+  SuperType.call(this,name);
+  this.age = age;
+}
+SubType.prototype = new SuperType();
+SubType.prototype.constructor = SubType;
+SubType.prototype.sayAge = function(){
+  alert(this.age);
+};
+var instance = new SubType('bvd',29);
+4.原型式继承
+Object.create()
+5.寄生式继承
+function createAnother(origina){
+  var clone = Object.create(origina);
+  clone.sayHi = function(){
+    alert('hi');
+  }
+  return clone;
+}
+var person = {
+  name: 'bvd',
+  friends:['Shelby','Court','van']
+}
+var anotherPerson = createAnother(person);
+6.寄生组合式继承(常用)
+function SuperType(name){
+  this.name = name;
+  this.colors = ['red','blue','green'];
+}
+SuperType.prototype.sayName = function(){
+  alert(this.name);
+};
+function SubType(name,age){
+  SuperType.call(this,name);
+  this.age = age;
+}
+SubType.prototype = Object.create(superType.prototype);
+SubType.prototype.constructor = SubType;
+SubType.prototype.sayAge = funciton(){
+  alert(this.age);
+}
+
+要点：
+function Obj(value){
+  this.property = value;
+  this.const = const;
+  this.array = [];
+}
+Obj.prototype.method = function(){};
+
+funciton Obj1(value,value1){
+  Obj.call(this,value)
+  this.property = value1;
+}
+Obj1.prototype = Object.create(Obj.prototype);
+Obj1.prototype.method = funciton (){}
+
+
+参考：
+  JavaScript高级程序设计（第三版）
+
+

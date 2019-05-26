@@ -71,7 +71,7 @@
   - [js运算符优先级.png](js/js运算符优先级.png)
   - [AJAX.txt](js/AJAX.txt)
 - [常用英文单词.xls](常用英文单词.xls)
-- [常用英文单词.txt](常用英文单词.txt)
+- [常用英文单词.md](常用英文单词.md)
 - [网站结构.txt](网站结构.txt)
 - [计划表.xls](计划表.xls)
 - [问题.txt](问题.txt)

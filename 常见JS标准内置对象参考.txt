@@ -42,7 +42,7 @@ Object
   .getPrototypeOf()      返回原型:{}（内部[[Prototype]]属性的值）
   .setPrototypeOf({},{})      设置原型（即内部[[Prototype]]属性）。
   
-  .entries()       返回自身可枚举属性:[[key,value],...]
+  .entries()       返回自身可枚举属性的名称和值:[[key,value],...]
   .keys()      返回自身可枚举属性的名称:['',...]
   .values()      返回自身可枚举属性的值:[]
   .getOwnPropertyNames()       返回自身属性的属性名:['',...]（包括不可枚举，不包括Symbol属性）
@@ -58,7 +58,7 @@ Object
 
 Object.prototype
   .hasOwnProperty()      判断自身属性中是否有指定属性
-  .propertyIsEnumerable()      判断指定属性是否可是自身可枚举属性
+  .propertyIsEnumerable()      判断指定属性是否是自身可枚举属性
   .isPrototypeOf()      判断本对象是否在指定对象的原型链中。
   .toLocaleString()      直接调用toString()方法
   .toString()      返回对象的字符串表示
