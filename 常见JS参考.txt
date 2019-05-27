@@ -1,7 +1,82 @@
 目录
+  作用域和闭包
   原型链
   对象的属性
   表达式和运算符
+
+作用域和闭包
+作用域
+  作用域是一套规则，用于确定在何处以及如何查找变量（标识符）。
+  如果查找的目的是对变量进行赋值，那么就会使用LHS 查询；如果目的是获取变量的值，就会使用RHS 查询。
+  词法作用域是在写代码或者说定义时确定的，关注函数在何处声明。
+  动态作用于是在运行时确定的（this也是），关注函数从何处调用。
+词法作用域
+  JavaScript中的作用域是词法作用域，（with，eval()除外）
+  作用域：块作用域和函数作用域
+  只有with,try/catch,let,const关联的变量存在块作用域
+闭包
+  当函数可以记住并访问所在的词法作用域时，就产生了闭包，即使函数是在当前词法作用域之外执行。
+  let fun1,fun2;
+  function fun3 (){
+    let a = 'wow';
+    function fun4 (){
+      return a;
+    }
+    fun1 = fun4;
+    return fun4;
+  }
+  fun2 = fun3();
+  fun1();//'wow'
+  fun2();//'wow'
+模块
+  模块是一个 对象（从包装函数调用返回的，拥有闭包函数）或闭包函数（从包装函数调用返回的）
+  模块有两个主要特征：
+  1为创建内部作用域而调用了一个包装函数；
+  2包装函数的返回值必须至少包括一个对内部函数的引用，这样就会创建涵盖整个包装函数内部作用域的闭包。
+  bar.js
+    function hello(who) {
+    return "Let me introduce: " + who;
+    }
+    export hello;
+  foo.js
+    // 仅从"bar" 模块导入hello()
+    import hello from "bar";
+    var hungry = "hippo";
+    function awesome() {
+      console.log( hello( hungry ).toUpperCase() );
+    }
+    export awesome;
+  baz.js
+    // 导入完整的"foo" 和"bar" 模块作用域闭包
+    module foo from "foo";
+    module bar from "bar";
+    console.log( bar.hello( "rhino" ) ); // Let me introduce: rhino
+    foo.awesome(); // LET ME INTRODUCE: HIPPO
+
+
+
+
+其他
+  函数声明和函数表达式的区别
+  函数声明会将标识符绑定到声明所在作用域，函数表达式会将标识符绑定到自身函数作用域内。
+  函数声明不能匿名，函数表达式可以匿名
+  函数声明会被提升，函数表达式不会被提升
+
+this
+分析调用栈，找出函数的调用位置
+箭头函数的this指向 调用箭头函数的this指向的对象
+  1.new绑定，this指向新创建的对象
+    new Fun()
+  2.显式绑定，this指向显式绑定的对象，如果绑定到undefined或null则应用默认绑定
+    fun.call(obj),fun.apply(obj)
+    fun.bind(obj)
+    许多支持从参数中指定this的内置函数
+  3.隐式绑定,this指向调用此函数的上下文对象
+    obj.fun()
+    直接调用执行 对象的方法:
+  4.默认绑定，this严格模式下指向undefined,非严格模式下指向window
+    fun();
+
 
 
 原型链
