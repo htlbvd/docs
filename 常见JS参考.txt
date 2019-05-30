@@ -76,8 +76,11 @@ this
     直接调用执行 对象的方法:
   4.默认绑定，this严格模式下指向undefined,非严格模式下指向window
     fun();
+  方法，对象中的函数属性
 
-
+对象
+null 和undefined 没有对应的构造形式，它们只有文字形式。相反，Date 只有构造，没有文字形式。
+对于Object、Array、Function 和RegExp（正则表达式）来说，无论使用文字形式还是构造形式，它们都是对象，不是字面量
 
 原型链
   设置原型
@@ -118,7 +121,18 @@ this
     数据描述符：[[Value]],[[Writable]]
     访问器描述符：[[Get]],[[Set]]
     通用描述符：[[Configurable]],[[Enumberable]]
-    数据描述符和访问器描述符不可同时存在，设置描述符时需使用小写字符串，访问器属性可以没有[[Set]]
+    数据描述符和访问器描述符无法同时存在，设置描述符时需使用小写字符串，访问器属性可以没有[[Set]]
+    即便属性是configurable:false， 我们还是可以把writable 的状态由true 改为false，但是无法由false 改为true。configurable:false 还会禁止删除这个属性
+    [[Put]] 被触发时，实际的行为取决于许多因素，包括对象中是否已经存在这个属性（这是最重要的因素）。
+      如果已经存在这个属性，[[Put]] 算法大致会检查下面这些内容。
+      1. 属性是否是访问描述符（参见3.3.9 节）？如果是并且存在setter 就调用setter。
+      2. 属性的数据描述符中writable 是否是false ？如果是，在非严格模式下静默失败，在严格模式下抛出TypeError 异常。
+      3. 如果都不是，将该值设置为属性的值。
+  不变性
+    1.设置writable:false 和configurable:false，不可修改、重定义或者删除
+    2.Object.preventExtensions(obj)，禁止obj添加新属性,保留已有属性
+    3.Object.seal(obj),调用Object.preventExtensions(obj),并把所有现有属性标记为configurable:false
+    4.Object.freeze(obj),调用Object.seal(obj),并把所有“数据访问”属性标记为writable:false，
   属性及其配置相关方法
     Object.defineProperty({},'',{})      添加一个属性或修改属性的配置
     Object.defineProperties({},{})      添加多个属性或修改属性的配置
@@ -136,13 +150,7 @@ this
     obj.propertyIsEnumerable()      自身可枚举属性
     
     property in obj      判断obj及其原型链自身可枚举属性中是否存在property属性
-
-
-
-
-
-
-
+  for...in...,for...of...
 
 
 表达式和运算符
