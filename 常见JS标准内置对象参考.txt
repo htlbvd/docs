@@ -250,6 +250,18 @@ JSON
   .stringify(x[,func[,space]])
 
 
+控制抽象对象
+Promise
+  .all()
+  .race()
+  .reject()
+  .resolve()
+Promise.prototype
+  .catch()
+  .then()
+  .finally()
+
+
 其他
 arguments
   类数组对象，在非箭头函数中可用,保存传入函数的参数
