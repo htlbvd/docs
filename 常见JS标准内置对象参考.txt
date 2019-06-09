@@ -252,14 +252,15 @@ JSON
 
 控制抽象对象
 Promise
-  .all()
-  .race()
-  .reject()
-  .resolve()
+  new Promise(function(a,b){a()或b()})      构造一个完成或者拒绝的promise
+  .all([])      如果所有promise的决议的完成则返回绑定包含所有完成值的数组的promise，如果遇到第一个拒绝的决议，则返回这个拒绝值
+  .race([])      返回绑定第一个决议的promise的决议的promise
+  .reject()      创建一个已拒绝的promise
+  .resolve()      创建一个已决议的promise
 Promise.prototype
-  .catch()
-  .then()
-  .finally()
+  .catch()      等同于.then(null,rejected)
+  .then()      为这个Promise注册完成和拒绝处理函数
+  .finally()      为这个Promise注册无论完成还是拒绝都会调用的函数
 
 
 其他

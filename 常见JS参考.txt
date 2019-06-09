@@ -1,7 +1,7 @@
 目录
   作用域和闭包
-  原型链
-  对象的属性
+  this、对象和原型
+  异步
   表达式和运算符
 
 作用域和闭包
@@ -52,19 +52,17 @@
     module bar from "bar";
     console.log( bar.hello( "rhino" ) ); // Let me introduce: rhino
     foo.awesome(); // LET ME INTRODUCE: HIPPO
-
-
-
-
 其他
   函数声明和函数表达式的区别
   函数声明会将标识符绑定到声明所在作用域，函数表达式会将标识符绑定到自身函数作用域内。
   函数声明不能匿名，函数表达式可以匿名
   函数声明会被提升，函数表达式不会被提升
 
+
+this、对象和原型
 this
-分析调用栈，找出函数的调用位置
-箭头函数的this指向 调用箭头函数的this指向的对象
+  分析调用栈，找出函数的调用位置
+  箭头函数的this指向 调用箭头函数的this指向的对象
   1.new绑定，this指向新创建的对象
     new Fun()
   2.显式绑定，this指向显式绑定的对象，如果绑定到undefined或null则应用默认绑定
@@ -76,12 +74,18 @@ this
     直接调用执行 对象的方法:
   4.默认绑定，this严格模式下指向undefined,非严格模式下指向window
     fun();
-  方法，对象中的函数属性
-
+  方法，对象中的函数属性的常用叫法
 对象
-null 和undefined 没有对应的构造形式，它们只有文字形式。相反，Date 只有构造，没有文字形式。
-对于Object、Array、Function 和RegExp（正则表达式）来说，无论使用文字形式还是构造形式，它们都是对象，不是字面量
-
+  null 和undefined 没有对应的构造形式，它们只有文字形式。相反，Date 只有构造，没有文字形式。
+  对于Object、Array、Function 和RegExp（正则表达式）来说，无论使用文字形式还是构造形式，它们都是对象，不是字面量
+  typeof:'':
+    object,function,number,string,boolean,undefined,symbol
+  Object.prototype.toString:'':对this调用ToObject后内部属性[[class]]的值。
+    [object Object],[object Function],[object Number],[object String],[object Boolean],[object Undefined],[object Null],[object Symbol]
+    [object Array],[object RegExp],[object Date],[object Math],[object Error],[object JSON],[object Arguments]
+    [object Promise],[object Map],[object GeneratorFunction],[object Generator]
+    [object Window],[object HTMLDocument],[object HTMLBodyElement],[object HTMLDivElement],
+    ...
 原型链
   设置原型
     Object.setPrototypeOf(obj1,obj)     将obj1的[[prototype]]设为obj，性能低下，建议用Object.create()方法代替
@@ -115,7 +119,6 @@ null 和undefined 没有对应的构造形式，它们只有文字形式。相�
     |                                                           |
     |          obj2的[[prototype]]  obj1的[[prototype]]  obj的[[prototype]]  Object.prototype的[[prototype]]
     |  obj2-------------obj1-------------obj-------------Object.prototype-----------------null        <--obj2的原型链
-
 对象的属性
   属性的描述符，特性，配置
     数据描述符：[[Value]],[[Writable]]
@@ -152,11 +155,24 @@ null 和undefined 没有对应的构造形式，它们只有文字形式。相�
     property in obj      判断obj及其原型链自身可枚举属性中是否存在property属性
   for...in...,for...of...
 
+
 异步
   程序中现在运行的部分和将来运行的部分之间的关系就是异步编程的核心
-  浏览器在后台异步处理控制台I/O 能够提高性能
+  异步是关于现在和将来的时间间隙，而并行是关于能够同时发生的事情。同步是在现在按顺序依次执行。
+  ？使用回调通过浏览器的事件循环机制实现异步;满足回调函数执行条件时,将回调函数作为一个时间循环放到当前所有事件循环末尾。
+  ？使用Promise通过ES6引擎的任务队列机制实现异步，添加任务队列时任务被添加到当前所处事件循环的所有任务队列末尾。
+  浏览器在后台异步处理控制台I/O （console.log()等）能够提高性能
   如果在调试的过程中遇到对象在console.log(..) 语句之后被修改，可你却看到了意料之外的结果，要意识到这可能是这种I/O 的异步化造成的。
-  异步是关于现在和将来的时间间隙，而并行是关于能够同时发生的事情。
+  new Promise((a,b)=>{}),参数函数是立即调用的，同步的，函数返回a(...)是完成决议，返回b(...)是拒绝决议
+生成器
+  function* a(){...yield ''...};//声明一个生成器函数
+  let b=a();  //执行生成器函数得到一个迭代器
+  b.next();   //暂停时会把函数中是此处暂停的yield后面的值返回
+  b.next(''); //继续前会把参数传给之前使之暂停的yield，暂停时会把函数中是此处暂停的yield后面的值返回
+  ...
+...
+
+
 表达式和运算符
 主要表达式，JavaScript中基本关键字和常用表达式。
   this      this 关键字指向函数的执行上下文。
@@ -171,20 +187,17 @@ null 和undefined 没有对应的构造形式，它们只有文字形式。相�
   {}      对象初始化/字面量语法。
   /ab+c/i      正则表达式字面量语法。
   ()      分组操作符。
-
 左表达式，左边的值是赋值的目标。
   属性访问符      成员运算符提供了对对象的属性或方法的访问      (object.property 和 object["property"]).
   new      new 运算符创建了构造函数实例。
   new.target      在构造器中，new.target 指向new调用的构造器。
   super      super 关键字调用父类的构造器.
   ...obj      展开运算符可以将一个可迭代的对象在函数调用的位置展开成为多个参数,或者在数组字面量中展开成多个数组元素。
-
 自增和自减，前置/后置自增运算符和前置/后置自减运算符.
   A++      后置自增运算符.
   A--      后置自减运算符.
   ++A      前置自增运算符.
   --A      前置自减运算符.
-
 一元运算符，只有一个操作数.
   delete      delete 运算符用来删除对象的属性.
   void      void 运算符表示表达式放弃返回值.
@@ -193,10 +206,8 @@ null 和undefined 没有对应的构造形式，它们只有文字形式。相�
   -      一元减运算符将操作转换为Number类型并取反.
   ~      按位非运算符.
   !      逻辑非运算符.
-
 算术运算符，以二个数值（字面量或变量）作为操作数，并返回单个数值。
   +,-,/,*,%,**      加法，减法，除法，乘法，取余，求幂 运算符
-
 关系运算符，比较二个操作数并返回基于比较结果的Boolean值。
   in      in运算符用来判断对象是否拥有给定属性.
   instanceof      instanceof 运算符判断一个对象是否是另一个对象的实例.
@@ -204,39 +215,31 @@ null 和undefined 没有对应的构造形式，它们只有文字形式。相�
   >      大于运算符.
   <=      小于等于运算符.
   >=      大于等于运算符。 
-
 相等运算符，如果相等，操作符返回的是Boolean(布尔)类型的true，否则是false。
   ==      相等 运算符.
   !=      不等 运算符.
   ===      全等 运算符.
   !==      非全等 运算符.
-
 位移运算符，在二进制的基础上对数字进行移动操作
   <<      按位左移运算符。
   >>      按位右移运算符。
   >>>      按位无符号右移运算符。
-
 二进制位运算符，将它们的操作数作为32个二进制位（0或1）的集合，并返回标准的JavaScript数值。
   &      二进制位与（AND）。
   |      二进制位或（OR）。
   ^      二进制位异或（XOR）。
-
 二元逻辑运算符，典型的用法是用于boolean(逻辑)值运算, 它们返回boolean值。
   &&      逻辑与.
   ||      逻辑或.
-
 条件(三元)运算符
   (condition ? ifTrue : ifFalse)     条件元素运算符把两个结果中其中一个符合运算逻辑的值返回。
-
 赋值运算符，将右边的操作数的值分配给左边的操作数，并将其值修改为右边操作数相等的值。
   =,*=,/=,%=,+=,-=      赋值运算符，赋值乘积，赋值商，赋值求余，赋值求和，赋值求差
   <<=,>>=,>>>=,&=,^=,|=      左位移，右位移，无符号右位移，赋值与，赋值按位异或，赋值或
   [a, b] = [1, 2]
   {a, b} = {a:1, b:2}      解构赋值允许你分配数组或者对象变量的属性通过使用规定的语法，其看起来和数组和对象字面量很相似。
-  
 逗号操作符
   ,      逗号操作符允许在一个判断状态中有多个表达式去进行运算并且最后返回最后一个表达式的值。
-
 
 
 参考：
