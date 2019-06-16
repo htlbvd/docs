@@ -1,0 +1,231 @@
+node  进入node交互模式
+node -h(10.16.0)
+用法Usage: node [options] [ -e script | script.js | - ] [arguments]
+      node inspect script.js [arguments]
+
+选项Options:
+  -                           script read from stdin (default if no file name is provided, interactive mode if a tty)
+  --                          indicate the end of node options
+  --abort-on-uncaught-exception aborting instead of exiting causes a core file to be generated for analysis
+  -c, --check                 校验脚本的语法错误而不执行  syntax check script without executing
+  --completion-bash           print source-able bash completion script
+  -e, --eval=...              将script作为JS代码执行  evaluate script
+  --experimental-modules      experimental ES Module support and caching modules
+  --experimental-repl-await   experimental await keyword support in REPL
+  --experimental-vm-modules   experimental ES Module support in vm module
+  --experimental-worker       experimental threaded Worker support
+  -h, --help                  print node command line options (currently set)
+  --icu-data-dir=...          set ICU data load path to dir (overrides NODE_ICU_DATA)
+  --inspect[=[host:]port]     activate inspector on host:port (default: 127.0.0.1:9229)
+  --inspect-brk[=[host:]port] activate inspector on host:port and break at start of user script
+  --debug-port, --inspect-port=[host:]port set host:port for inspector
+  -i, --interactive           进入REPL（交互式解释器），即使终端不是标准输入。  always enter the REPL even if stdin does not appear to be a terminal
+  --loader=...                (with --experimental-modules) use the specified file as a custom loader
+  --max-http-header-size=...  set the maximum size of HTTP headers (default: 8KB)
+  --no-deprecation            silence deprecation warnings
+  --no-force-async-hooks-checks disable checks for async_hooks
+  --no-warnings               silence all process warnings
+  --openssl-config=...        load OpenSSL configuration from the specified file (overrides OPENSSL_CONF)
+  --pending-deprecation       emit pending deprecation warnings
+  --preserve-symlinks         preserve symbolic links when resolving
+  --preserve-symlinks-main    preserve symbolic links when resolving the main module
+  -p, --print [...]           将script作为JS代码执行（最后一条语句的执行结果）  evaluate script and print result
+  --prof-process              process V8 profiler output generated using --prof
+  --redirect-warnings=...     write warnings to file instead of stderr
+  -r, --require=...           预加载模块  module to preload (option can be repeated)
+  --throw-deprecation         throw an exception on deprecations
+  --title=...                 the process title to use on startup
+  --tls-cipher-list=...       use an alternative default TLS cipher list
+  --trace-deprecation         show stack traces on deprecations
+  --trace-event-categories=... comma separated list of trace event categories to record
+  --trace-event-file-pattern=... Template string specifying the filepath for the trace-events data, it supports ${rotation} and ${pid}.
+  --trace-sync-io             show stack trace when use of sync IO is detected after the first tick
+  --trace-warnings            show stack traces on process warnings
+  --track-heap-objects        track heap object allocations for heap snapshots
+  --use-bundled-ca            use bundled CA store (default)
+  --use-openssl-ca            use OpenSSL's default CA store
+  --v8-options                显示v8命令行选项  print V8 command line options
+  --v8-pool-size=...          set V8's thread pool size
+  -v, --version               显示Node.js版本  print Node.js version
+  --zero-fill-buffers         automatically zero-fill all newly allocated Buffer and SlowBuffer instances
+
+环境变量Environment variables:
+  NODE_DEBUG                  ','-separated list of core modules that should print debug information
+  NODE_DEBUG_NATIVE           ','-separated list of C++ core debug categories that should print debug output
+  NODE_DISABLE_COLORS         set to 1 to disable colors in the REPL
+  NODE_EXTRA_CA_CERTS         path to additional CA certificates file
+  NODE_NO_WARNINGS            set to 1 to silence process warnings
+  NODE_OPTIONS                set CLI options in the environment via a space-separated list
+  NODE_PATH                   ';'-separated list of directories prefixed to the module search path
+  NODE_PENDING_DEPRECATION    set to 1 to emit pending deprecation warnings
+  NODE_PRESERVE_SYMLINKS      set to 1 to preserve symbolic links when resolving and caching modules
+  NODE_REDIRECT_WARNINGS      write warnings to path instead of stderr
+  NODE_REPL_HISTORY           path to the persistent REPL history file
+  NODE_TLS_REJECT_UNAUTHORIZED set to 0 to disable TLS certificate validation
+  NODE_V8_COVERAGE            directory to output v8 coverage JSON to
+  OPENSSL_CONF                load OpenSSL configuration from file
+  SSL_CERT_DIR                sets OpenSSL's directory of trusted certificates when used in conjunction with --use-openssl-ca
+  SSL_CERT_FILE               sets OpenSSL's trusted certificate file when used in conjunction with --use-openssl-ca
+  UV_THREADPOOL_SIZE          sets the number of threads used in libuv's threadpool
+
+Documentation can be found at https://nodejs.org/
+
+
+npm -l
+Usage: npm <command>
+where <command> is one of:
+  access          npm access public [<package>]
+                  npm access restricted [<package>]
+                  npm access grant <read-only|read-write> <scope:team> [<package>]
+                  npm access revoke <scope:team> [<package>]
+                  npm access 2fa-required [<package>]
+                  npm access 2fa-not-required [<package>]
+                  npm access ls-packages [<user>|<scope>|<scope:team>]
+                  npm access ls-collaborators [<package> [<user>]]
+                  npm access edit [<package>]
+  adduser         npm adduser [--registry=url] [--scope=@orgname] [--auth-type=legacy] [--always-auth]
+                  aliases: login, add-user
+  audit           npm audit [--json]
+                  npm audit fix [--force|--package-lock-only|--dry-run|--production|--only=(dev|prod)]
+  bin             npm bin [--global]
+  bugs            npm bugs [<pkgname>]
+                  alias: issues
+  cache           npm cache add <tarball file>
+                  npm cache add <folder>
+                  npm cache add <tarball url>
+                  npm cache add <git url>
+                  npm cache add <name>@<version>
+                  npm cache clean
+                  npm cache verify
+  ci              npm ci
+  completion      source <(npm completion)
+  config          npm config set <key> <value>
+                  npm config get [<key>]
+                  npm config delete <key>
+                  npm config list [--json]
+                  npm config edit
+                  npm set <key> <value>
+                  npm get [<key>]
+                  alias: c
+  dedupe          npm dedupe
+                  aliases: ddp, find-dupes
+  deprecate       npm deprecate <pkg>[@<version>] <message>
+  dist-tag        npm dist-tag add <pkg>@<version> [<tag>]
+                  npm dist-tag rm <pkg> <tag>
+                  npm dist-tag ls [<pkg>]
+                  alias: dist-tags
+  docs            npm docs <pkgname>
+                  npm docs .
+                  alias: home
+  doctor          npm doctor
+  edit            npm edit <pkg>[/<subpkg>...]
+  explore         npm explore <pkg> [ -- <command>]
+  get             npm get <key> <value> (See `npm config`)
+  help
+  help-search     npm help-search <text>
+  hook
+  init            npm init [--force|-f|--yes|-y|--scope]
+                  npm init <@scope> (same as `npx <@scope>/create`)
+                  npm init [<@scope>/]<name> (same as `npx [<@scope>/]create-<name>`)
+                  aliases: create, innit
+  install         npm install (with no args, in package dir)
+                  npm install [<@scope>/]<pkg>
+                  npm install [<@scope>/]<pkg>@<tag>
+                  npm install [<@scope>/]<pkg>@<version>
+                  npm install [<@scope>/]<pkg>@<version range>
+                  npm install <folder>
+                  npm install <tarball file>
+                  npm install <tarball url>
+                  npm install <git:// url>
+                  npm install <github username>/<github project>
+                  aliases: i, isntall, add
+                  common options: [--save-prod|--save-dev|--save-optional] [--save-exact] [--no-save]
+  install-ci-test npm install-ci-test [args]
+                  Same args as `npm ci`
+                  alias: cit
+  install-test    npm install-test [args]
+                  Same args as `npm install`
+                  alias: it
+  link            npm link (in package dir)
+                  npm link [<@scope>/]<pkg>[@<version>]
+                  alias: ln
+  logout          npm logout [--registry=<url>] [--scope=<@scope>]
+  ls              npm ls [[<@scope>/]<pkg> ...]
+                  aliases: list, la, ll
+  org             npm org set orgname username [developer | admin | owner]
+                  npm org rm orgname username
+                  npm org ls orgname [<username>]
+  outdated        npm outdated [[<@scope>/]<pkg> ...]
+  owner           npm owner add <user> [<@scope>/]<pkg>
+                  npm owner rm <user> [<@scope>/]<pkg>
+                  npm owner ls [<@scope>/]<pkg>
+                  alias: author
+  pack            npm pack [[<@scope>/]<pkg>...] [--dry-run]
+  ping            npm ping
+                  ping registry
+  prefix          npm prefix [-g]
+  profile         npm profile enable-2fa [auth-only|auth-and-writes]
+                  npm profile disable-2fa
+                  npm profile get [<key>]
+                  npm profile set <key> <value>
+  prune           npm prune [[<@scope>/]<pkg>...] [--production]
+  publish         npm publish [<tarball>|<folder>] [--tag <tag>] [--access <public|restricted>] [--dry-run]
+                  Publishes '.' if no argument supplied
+                  Sets tag `latest` if no --tag specified
+  rebuild         npm rebuild [[<@scope>/<name>]...]
+                  alias: rb
+  repo            npm repo [<pkg>]
+  restart         npm restart [-- <args>]
+  root            npm root [-g]
+  run-script      npm run-script <command> [-- <args>...]
+                  aliases: run, rum, urn
+  search          npm search [--long] [search terms ...]
+                  aliases: s, se, find
+  set             npm set <key> <value> (See `npm config`)
+  shrinkwrap      npm shrinkwrap
+  star            npm star [<pkg>...]
+                  npm unstar [<pkg>...]
+                  alias: unstar
+  stars           npm stars [<user>]
+  start           npm start [-- <args>]
+  stop            npm stop [-- <args>]
+  team            npm team create <scope:team>
+                  npm team destroy <scope:team>
+                  npm team add <scope:team> <user>
+                  npm team rm <scope:team> <user>
+                  npm team ls <scope>|<scope:team>
+                  npm team edit <scope:team>
+  test            npm test [-- <args>]
+                  aliases: tst, t
+  token           npm token list
+                  npm token revoke <tokenKey>
+                  npm token create [--read-only] [--cidr=list]
+  uninstall       npm uninstall [<@scope>/]<pkg>[@<version>]... [--save-prod|--save-dev|--save-optional] [--no-save]
+                  aliases: un, unlink, remove, rm, r
+  unpublish
+  update          npm update [-g] [<pkg>...]
+                  aliases: up, upgrade, udpate
+  version         npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease [--preid=<prerelease-id>] | from-git]
+                  (run in package dir)
+                  'npm -v' or 'npm --version' to print npm version (6.9.0)
+                  'npm view <pkg> version' to view a package's published version
+                  'npm ls' to inspect current package/dependency versions
+  view            npm view [<@scope>/]<pkg>[@<version>] [<field>[.subfield]...]
+                  aliases: v, info, show
+  whoami          npm whoami [--registry <registry>]
+                  (just prints username according to given registry)
+npm <command> -h  quick help on <command>
+npm -l            display full usage info
+npm help <term>   search for help on <term>
+npm help npm      打开npm参考概述involved overview
+
+Specify configs in the ini-formatted file:
+    C:\Users\htl\.npmrc
+or on the command line via: npm <command> --key value
+Config info can be viewed via: npm help config
+
+npm@6.9.0 C:\Program Files\nodejs\node_modules\npm
+
+npm list --depth=0 -g  查看全局安装的包，深度为0
+参考：
+https://blog.csdn.net/chy555chy/article/details/52669223
