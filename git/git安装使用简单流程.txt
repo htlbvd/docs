@@ -32,6 +32,10 @@ Git for Windows(msysGit),不同于Git,http://msysgit.github.io
 http://git-scm.com/download/win
 GitHub for Wondows,包含图形化和命令行版本的Git
 http://windows.github.com
+更新Git for Windows
+在 https://gitforwindows.org/ 或在 https://git-scm.com/download/win 下载覆盖安装
+或使用命令查看当前最新git版本，并确定是否下载安装：
+$ git update-git-for-windows
 
 设置用户名称与邮箱地址,如：
 $ git config --global user.name "John Doe"
